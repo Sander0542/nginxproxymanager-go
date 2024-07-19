@@ -1,0 +1,4573 @@
+openapi: 3.1.0
+info:
+  title: Nginx Proxy Manager API
+  version: 2.12.2
+servers:
+- url: http://localhost/api
+paths:
+  /:
+    get:
+      operationId: health
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    status: OK
+                    version:
+                      major: 2
+                      minor: 1
+                      revision: 0
+              schema:
+                $ref: '#/components/schemas/health_200_response'
+          description: 200 response
+      summary: Returns the API health status
+      tags:
+      - Public
+  /audit-log:
+    get:
+      operationId: getAuditLog
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: 7
+                    created_on: 2024-10-08T13:09:54.000Z
+                    modified_on: 2024-10-08T13:09:54.000Z
+                    user_id: 1
+                    object_type: user
+                    object_id: 3
+                    action: updated
+                    meta:
+                      name: John Doe
+                      permissions:
+                        user_id: 3
+                        visibility: all
+                        access_lists: manage
+                        dead_hosts: hidden
+                        proxy_hosts: manage
+                        redirection_hosts: view
+                        streams: hidden
+                        certificates: manage
+                        id: 3
+                        modified_on: 2024-10-08T13:09:54.000Z
+                        created_on: 2024-10-08T13:09:51.000Z
+              schema:
+                $ref: '#/components/schemas/getAuditLog_200_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - audit-log
+      summary: Get Audit Log
+      tags:
+      - Audit Log
+  /nginx/access-lists:
+    get:
+      operationId: getAccessLists
+      parameters:
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          - items
+          - clients
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: 1
+                    created_on: 2024-10-08T22:15:40.000Z
+                    modified_on: 2024-10-08T22:15:40.000Z
+                    owner_user_id: 1
+                    name: test1234
+                    meta: {}
+                    satisfy_any: true
+                    pass_auth: false
+                    proxy_host_count: 0
+                    owner:
+                      id: 1
+                      created_on: 2024-10-07T22:43:55.000Z
+                      modified_on: 2024-10-08T12:52:54.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: some guy
+                      avatar: //www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?default=mm
+                      roles:
+                      - admin
+                    items:
+                    - id: 1
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      username: admin
+                      password: ""
+                      meta: {}
+                      hint: a****
+                    - id: 2
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      username: asdad
+                      password: ""
+                      meta: {}
+                      hint: a*****
+                    clients:
+                    - id: 1
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      address: 127.0.0.1
+                      directive: allow
+                      meta: {}
+              schema:
+                description: Access list list
+                items:
+                  $ref: '#/components/schemas/getAccessLists_200_response_inner'
+                type: array
+          description: 200 response
+      security:
+      - BearerAuth:
+        - access_lists
+      summary: Get all access lists
+      tags:
+      - Access Lists
+    post:
+      operationId: createAccessList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAccessList_request'
+        description: Access List Payload
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-08T22:15:40.000Z
+                    modified_on: 2024-10-08T22:15:40.000Z
+                    owner_user_id: 1
+                    name: test1234
+                    meta: {}
+                    satisfy_any: true
+                    pass_auth: false
+                    proxy_host_count: 0
+                    owner:
+                      id: 1
+                      created_on: 2024-10-07T22:43:55.000Z
+                      modified_on: 2024-10-08T12:52:54.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: some guy
+                      avatar: //www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?default=mm
+                      roles:
+                      - admin
+                    items:
+                    - id: 1
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      username: admin
+                      password: ""
+                      meta: {}
+                      hint: a****
+                    - id: 2
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      username: asdad
+                      password: ""
+                      meta: {}
+                      hint: a*****
+                    clients:
+                    - id: 1
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      address: 127.0.0.1
+                      directive: allow
+                      meta: {}
+              schema:
+                $ref: '#/components/schemas/createAccessList_201_response'
+          description: 201 response
+      security:
+      - BearerAuth:
+        - access_lists
+      summary: Create a Access List
+      tags:
+      - Access Lists
+  /nginx/access-lists/{listID}:
+    delete:
+      operationId: deleteAccessList
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: listID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - access_lists
+      summary: Delete a Access List
+      tags:
+      - Access Lists
+    get:
+      operationId: getAccessList
+      parameters:
+      - example: 1
+        explode: false
+        in: path
+        name: listID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          - items
+          - clients
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-08T22:15:40.000Z
+                    modified_on: 2024-10-08T22:15:40.000Z
+                    owner_user_id: 1
+                    name: test1234
+                    meta: {}
+                    satisfy_any: true
+                    pass_auth: false
+                    proxy_host_count: 0
+                    owner:
+                      id: 1
+                      created_on: 2024-10-07T22:43:55.000Z
+                      modified_on: 2024-10-08T12:52:54.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: some guy
+                      avatar: //www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?default=mm
+                      roles:
+                      - admin
+                    items:
+                    - id: 1
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      username: admin
+                      password: ""
+                      meta: {}
+                      hint: a****
+                    - id: 2
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      username: asdad
+                      password: ""
+                      meta: {}
+                      hint: a*****
+                    clients:
+                    - id: 1
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      address: 127.0.0.1
+                      directive: allow
+                      meta: {}
+              schema:
+                $ref: '#/components/schemas/createAccessList_201_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - access_lists
+      summary: Get a access List
+      tags:
+      - Access Lists
+    put:
+      operationId: updateAccessList
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: listID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAccessList_request'
+        description: Access List Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-08T22:15:40.000Z
+                    modified_on: 2024-10-08T22:15:40.000Z
+                    owner_user_id: 1
+                    name: test1234
+                    meta: {}
+                    satisfy_any: true
+                    pass_auth: false
+                    proxy_host_count: 0
+                    owner:
+                      id: 1
+                      created_on: 2024-10-07T22:43:55.000Z
+                      modified_on: 2024-10-08T12:52:54.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: some guy
+                      avatar: //www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?default=mm
+                      roles:
+                      - admin
+                    items:
+                    - id: 1
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      username: admin
+                      password: ""
+                      meta: {}
+                      hint: a****
+                    - id: 2
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      username: asdad
+                      password: ""
+                      meta: {}
+                      hint: a*****
+                    clients:
+                    - id: 1
+                      created_on: 2024-10-08T22:15:40.000Z
+                      modified_on: 2024-10-08T22:15:40.000Z
+                      access_list_id: 1
+                      address: 127.0.0.1
+                      directive: allow
+                      meta: {}
+              schema:
+                $ref: '#/components/schemas/createAccessList_201_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - access_lists
+      summary: Update a Access List
+      tags:
+      - Access Lists
+  /nginx/certificates:
+    get:
+      operationId: getCertificates
+      parameters:
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: 4
+                    created_on: 2024-10-09T05:31:58.000Z
+                    modified_on: 2024-10-09T05:32:11.000Z
+                    owner_user_id: 1
+                    provider: letsencrypt
+                    nice_name: test.example.com
+                    domain_names:
+                    - test.example.com
+                    expires_on: 2025-01-07T04:34:18.000Z
+                    meta:
+                      letsencrypt_email: jc@jc21.com
+                      letsencrypt_agree: true
+                      dns_challenge: false
+              schema:
+                description: Certificates list
+                items:
+                  $ref: '#/components/schemas/getCertificates_200_response_inner'
+                type: array
+          description: 200 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Get all certificates
+      tags:
+      - Certificates
+    post:
+      operationId: createCertificate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCertificate_request'
+        description: Certificate Payload
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    expires_on: 2025-01-07 04:30:17
+                    modified_on: 2024-10-09 05:28:51
+                    id: 5
+                    created_on: 2024-10-09 05:28:35
+                    owner_user_id: 1
+                    is_deleted: false
+                    provider: letsencrypt
+                    nice_name: test.example.com
+                    domain_names:
+                    - test.example.com
+                    meta:
+                      letsencrypt_email: jc@jc21.com
+                      letsencrypt_agree: true
+                      dns_challenge: false
+                      letsencrypt_certificate:
+                        cn: test.example.com
+                        issuer: "C = US, O = Let's Encrypt, CN = E5"
+                        dates:
+                          from: 1728448218
+                          to: 1736224217
+              schema:
+                $ref: '#/components/schemas/getCertificates_200_response_inner'
+          description: 201 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Domains are invalid
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Create a Certificate
+      tags:
+      - Certificates
+  /nginx/certificates/validate:
+    post:
+      operationId: validateCertificates
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/validateCertificates_request'
+        description: Certificate Files
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    certificate:
+                      cn: mkcert
+                      issuer: "O = mkcert development CA, OU = jc@jc-Laptop.local\
+                        \ (John Doe), CN = mkcert jc@jc-Laptop.local (John Doe)"
+                      dates:
+                        from: 1728458537
+                        to: 1799479337
+                    certificate_key: true
+              schema:
+                $ref: '#/components/schemas/validateCertificates_200_response'
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Certificate is not valid
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Validates given Custom Certificates
+      tags:
+      - Certificates
+  /nginx/certificates/test-http:
+    get:
+      operationId: testHttpReach
+      parameters:
+      - description: Expansions
+        explode: true
+        in: query
+        name: domains
+        required: true
+        schema:
+          example: "[\"test.example.ord\",\"test.example.com\",\"nonexistent.example.com\"\
+            ]"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    test.example.org: ok
+                    test.example.com: other:Invalid domain or IP
+                    nonexistent.example.com: "404"
+          description: 200 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Test HTTP Reachability
+      tags:
+      - Certificates
+  /nginx/certificates/{certID}:
+    delete:
+      operationId: deleteCertificate
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: certID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Delete a Certificate
+      tags:
+      - Certificates
+    get:
+      operationId: getCertificate
+      parameters:
+      - example: 1
+        explode: false
+        in: path
+        name: certID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 4
+                    created_on: 2024-10-09T05:31:58.000Z
+                    modified_on: 2024-10-09T05:32:11.000Z
+                    owner_user_id: 1
+                    provider: letsencrypt
+                    nice_name: test.example.com
+                    domain_names:
+                    - test.example.com
+                    expires_on: 2025-01-07T04:34:18.000Z
+                    meta:
+                      letsencrypt_email: jc@jc21.com
+                      letsencrypt_agree: true
+                      dns_challenge: false
+              schema:
+                $ref: '#/components/schemas/getCertificates_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Get a Certificate
+      tags:
+      - Certificates
+  /nginx/certificates/{certID}/download:
+    get:
+      operationId: downloadCertificate
+      parameters:
+      - example: 1
+        explode: false
+        in: path
+        name: certID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/zip:
+              schema:
+                format: binary
+                type: string
+          description: 200 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Downloads a Certificate
+      tags:
+      - Certificates
+  /nginx/certificates/{certID}/renew:
+    post:
+      operationId: renewCertificate
+      parameters:
+      - example: 1
+        explode: false
+        in: path
+        name: certID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    expires_on: 2025-01-07T06:41:58.000Z
+                    modified_on: 2024-10-09T07:39:51.000Z
+                    id: 4
+                    created_on: 2024-10-09T05:31:58.000Z
+                    owner_user_id: 1
+                    is_deleted: false
+                    provider: letsencrypt
+                    nice_name: My Test Cert
+                    domain_names:
+                    - test.jc21.supernerd.pro
+                    meta:
+                      letsencrypt_email: jc@jc21.com
+                      letsencrypt_agree: true
+                      dns_challenge: false
+              schema:
+                $ref: '#/components/schemas/getCertificates_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Renews a Certificate
+      tags:
+      - Certificates
+  /nginx/certificates/{certID}/upload:
+    post:
+      operationId: uploadCertificate
+      parameters:
+      - example: 1
+        explode: false
+        in: path
+        name: certID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/uploadCertificate_request'
+        description: Certificate Files
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    certificate: |
+                      -----BEGIN CERTIFICATE-----
+                      MIIEYDCCAsigAwIBAgIRAPoSC0hvitb26ODMlsH6YbowDQYJKoZIhvcNAQELBQAw
+                      gZExHjAcBgNVBAoTFW1rY2VydCBkZXZlbG9wbWVudCBDQTEzMDEGA1UECwwqamN1
+                      cm5vd0BKYW1pZXMtTGFwdG9wLmxvY2FsIChKYW1pZSBDdXJub3cpMTowOAYDVQQD
+                      DDFta2NlcnQgamN1cm5vd0BKYW1pZXMtTGFwdG9wLmxvY2FsIChKYW1pZSBDdXJu
+                      b3cpMB4XDTI0MTAwOTA3MjIxN1oXDTI3MDEwOTA3MjIxN1owXjEnMCUGA1UEChMe
+                      bWtjZXJ0IGRldmVsb3BtZW50IGNlcnRpZmljYXRlMTMwMQYDVQQLDCpqY3Vybm93
+                      QEphbWllcy1MYXB0b3AubG9jYWwgKEphbWllIEN1cm5vdykwggEiMA0GCSqGSIb3
+                      DQEBAQUAA4IBDwAwggEKAoIBAQC1n9j9C5Bes1ndqACDckERauxXVNKCnUlUM1bu
+                      GBx1xc+j2e2Ar23wUJJuWBY18VfT8yqfqVDktO2wrbmvZvLuPmXePOKbIKS+XXh+
+                      2NG9L5bDG9rwGFCRXnbQj+GWCdMfzx14+CR1IHgeYz6Cv/Si2/LJPCh/CoBfM4hU
+                      QJON3lxAWrWBpdbZnKYMrxuPBRfW9OuzTbCVXToQoxRAHiOR9081Xn1WeoKr7kVB
+                      Ia5UphlvWXa12w1YmUwJu7YndnJGIavLWeNCVc7ZEo+nS8Wr/4QWicatIWZXpVaE
+                      OPhRoeplQDxNWg5b/Q26rYoVd7PrCmRs7sVcH79XzGONeH1PAgMBAAGjZTBjMA4G
+                      A1UdDwEB/wQEAwIFoDATBgNVHSUEDDAKBggrBgEFBQcDATAfBgNVHSMEGDAWgBSB
+                      /vfmBUd4W7CvyEMl7YpMVQs8vTAbBgNVHREEFDASghB0ZXN0LmV4YW1wbGUuY29t
+                      MA0GCSqGSIb3DQEBCwUAA4IBgQASwON/jPAHzcARSenY0ZGY1m5OVTYoQ/JWH0oy
+                      l8SyFCQFEXt7UHDD/eTtLT0vMyc190nP57P8lTnZGf7hSinZz1B1d6V4cmzxpk0s
+                      VXZT+irL6bJVJoMBHRpllKAhGULIo33baTrWFKA0oBuWx4AevSWKcLW5j87kEawn
+                      ATCuMQ1I3ifR1mSlB7X8fb+vF+571q0NGuB3a42j6rdtXJ6SmH4+9B4qO0sfHDNt
+                      IImpLCH/tycDpcYrGSCn1QrekFG1bSEh+Bb9i8rqMDSDsYrTFPZTuOQ3EtjGni9u
+                      m+rEP3OyJg+md8c+0LVP7/UU4QWWnw3/Wolo5kSCxE8vNTFqi4GhVbdLnUtcIdTV
+                      XxuR6cKyW87Snj1a0nG76ZLclt/akxDhtzqeV60BO0p8pmiev8frp+E94wFNYCmp
+                      1cr3CnMEGRaficLSDFC6EBENzlZW2BQT6OMIV+g0NBgSyQe39s2zcdEl5+SzDVuw
+                      hp8bJUp/QN7pnOVCDbjTQ+HVMXw=
+                      -----END CERTIFICATE-----
+                    certificate_key: |
+                      -----BEGIN PRIVATE KEY-----
+                      MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC1n9j9C5Bes1nd
+                      qACDckERauxXVNKCnUlUM1buGBx1xc+j2e2Ar23wUJJuWBY18VfT8yqfqVDktO2w
+                      rbmvZvLuPmXePOKbIKS+XXh+2NG9L5bDG9rwGFCRXnbQj+GWCdMfzx14+CR1IHge
+                      Yz6Cv/Si2/LJPCh/CoBfM4hUQJON3lxAWrWBpdbZnKYMrxuPBRfW9OuzTbCVXToQ
+                      oxRAHiOR9081Xn1WeoKr7kVBIa5UphlvWXa12w1YmUwJu7YndnJGIavLWeNCVc7Z
+                      Eo+nS8Wr/4QWicatIWZXpVaEOPhRoeplQDxNWg5b/Q26rYoVd7PrCmRs7sVcH79X
+                      zGONeH1PAgMBAAECggEAANb3Wtwl07pCjRrMvc7WbC0xYIn82yu8/g2qtjkYUJcU
+                      ia5lQbYN7RGCS85Oc/tkq48xQEG5JQWNH8b918jDEMTrFab0aUEyYcru1q9L8PL6
+                      YHaNgZSrMrDcHcS8h0QOXNRJT5jeGkiHJaTR0irvB526tqF3knbK9yW22KTfycUe
+                      a0Z9voKn5xRk1DCbHi/nk2EpT7xnjeQeLFaTIRXbS68omkr4YGhwWm5OizoyEGZu
+                      W0Zum5BkQyMr6kor3wdxOTG97ske2rcyvvHi+ErnwL0xBv0qY0Dhe8DpuXpDezqw
+                      o72yY8h31Fu84i7sAj24YuE5Df8DozItFXQpkgbQ6QKBgQDPrufhvIFm2S/MzBdW
+                      H8JxY7CJlJPyxOvc1NIl9RczQGAQR90kx52cgIcuIGEG6/wJ/xnGfMmW40F0DnQ+
+                      N+oLgB9SFxeLkRb7s9Z/8N3uIN8JJFYcerEOiRQeN2BXEEWJ7bUThNtsVrAcKoUh
+                      ELsDmnHW/3V+GKwhd0vpk842+wKBgQDf4PGLG9PTE5tlAoyHFodJRd2RhTJQkwsU
+                      MDNjLJ+KecLv+Nl+QiJhoflG1ccqtSFlBSCG067CDQ5LV0xm3mLJ7pfJoMgjcq31
+                      qjEmX4Ls91GuVOPtbwst3yFKjsHaSoKB5fBvWRcKFpBUezM7Qcw2JP3+dQT+bQIq
+                      cMTkRWDSvQKBgQDOdCQFDjxg/lR7NQOZ1PaZe61aBz5P3pxNqa7ClvMaOsuEQ7w9
+                      vMYcdtRq8TsjA2JImbSI0TIg8gb2FQxPcYwTJKl+FICOeIwtaSg5hTtJZpnxX5LO
+                      utTaC0DZjNkTk5RdOdWA8tihyUdGqKoxJY2TVmwGe2rUEDjFB++J4inkEwKBgB6V
+                      g0nmtkxanFrzOzFlMXwgEEHF+Xaqb9QFNa/xs6XeNnREAapO7JV75Cr6H2hFMFe1
+                      mJjyqCgYUoCWX3iaHtLJRnEkBtNY4kzyQB6m46LtsnnnXO/dwKA2oDyoPfFNRoDq
+                      YatEd3JIXNU9s2T/+x7WdOBjKhh72dTkbPFmTPDdAoGAU6rlPBevqOFdObYxdPq8
+                      EQWu44xqky3Mf5sBpOwtu6rqCYuziLiN7K4sjN5GD5mb1cEU+oS92ZiNcUQ7MFXk
+                      8yTYZ7U0VcXyAcpYreWwE8thmb0BohJBr+Mp3wLTx32x0HKdO6vpUa0d35LUTUmM
+                      RrKmPK/msHKK/sVHiL+NFqo=
+                      -----END PRIVATE KEY-----
+              schema:
+                $ref: '#/components/schemas/uploadCertificate_200_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - certificates
+      summary: Uploads a custom Certificate
+      tags:
+      - Certificates
+  /nginx/proxy-hosts:
+    get:
+      operationId: getProxyHosts
+      parameters:
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - access_list
+          - owner
+          - certificate
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: 1
+                    created_on: 2024-10-08T23:23:03.000Z
+                    modified_on: 2024-10-08T23:23:04.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    forward_host: 127.0.0.1
+                    forward_port: 8989
+                    access_list_id: 0
+                    certificate_id: 0
+                    ssl_forced: false
+                    caching_enabled: false
+                    block_exploits: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    allow_websocket_upgrade: false
+                    http2_support: false
+                    forward_scheme: http
+                    enabled: true
+                    locations: null
+                    hsts_enabled: false
+                    hsts_subdomains: false
+              schema:
+                description: Proxy Hosts list
+                items:
+                  $ref: '#/components/schemas/getProxyHosts_200_response_inner'
+                type: array
+          description: 200 response
+      security:
+      - BearerAuth:
+        - proxy_hosts
+      summary: Get all proxy hosts
+      tags:
+      - Proxy Hosts
+    post:
+      operationId: createProxyHost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createProxyHost_request'
+        description: Proxy Host Payload
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-08T23:23:03.000Z
+                    modified_on: 2024-10-08T23:23:03.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    forward_host: 127.0.0.1
+                    forward_port: 8989
+                    access_list_id: 0
+                    certificate_id: 0
+                    ssl_forced: false
+                    caching_enabled: false
+                    block_exploits: false
+                    advanced_config: ""
+                    meta: {}
+                    allow_websocket_upgrade: false
+                    http2_support: false
+                    forward_scheme: http
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+                    certificate: null
+                    owner:
+                      id: 1
+                      created_on: 2024-10-07T22:43:55.000Z
+                      modified_on: 2024-10-08T12:52:54.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: some guy
+                      avatar: //www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?default=mm
+                      roles:
+                      - admin
+                    access_list: null
+              schema:
+                $ref: '#/components/schemas/getProxyHosts_200_response_inner'
+          description: 201 response
+      security:
+      - BearerAuth:
+        - proxy_hosts
+      summary: Create a Proxy Host
+      tags:
+      - Proxy Hosts
+  /nginx/proxy-hosts/{hostID}:
+    delete:
+      operationId: deleteProxyHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - proxy_hosts
+      summary: Delete a Proxy Host
+      tags:
+      - Proxy Hosts
+    get:
+      operationId: getProxyHost
+      parameters:
+      - example: 1
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - access_list
+          - owner
+          - certificate
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-08T23:23:03.000Z
+                    modified_on: 2024-10-08T23:26:38.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    forward_host: 192.168.0.10
+                    forward_port: 8989
+                    access_list_id: 0
+                    certificate_id: 0
+                    ssl_forced: false
+                    caching_enabled: false
+                    block_exploits: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    allow_websocket_upgrade: false
+                    http2_support: false
+                    forward_scheme: http
+                    enabled: true
+                    locations: null
+                    hsts_enabled: false
+                    hsts_subdomains: false
+              schema:
+                $ref: '#/components/schemas/getProxyHosts_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - proxy_hosts
+      summary: Get a Proxy Host
+      tags:
+      - Proxy Hosts
+    put:
+      operationId: updateProxyHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateProxyHost_request'
+        description: Proxy Host Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-08T23:23:03.000Z
+                    modified_on: 2024-10-08T23:26:37.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    forward_host: 192.168.0.10
+                    forward_port: 8989
+                    access_list_id: 0
+                    certificate_id: 0
+                    ssl_forced: false
+                    caching_enabled: false
+                    block_exploits: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    allow_websocket_upgrade: false
+                    http2_support: false
+                    forward_scheme: http
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+                    owner:
+                      id: 1
+                      created_on: 2024-10-07T22:43:55.000Z
+                      modified_on: 2024-10-08T12:52:54.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: some guy
+                      avatar: //www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?default=mm
+                      roles:
+                      - admin
+                    certificate: null
+                    access_list: null
+              schema:
+                $ref: '#/components/schemas/getProxyHosts_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - proxy_hosts
+      summary: Update a Proxy Host
+      tags:
+      - Proxy Hosts
+  /nginx/proxy-hosts/{hostID}/enable:
+    post:
+      operationId: enableProxyHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Host is already enabled
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - proxy_hosts
+      summary: Enable a Proxy Host
+      tags:
+      - Proxy Hosts
+  /nginx/proxy-hosts/{hostID}/disable:
+    post:
+      operationId: disableProxyHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Host is already disabled
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - proxy_hosts
+      summary: Disable a Proxy Host
+      tags:
+      - Proxy Hosts
+  /nginx/redirection-hosts:
+    get:
+      operationId: getRedirectionHosts
+      parameters:
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          - certificate
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: 1
+                    created_on: 2024-10-09T01:13:12.000Z
+                    modified_on: 2024-10-09T01:13:13.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    forward_domain_name: something-else.com
+                    preserve_path: false
+                    certificate_id: 0
+                    ssl_forced: false
+                    block_exploits: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    http2_support: false
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+                    forward_scheme: http
+                    forward_http_code: 301
+              schema:
+                description: Redirection Hosts list
+                items:
+                  $ref: '#/components/schemas/getRedirectionHosts_200_response_inner'
+                type: array
+          description: 200 response
+      security:
+      - BearerAuth:
+        - redirection_hosts
+      summary: Get all Redirection hosts
+      tags:
+      - Redirection Hosts
+    post:
+      operationId: createRedirectionHost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createRedirectionHost_request'
+        description: Redirection Host Payload
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T01:13:12.000Z
+                    modified_on: 2024-10-09T01:13:12.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    forward_domain_name: something-else.com
+                    preserve_path: false
+                    certificate_id: 0
+                    ssl_forced: false
+                    block_exploits: false
+                    advanced_config: ""
+                    meta: {}
+                    http2_support: false
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+                    forward_scheme: http
+                    forward_http_code: 301
+                    certificate: null
+                    owner:
+                      id: 1
+                      created_on: 2024-10-09T00:59:56.000Z
+                      modified_on: 2024-10-09T00:59:56.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: Admin
+                      avatar: ""
+                      roles:
+                      - admin
+              schema:
+                $ref: '#/components/schemas/getRedirectionHosts_200_response_inner'
+          description: 201 response
+      security:
+      - BearerAuth:
+        - redirection_hosts
+      summary: Create a Redirection Host
+      tags:
+      - Redirection Hosts
+  /nginx/redirection-hosts/{hostID}:
+    delete:
+      operationId: deleteRedirectionHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - redirection_hosts
+      summary: Delete a Redirection Host
+      tags:
+      - Redirection Hosts
+    get:
+      operationId: getRedirectionHost
+      parameters:
+      - example: 1
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          - certificate
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T01:13:12.000Z
+                    modified_on: 2024-10-09T01:13:13.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    forward_domain_name: something-else.com
+                    preserve_path: false
+                    certificate_id: 0
+                    ssl_forced: false
+                    block_exploits: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    http2_support: false
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+                    forward_scheme: http
+                    forward_http_code: 301
+              schema:
+                $ref: '#/components/schemas/getRedirectionHosts_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - redirection_hosts
+      summary: Get a Redirection Host
+      tags:
+      - Redirection Hosts
+    put:
+      operationId: updateRedirectionHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateRedirectionHost_request'
+        description: Redirection Host       Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T01:13:12.000Z
+                    modified_on: 2024-10-09T01:18:11.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    forward_domain_name: something-else.com
+                    preserve_path: false
+                    certificate_id: 0
+                    ssl_forced: false
+                    block_exploits: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    http2_support: false
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+                    forward_scheme: http
+                    forward_http_code: 301
+                    owner:
+                      id: 1
+                      created_on: 2024-10-09T00:59:56.000Z
+                      modified_on: 2024-10-09T00:59:56.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: Admin
+                      avatar: ""
+                      roles:
+                      - admin
+                    certificate: null
+              schema:
+                $ref: '#/components/schemas/getRedirectionHosts_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - redirection_hosts
+      summary: Update a Redirection Host
+      tags:
+      - Redirection Hosts
+  /nginx/redirection-hosts/{hostID}/enable:
+    post:
+      operationId: enableRedirectionHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Host is already enabled
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - redirection_hosts
+      summary: Enable a Redirection Host
+      tags:
+      - Redirection Hosts
+  /nginx/redirection-hosts/{hostID}/disable:
+    post:
+      operationId: disableRedirectionHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Host is already disabled
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - redirection_hosts
+      summary: Disable a Redirection Host
+      tags:
+      - Redirection Hosts
+  /nginx/dead-hosts:
+    get:
+      operationId: getDeadHosts
+      parameters:
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          - certificate
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: 1
+                    created_on: 2024-10-09T01:38:52.000Z
+                    modified_on: 2024-10-09T01:38:52.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    certificate_id: 0
+                    ssl_forced: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    http2_support: false
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+              schema:
+                description: 404 Hosts list
+                items:
+                  $ref: '#/components/schemas/getDeadHosts_200_response_inner'
+                type: array
+          description: 200 response
+      security:
+      - BearerAuth:
+        - dead_hosts
+      summary: Get all 404 hosts
+      tags:
+      - 404 Hosts
+    post:
+      operationId: create404Host
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create404Host_request'
+        description: 404 Host Payload
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T01:38:52.000Z
+                    modified_on: 2024-10-09T01:38:52.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    certificate_id: 0
+                    ssl_forced: false
+                    advanced_config: ""
+                    meta: {}
+                    http2_support: false
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+                    certificate: null
+                    owner:
+                      id: 1
+                      created_on: 2024-10-09T00:59:56.000Z
+                      modified_on: 2024-10-09T00:59:56.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: Admin
+                      avatar: ""
+                      roles:
+                      - admin
+              schema:
+                $ref: '#/components/schemas/getDeadHosts_200_response_inner'
+          description: 201 response
+      security:
+      - BearerAuth:
+        - dead_hosts
+      summary: Create a 404 Host
+      tags:
+      - 404 Hosts
+  /nginx/dead-hosts/{hostID}:
+    delete:
+      operationId: deleteDeadHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - dead_hosts
+      summary: Delete a 404 Host
+      tags:
+      - 404 Hosts
+    get:
+      operationId: getDeadHost
+      parameters:
+      - example: 1
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          - certificate
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T01:38:52.000Z
+                    modified_on: 2024-10-09T01:38:52.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    certificate_id: 0
+                    ssl_forced: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    http2_support: false
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+              schema:
+                $ref: '#/components/schemas/getDeadHosts_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - dead_hosts
+      summary: Get a 404 Host
+      tags:
+      - 404 Hosts
+    put:
+      operationId: updateDeadHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateDeadHost_request'
+        description: 404 Host Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T01:38:52.000Z
+                    modified_on: 2024-10-09T01:46:06.000Z
+                    owner_user_id: 1
+                    domain_names:
+                    - test.example.com
+                    certificate_id: 0
+                    ssl_forced: false
+                    advanced_config: ""
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    http2_support: false
+                    enabled: true
+                    hsts_enabled: false
+                    hsts_subdomains: false
+                    owner:
+                      id: 1
+                      created_on: 2024-10-09T00:59:56.000Z
+                      modified_on: 2024-10-09T00:59:56.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: Admin
+                      avatar: ""
+                      roles:
+                      - admin
+                    certificate: null
+              schema:
+                $ref: '#/components/schemas/getDeadHosts_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - dead_hosts
+      summary: Update a 404 Host
+      tags:
+      - 404 Hosts
+  /nginx/dead-hosts/{hostID}/enable:
+    post:
+      operationId: enableDeadHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Host is already enabled
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - dead_hosts
+      summary: Enable a 404 Host
+      tags:
+      - 404 Hosts
+  /nginx/dead-hosts/{hostID}/disable:
+    post:
+      operationId: disableDeadHost
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: hostID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Host is already disabled
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - dead_hosts
+      summary: Disable a 404 Host
+      tags:
+      - 404 Hosts
+  /nginx/streams:
+    get:
+      operationId: getStreams
+      parameters:
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          - certificate
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: 1
+                    created_on: 2024-10-09T02:33:45.000Z
+                    modified_on: 2024-10-09T02:33:45.000Z
+                    owner_user_id: 1
+                    incoming_port: 9090
+                    forwarding_host: router.internal
+                    forwarding_port: 80
+                    tcp_forwarding: true
+                    udp_forwarding: false
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    enabled: true
+                    certificate_id: 0
+              schema:
+                description: Streams list
+                items:
+                  $ref: '#/components/schemas/getStreams_200_response_inner'
+                type: array
+          description: 200 response
+      security:
+      - BearerAuth:
+        - streams
+      summary: Get all streams
+      tags:
+      - Streams
+    post:
+      operationId: createStream
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createStream_request'
+        description: Stream Payload
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T02:33:45.000Z
+                    modified_on: 2024-10-09T02:33:45.000Z
+                    owner_user_id: 1
+                    incoming_port: 9090
+                    forwarding_host: router.internal
+                    forwarding_port: 80
+                    tcp_forwarding: true
+                    udp_forwarding: false
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    enabled: true
+                    owner:
+                      id: 1
+                      created_on: 2024-10-09T02:33:16.000Z
+                      modified_on: 2024-10-09T02:33:16.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: Admin
+                      avatar: ""
+                      roles:
+                      - admin
+                    certificate_id: 0
+              schema:
+                $ref: '#/components/schemas/getStreams_200_response_inner'
+          description: 201 response
+      security:
+      - BearerAuth:
+        - streams
+      summary: Create a Stream
+      tags:
+      - Streams
+  /nginx/streams/{streamID}:
+    delete:
+      operationId: deleteStream
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: streamID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - streams
+      summary: Delete a Stream
+      tags:
+      - Streams
+    get:
+      operationId: getStream
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: streamID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - owner
+          - certificate
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T02:33:45.000Z
+                    modified_on: 2024-10-09T02:33:45.000Z
+                    owner_user_id: 1
+                    incoming_port: 9090
+                    forwarding_host: router.internal
+                    forwarding_port: 80
+                    tcp_forwarding: true
+                    udp_forwarding: false
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    enabled: true
+                    certificate_id: 0
+              schema:
+                $ref: '#/components/schemas/getStreams_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - streams
+      summary: Get a Stream
+      tags:
+      - Streams
+    put:
+      operationId: updateStream
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: streamID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateStream_request'
+        description: Stream Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2024-10-09T02:33:45.000Z
+                    modified_on: 2024-10-09T02:33:45.000Z
+                    owner_user_id: 1
+                    incoming_port: 9090
+                    forwarding_host: router.internal
+                    forwarding_port: 80
+                    tcp_forwarding: true
+                    udp_forwarding: false
+                    meta:
+                      nginx_online: true
+                      nginx_err: null
+                    enabled: true
+                    owner:
+                      id: 1
+                      created_on: 2024-10-09T02:33:16.000Z
+                      modified_on: 2024-10-09T02:33:16.000Z
+                      is_deleted: false
+                      is_disabled: false
+                      email: admin@example.com
+                      name: Administrator
+                      nickname: Admin
+                      avatar: ""
+                      roles:
+                      - admin
+                    certificate_id: 0
+              schema:
+                $ref: '#/components/schemas/getStreams_200_response_inner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - streams
+      summary: Update a Stream
+      tags:
+      - Streams
+  /nginx/streams/{streamID}/enable:
+    post:
+      operationId: enableStream
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: streamID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Host is already enabled
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - streams
+      summary: Enable a Stream
+      tags:
+      - Streams
+  /nginx/streams/{streamID}/disable:
+    post:
+      operationId: disableStream
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: streamID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+        "400":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    error:
+                      code: 400
+                      message: Host is already disabled
+              schema:
+                $ref: '#/components/schemas/createCertificate_400_response'
+          description: 400 response
+      security:
+      - BearerAuth:
+        - streams
+      summary: Disable a Stream
+      tags:
+      - Streams
+  /reports/hosts:
+    get:
+      operationId: reportsHosts
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    proxy: 20
+                    redirection: 1
+                    stream: 0
+                    dead: 1
+              schema:
+                $ref: '#/components/schemas/reportsHosts_200_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - reports
+      summary: Report on Host Statistics
+      tags:
+      - Reports
+  /schema:
+    get:
+      operationId: schema
+      responses:
+        "200":
+          description: 200 response
+      summary: Returns this swagger API schema
+      tags:
+      - Public
+  /settings:
+    get:
+      operationId: getSettings
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: default-site
+                    name: Default Site
+                    description: What to show when Nginx is hit with an unknown Host
+                    value: congratulations
+                    meta: {}
+              schema:
+                description: Setting list
+                items:
+                  $ref: '#/components/schemas/getSettings_200_response_inner'
+                type: array
+          description: 200 response
+      security:
+      - BearerAuth:
+        - settings
+      summary: Get all settings
+      tags:
+      - Settings
+  /settings/{settingID}:
+    get:
+      operationId: getSetting
+      parameters:
+      - description: Setting ID
+        example: default-site
+        explode: false
+        in: path
+        name: settingID
+        required: true
+        schema:
+          minLength: 1
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: default-site
+                    name: Default Site
+                    description: What to show when Nginx is hit with an unknown Host
+                    value: congratulations
+                    meta: {}
+              schema:
+                $ref: '#/components/schemas/getSetting_200_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - settings
+      summary: Get a setting
+      tags:
+      - Settings
+    put:
+      operationId: updateSetting
+      parameters:
+      - description: Setting ID
+        example: default-site
+        explode: false
+        in: path
+        name: settingID
+        required: true
+        schema:
+          enum:
+          - default-site
+          minLength: 1
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateSetting_request'
+        description: Setting Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: default-site
+                    name: Default Site
+                    description: What to show when Nginx is hit with an unknown Host
+                    value: congratulations
+                    meta: {}
+              schema:
+                $ref: '#/components/schemas/getSetting_200_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - settings
+      summary: Update a setting
+      tags:
+      - Settings
+  /tokens:
+    get:
+      operationId: refreshToken
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    expires: 2025-02-04T20:40:46.340Z
+                    token: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.ey...xaHKYr3Kk6MvkUjcC4
+              schema:
+                $ref: '#/components/schemas/refreshToken_200_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - tokens
+      summary: Refresh your access token
+      tags:
+      - Tokens
+    post:
+      operationId: requestToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requestToken_request'
+        description: Credentials Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    result:
+                      expires: 2025-02-04T20:40:46.340Z
+                      token: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.ey...xaHKYr3Kk6MvkUjcC4
+              schema:
+                $ref: '#/components/schemas/refreshToken_200_response'
+          description: 200 response
+      summary: Request a new access token from credentials
+      tags:
+      - Tokens
+  /users:
+    get:
+      operationId: getUsers
+      parameters:
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - permissions
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                  - id: 1
+                    created_on: 2020-01-30T09:36:08.000Z
+                    modified_on: 2020-01-30T09:41:04.000Z
+                    is_disabled: false
+                    email: jc@jc21.com
+                    name: Jamie Curnow
+                    nickname: James
+                    avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+                    roles:
+                    - admin
+                withPermissions:
+                  value:
+                  - id: 1
+                    created_on: 2020-01-30T09:36:08.000Z
+                    modified_on: 2020-01-30T09:41:04.000Z
+                    is_disabled: false
+                    email: jc@jc21.com
+                    name: Jamie Curnow
+                    nickname: James
+                    avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+                    roles:
+                    - admin
+                    permissions:
+                      visibility: all
+                      proxy_hosts: manage
+                      redirection_hosts: manage
+                      dead_hosts: manage
+                      streams: manage
+                      access_lists: manage
+                      certificates: manage
+              schema:
+                description: User list
+                items:
+                  $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+                type: array
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Get all users
+      tags:
+      - Users
+    post:
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createUser_request'
+        description: User Payload
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 2
+                    created_on: 2020-01-30T09:41:04.000Z
+                    modified_on: 2020-01-30T09:41:04.000Z
+                    is_disabled: false
+                    email: jc@jc21.com
+                    name: Jamie Curnow
+                    nickname: James
+                    avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+                    roles:
+                    - admin
+                    permissions:
+                      id: 3
+                      created_on: 2020-01-30T09:41:04.000Z
+                      modified_on: 2020-01-30T09:41:04.000Z
+                      user_id: 2
+                      visibility: user
+                      proxy_hosts: manage
+                      redirection_hosts: manage
+                      dead_hosts: manage
+                      streams: manage
+                      access_lists: manage
+                      certificates: manage
+              schema:
+                $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+          description: 201 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Create a User
+      tags:
+      - Users
+  /users/{userID}:
+    delete:
+      operationId: deleteUser
+      parameters:
+      - description: User ID
+        example: 2
+        explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Delete a User
+      tags:
+      - Users
+    get:
+      operationId: getUser
+      parameters:
+      - description: User ID or 'me' for yourself
+        example: 1
+        explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          $ref: '#/components/schemas/getUser_userID_parameter'
+        style: simple
+      - description: Expansions
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          enum:
+          - permissions
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 1
+                    created_on: 2020-01-30T09:36:08.000Z
+                    modified_on: 2020-01-30T09:41:04.000Z
+                    is_disabled: false
+                    email: jc@jc21.com
+                    name: Jamie Curnow
+                    nickname: James
+                    avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+                    roles:
+                    - admin
+              schema:
+                $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Get a user
+      tags:
+      - Users
+    put:
+      operationId: updateUser
+      parameters:
+      - description: User ID or 'me' for yourself
+        example: 2
+        explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          $ref: '#/components/schemas/getUser_userID_parameter'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateUser_request'
+        description: User Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    id: 2
+                    created_on: 2020-01-30T09:36:08.000Z
+                    modified_on: 2020-01-30T09:41:04.000Z
+                    is_disabled: false
+                    email: jc@jc21.com
+                    name: Jamie Curnow
+                    nickname: James
+                    avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+                    roles:
+                    - admin
+              schema:
+                $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Update a User
+      tags:
+      - Users
+  /users/{userID}/auth:
+    put:
+      operationId: updateUserAuth
+      parameters:
+      - description: User ID or 'me' for yourself
+        example: 2
+        explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          $ref: '#/components/schemas/getUser_userID_parameter'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateUserAuth_request'
+        description: Auth Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Update a User's Authentication
+      tags:
+      - Users
+  /users/{userID}/permissions:
+    put:
+      operationId: updateUserPermissions
+      parameters:
+      - description: User ID
+        example: 2
+        explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getAccessLists_200_response_inner_owner_permissions'
+        description: Permissions Payload
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value: true
+              schema:
+                type: boolean
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Update a User's Permissions
+      tags:
+      - Users
+  /users/{userID}/login:
+    post:
+      operationId: loginAsUser
+      parameters:
+      - description: User ID
+        example: 2
+        explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  value:
+                    token: eyJhbGciOiJSUzI1NiIsInR...16OjT8B3NLyXg
+                    expires: 2020-01-31T10:56:23.239Z
+                    user:
+                      id: 1
+                      created_on: 2020-01-30T10:43:44.000Z
+                      modified_on: 2020-01-30T10:43:44.000Z
+                      is_disabled: false
+                      email: jc@jc21.com
+                      name: Jamie Curnow
+                      nickname: James
+                      avatar: //www.gravatar.com/avatar/3c8d73f45fd8763f827b964c76e6032a?default=mm
+                      roles:
+                      - admin
+              schema:
+                $ref: '#/components/schemas/loginAsUser_200_response'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Login as this user
+      tags:
+      - Users
+components:
+  schemas:
+    getSetting_200_response:
+      additionalProperties: {}
+      description: Setting object
+      example:
+        meta:
+          redirect: http://example.com
+          html: <h1>404</h1>
+        name: Default Site
+        description: What to show when Nginx is hit with an unknown Host
+        id: default-site
+        value: congratulations
+      properties:
+        id:
+          description: Setting ID
+          example: default-site
+          minLength: 1
+        name:
+          description: Setting Display Name
+          example: Default Site
+          minLength: 1
+        description:
+          description: Meaningful description
+          example: What to show when Nginx is hit with an unknown Host
+          minLength: 1
+        value:
+          $ref: '#/components/schemas/getSetting_200_response_value'
+        meta:
+          description: Extra metadata
+          example:
+            redirect: http://example.com
+            html: <h1>404</h1>
+      required:
+      - description
+      - id
+      - meta
+      - name
+      - value
+    loginAsUser_200_response:
+      additionalProperties: {}
+      description: Login object
+      example:
+        expires: 1566540249
+        user:
+          modified_on: modified_on
+          created_on: created_on
+          permissions:
+            access_lists: hidden
+            visibility: all
+            certificates: hidden
+            streams: hidden
+            redirection_hosts: hidden
+            dead_hosts: hidden
+            proxy_hosts: hidden
+          is_disabled: true
+          roles:
+          - admin
+          name: Jamie Curnow
+          nickname: James
+          id: 1
+          avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+          email: jc@jc21.com
+        token: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.ey...xaHKYr3Kk6MvkUjcC4
+      properties:
+        expires:
+          description: Token Expiry Unix Time
+          example: 1566540249
+          minimum: 1
+        token:
+          description: JWT Token
+          example: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.ey...xaHKYr3Kk6MvkUjcC4
+        user:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+      required:
+      - expires
+      - token
+      - user
+    createCertificate_request:
+      additionalProperties: {}
+      properties:
+        provider:
+          pattern: ^(letsencrypt|other)$
+        nice_name:
+          description: Nice Name for the custom certificate
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          uniqueItems: true
+        meta:
+          $ref: '#/components/schemas/getCertificates_200_response_inner_meta'
+      required:
+      - provider
+    validateCertificates_200_response_certificate:
+      additionalProperties: {}
+      example:
+        dates:
+          from: 0
+          to: 6
+        cn: cn
+        issuer: issuer
+      properties:
+        cn: {}
+        issuer: {}
+        dates:
+          $ref: '#/components/schemas/validateCertificates_200_response_certificate_dates'
+      required:
+      - cn
+      - dates
+      - issuer
+    getSetting_200_response_value:
+      anyOf:
+      - minLength: 1
+      - {}
+      - {}
+      - {}
+      - items: {}
+      description: Value in almost any form
+      example: congratulations
+    getSettings_200_response_inner_value:
+      anyOf:
+      - minLength: 1
+        type: string
+      - {}
+      - {}
+      - {}
+      - items: {}
+      description: Value in almost any form
+      example: congratulations
+    updateStream_request:
+      additionalProperties: {}
+      minProperties: 1
+      properties:
+        incoming_port:
+          maximum: 65535
+          minimum: 1
+        forwarding_host:
+          $ref: '#/components/schemas/getStreams_200_response_inner_forwarding_host'
+        forwarding_port:
+          maximum: 65535
+          minimum: 1
+        tcp_forwarding:
+          type: boolean
+        udp_forwarding:
+          type: boolean
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        meta: {}
+    getAccessLists_200_response_inner_items_inner:
+      additionalProperties: {}
+      example:
+        modified_on: modified_on
+        password: password
+        created_on: created_on
+        meta: "{}"
+        access_list_id: 0
+        hint: hint
+        id: 1
+        username: username
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        access_list_id:
+          description: Access List ID
+          minimum: 0
+        username:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+        hint:
+          minLength: 1
+          type: string
+        meta: {}
+      required:
+      - access_list_id
+      - created_on
+      - hint
+      - id
+      - meta
+      - modified_on
+      - password
+      - username
+    validateCertificates_200_response:
+      additionalProperties: {}
+      example:
+        certificate_key: true
+        certificate:
+          dates:
+            from: 0
+            to: 6
+          cn: cn
+          issuer: issuer
+      properties:
+        certificate:
+          $ref: '#/components/schemas/validateCertificates_200_response_certificate'
+        certificate_key:
+          type: boolean
+      required:
+      - certificate
+      - certificate_key
+    updateUserAuth_request:
+      properties:
+        type:
+          example: password
+          pattern: ^password$
+          type: string
+        current:
+          example: changeme
+          maxLength: 64
+          minLength: 1
+          type: string
+        secret:
+          example: mySuperN3wP@ssword!
+          maxLength: 64
+          minLength: 8
+          type: string
+      required:
+      - secret
+      - type
+    createStream_request:
+      additionalProperties: {}
+      properties:
+        incoming_port:
+          maximum: 65535
+          minimum: 1
+        forwarding_host:
+          $ref: '#/components/schemas/getStreams_200_response_inner_forwarding_host'
+        forwarding_port:
+          maximum: 65535
+          minimum: 1
+        tcp_forwarding:
+          type: boolean
+        udp_forwarding:
+          type: boolean
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        meta: {}
+      required:
+      - forwarding_host
+      - forwarding_port
+      - incoming_port
+    updateDeadHost_request:
+      additionalProperties: {}
+      minProperties: 1
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        http2_support:
+          description: HTTP2 Protocol Support
+        advanced_config: {}
+        meta: {}
+    validateCertificates_request:
+      additionalProperties: {}
+      properties:
+        certificate:
+          format: binary
+        certificate_key:
+          format: binary
+          type: string
+        intermediate_certificate:
+          format: binary
+          type: string
+      required:
+      - certificate
+      - certificate_key
+    getProxyHosts_200_response_inner_certificate:
+      oneOf:
+      - {}
+      - $ref: '#/components/schemas/getCertificates_200_response_inner'
+    updateSetting_request_meta:
+      additionalProperties: {}
+      properties:
+        redirect: {}
+        html: {}
+    createAccessList_request:
+      additionalProperties: {}
+      properties:
+        name:
+          minLength: 1
+          type: string
+        satisfy_any:
+          type: boolean
+        pass_auth:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/createAccessList_request_items_inner'
+        clients:
+          items:
+            $ref: '#/components/schemas/createAccessList_request_clients_inner'
+        meta: {}
+      required:
+      - name
+    health_200_response_version:
+      additionalProperties: {}
+      description: The version object
+      example:
+        major: 2
+        minor: 0
+        revision: 0
+      properties:
+        major:
+          minimum: 0
+        minor:
+          minimum: 0
+        revision:
+          minimum: 0
+      required:
+      - major
+      - minor
+      - revision
+    uploadCertificate_200_response:
+      additionalProperties: {}
+      example:
+        certificate_key: certificate_key
+        certificate: certificate
+        intermediate_certificate: intermediate_certificate
+      properties:
+        certificate:
+          minLength: 1
+          type: string
+        certificate_key:
+          minLength: 1
+          type: string
+        intermediate_certificate:
+          minLength: 1
+          type: string
+      required:
+      - certificate
+      - certificate_key
+    updateProxyHost_request:
+      additionalProperties: {}
+      minProperties: 1
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        forward_scheme:
+          enum:
+          - http
+          - https
+        forward_host:
+          maxLength: 255
+          minLength: 1
+        forward_port:
+          maximum: 65535
+          minimum: 1
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        http2_support:
+          description: HTTP2 Protocol Support
+        block_exploits:
+          description: Should we block common exploits
+        caching_enabled:
+          description: Should we cache assets
+        allow_websocket_upgrade:
+          description: Allow Websocket Upgrade for all paths
+          example: true
+        access_list_id:
+          description: Access List ID
+          minimum: 0
+        advanced_config: {}
+        enabled:
+          description: Is Enabled
+        meta: {}
+        locations:
+          items:
+            $ref: '#/components/schemas/getProxyHosts_200_response_inner_locations_inner'
+          minItems: 0
+    requestToken_request:
+      additionalProperties: {}
+      properties:
+        identity:
+          minLength: 1
+          type: string
+        scope:
+          enum:
+          - user
+          minLength: 1
+        secret:
+          minLength: 1
+          type: string
+      required:
+      - identity
+      - secret
+    getUser_userID_parameter:
+      oneOf:
+      - pattern: ^me$
+        type: string
+      - minimum: 1
+        type: integer
+    getStreams_200_response_inner:
+      additionalProperties: {}
+      description: Stream object
+      example:
+        modified_on: modified_on
+        incoming_port: 9607
+        owner:
+          modified_on: modified_on
+          created_on: created_on
+          permissions:
+            access_lists: hidden
+            visibility: all
+            certificates: hidden
+            streams: hidden
+            redirection_hosts: hidden
+            dead_hosts: hidden
+            proxy_hosts: hidden
+          is_disabled: true
+          roles:
+          - admin
+          name: Jamie Curnow
+          nickname: James
+          id: 1
+          avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+          email: jc@jc21.com
+        udp_forwarding: true
+        owner_user_id: 1
+        certificate: ""
+        tcp_forwarding: true
+        enabled: true
+        certificate_id: 0
+        created_on: created_on
+        forwarding_port: 39073
+        meta: "{}"
+        forwarding_host: jc21.com
+        id: 1
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        owner_user_id:
+          description: User ID
+          minimum: 1
+        incoming_port:
+          maximum: 65535
+          minimum: 1
+        forwarding_host:
+          $ref: '#/components/schemas/getStreams_200_response_inner_forwarding_host'
+        forwarding_port:
+          maximum: 65535
+          minimum: 1
+        tcp_forwarding:
+          type: boolean
+        udp_forwarding:
+          type: boolean
+        enabled:
+          description: Is Enabled
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        meta: {}
+        owner:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+        certificate:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate'
+      required:
+      - created_on
+      - enabled
+      - forwarding_host
+      - forwarding_port
+      - id
+      - incoming_port
+      - meta
+      - modified_on
+      - owner_user_id
+      - tcp_forwarding
+      - udp_forwarding
+    getSettings_200_response_inner:
+      additionalProperties: {}
+      description: Setting object
+      example:
+        meta:
+          redirect: http://example.com
+          html: <h1>404</h1>
+        name: Default Site
+        description: What to show when Nginx is hit with an unknown Host
+        id: default-site
+        value: congratulations
+      properties:
+        id:
+          description: Setting ID
+          example: default-site
+          minLength: 1
+        name:
+          description: Setting Display Name
+          example: Default Site
+          minLength: 1
+        description:
+          description: Meaningful description
+          example: What to show when Nginx is hit with an unknown Host
+          minLength: 1
+        value:
+          $ref: '#/components/schemas/getSettings_200_response_inner_value'
+        meta:
+          description: Extra metadata
+          example:
+            redirect: http://example.com
+            html: <h1>404</h1>
+      required:
+      - description
+      - id
+      - meta
+      - name
+      - value
+    getAuditLog_200_response:
+      additionalProperties: {}
+      description: Audit Log object
+      example:
+        modified_on: modified_on
+        created_on: created_on
+        user_id: 1
+        object_type: object_type
+        meta: "{}"
+        action: action
+        id: 1
+        object_id: 1
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        user_id:
+          description: User ID
+          minimum: 1
+        object_type: {}
+        object_id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        action: {}
+        meta: {}
+      required:
+      - action
+      - created_on
+      - id
+      - meta
+      - modified_on
+      - object_id
+      - object_type
+      - user_id
+    getProxyHosts_200_response_inner:
+      additionalProperties: {}
+      description: Proxy Host object
+      example:
+        modified_on: modified_on
+        owner:
+          modified_on: modified_on
+          created_on: created_on
+          permissions:
+            access_lists: hidden
+            visibility: all
+            certificates: hidden
+            streams: hidden
+            redirection_hosts: hidden
+            dead_hosts: hidden
+            proxy_hosts: hidden
+          is_disabled: true
+          roles:
+          - admin
+          name: Jamie Curnow
+          nickname: James
+          id: 1
+          avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+          email: jc@jc21.com
+        http2_support: true
+        owner_user_id: 1
+        ssl_forced: true
+        access_list_id: 0
+        hsts_enabled: true
+        certificate: ""
+        hsts_subdomains: true
+        access_list: ""
+        allow_websocket_upgrade: true
+        enabled: true
+        domain_names:
+        - domain_names
+        - domain_names
+        - domain_names
+        - domain_names
+        - domain_names
+        certificate_id: 0
+        forward_scheme: http
+        advanced_config: advanced_config
+        created_on: created_on
+        meta: "{}"
+        forward_port: 9607
+        locations:
+        - path: path
+          forward_scheme: http
+          advanced_config: advanced_config
+          forward_port: 46277
+          id: 2
+          forward_host: forward_host
+          forward_path: forward_path
+        - path: path
+          forward_scheme: http
+          advanced_config: advanced_config
+          forward_port: 46277
+          id: 2
+          forward_host: forward_host
+          forward_path: forward_path
+        id: 1
+        forward_host: forward_host
+        caching_enabled: true
+        block_exploits: true
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        owner_user_id:
+          description: User ID
+          minimum: 1
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        forward_host:
+          maxLength: 255
+          minLength: 1
+        forward_port:
+          maximum: 65535
+          minimum: 1
+        access_list_id:
+          description: Access List ID
+          minimum: 0
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        caching_enabled:
+          description: Should we cache assets
+        block_exploits:
+          description: Should we block common exploits
+        advanced_config: {}
+        meta: {}
+        allow_websocket_upgrade:
+          description: Allow Websocket Upgrade for all paths
+          example: true
+        http2_support:
+          description: HTTP2 Protocol Support
+        forward_scheme:
+          enum:
+          - http
+          - https
+        enabled:
+          description: Is Enabled
+        locations:
+          items:
+            $ref: '#/components/schemas/getProxyHosts_200_response_inner_locations_inner'
+          minItems: 0
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        certificate:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate'
+        owner:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+        access_list:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_access_list'
+      required:
+      - access_list_id
+      - advanced_config
+      - allow_websocket_upgrade
+      - block_exploits
+      - caching_enabled
+      - certificate_id
+      - created_on
+      - domain_names
+      - enabled
+      - forward_host
+      - forward_port
+      - forward_scheme
+      - hsts_enabled
+      - hsts_subdomains
+      - http2_support
+      - id
+      - locations
+      - meta
+      - modified_on
+      - owner_user_id
+      - ssl_forced
+    updateSetting_request:
+      additionalProperties: {}
+      minProperties: 1
+      properties:
+        value:
+          enum:
+          - congratulations
+          - "404"
+          - "444"
+          - redirect
+          - html
+          minLength: 1
+        meta:
+          $ref: '#/components/schemas/updateSetting_request_meta'
+    getDeadHosts_200_response_inner:
+      additionalProperties: {}
+      description: 404 Host object
+      example:
+        modified_on: modified_on
+        http2_support: true
+        owner_user_id: 1
+        ssl_forced: true
+        hsts_enabled: true
+        hsts_subdomains: true
+        enabled: true
+        domain_names:
+        - domain_names
+        - domain_names
+        - domain_names
+        - domain_names
+        - domain_names
+        certificate_id: 0
+        advanced_config: advanced_config
+        created_on: created_on
+        meta: "{}"
+        id: 1
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        owner_user_id:
+          description: User ID
+          minimum: 1
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        http2_support:
+          description: HTTP2 Protocol Support
+        advanced_config: {}
+        enabled:
+          description: Is Enabled
+        meta: {}
+      required:
+      - advanced_config
+      - certificate_id
+      - created_on
+      - domain_names
+      - enabled
+      - hsts_enabled
+      - hsts_subdomains
+      - http2_support
+      - id
+      - meta
+      - modified_on
+      - owner_user_id
+      - ssl_forced
+    getRedirectionHosts_200_response_inner:
+      additionalProperties: {}
+      description: Redirection Host object
+      example:
+        modified_on: modified_on
+        forward_domain_name: jc21.com
+        http2_support: true
+        owner_user_id: 1
+        ssl_forced: true
+        hsts_enabled: true
+        hsts_subdomains: true
+        preserve_path: true
+        forward_http_code: 302
+        enabled: true
+        domain_names:
+        - domain_names
+        - domain_names
+        - domain_names
+        - domain_names
+        - domain_names
+        certificate_id: 0
+        forward_scheme: auto
+        advanced_config: advanced_config
+        created_on: created_on
+        meta: "{}"
+        id: 1
+        block_exploits: true
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        owner_user_id:
+          description: User ID
+          minimum: 1
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        forward_http_code:
+          description: Redirect HTTP Status Code
+          example: 302
+          maximum: 308
+          minimum: 300
+        forward_scheme:
+          enum:
+          - auto
+          - http
+          - https
+        forward_domain_name:
+          description: Domain Name
+          example: jc21.com
+          pattern: "^(?:[^.*]+\\.?)+[^.]$"
+        preserve_path:
+          description: Should the path be preserved
+          example: true
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        http2_support:
+          description: HTTP2 Protocol Support
+        block_exploits:
+          description: Should we block common exploits
+        advanced_config: {}
+        enabled:
+          description: Is Enabled
+        meta: {}
+      required:
+      - advanced_config
+      - block_exploits
+      - certificate_id
+      - created_on
+      - domain_names
+      - enabled
+      - forward_domain_name
+      - forward_http_code
+      - forward_scheme
+      - hsts_enabled
+      - hsts_subdomains
+      - http2_support
+      - id
+      - meta
+      - modified_on
+      - owner_user_id
+      - preserve_path
+      - ssl_forced
+    refreshToken_200_response:
+      additionalProperties: {}
+      description: Token object
+      example:
+        expires: 2025-02-04T20:40:46.340Z
+        token: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.ey...xaHKYr3Kk6MvkUjcC4
+      properties:
+        expires:
+          description: Token Expiry ISO Time String
+          example: 2025-02-04T20:40:46.340Z
+        token:
+          description: JWT Token
+          example: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.ey...xaHKYr3Kk6MvkUjcC4
+      required:
+      - expires
+      - token
+    createUser_request:
+      additionalProperties: {}
+      properties:
+        name:
+          description: Name
+          example: Jamie Curnow
+          minLength: 1
+        nickname:
+          description: Nickname
+          example: James
+        email:
+          description: Email
+          example: jc@jc21.com
+          minLength: 3
+        roles:
+          description: Roles applied
+          example:
+          - admin
+          items: {}
+        is_disabled:
+          description: Is user Disabled
+          example: true
+        auth:
+          description: Auth Credentials
+          example:
+            type: password
+            secret: bigredhorsebanana
+      required:
+      - email
+      - name
+      - nickname
+    createAccessList_201_response:
+      additionalProperties: {}
+      description: Access List object
+      example:
+        modified_on: modified_on
+        owner:
+          modified_on: modified_on
+          created_on: created_on
+          permissions:
+            access_lists: hidden
+            visibility: all
+            certificates: hidden
+            streams: hidden
+            redirection_hosts: hidden
+            dead_hosts: hidden
+            proxy_hosts: hidden
+          is_disabled: true
+          roles:
+          - admin
+          name: Jamie Curnow
+          nickname: James
+          id: 1
+          avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+          email: jc@jc21.com
+        pass_auth: true
+        clients:
+        - modified_on: modified_on
+          address: getAccessLists_200_response_inner_clients_inner_address
+          created_on: created_on
+          meta: "{}"
+          access_list_id: 0
+          id: 1
+          directive: allow
+        - modified_on: modified_on
+          address: getAccessLists_200_response_inner_clients_inner_address
+          created_on: created_on
+          meta: "{}"
+          access_list_id: 0
+          id: 1
+          directive: allow
+        created_on: created_on
+        owner_user_id: 1
+        meta: "{}"
+        name: name
+        id: 1
+        items:
+        - modified_on: modified_on
+          password: password
+          created_on: created_on
+          meta: "{}"
+          access_list_id: 0
+          hint: hint
+          id: 1
+          username: username
+        - modified_on: modified_on
+          password: password
+          created_on: created_on
+          meta: "{}"
+          access_list_id: 0
+          hint: hint
+          id: 1
+          username: username
+        satisfy_any: true
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        owner_user_id:
+          description: User ID
+          minimum: 1
+        name:
+          minLength: 1
+          type: string
+        satisfy_any:
+          type: boolean
+        pass_auth:
+          type: boolean
+        meta: {}
+        owner:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+        items:
+          items:
+            $ref: '#/components/schemas/getAccessLists_200_response_inner_items_inner'
+          minItems: 0
+        clients:
+          items:
+            $ref: '#/components/schemas/getAccessLists_200_response_inner_clients_inner'
+          minItems: 0
+      required:
+      - address
+      - created_on
+      - directive
+      - id
+      - meta
+      - modified_on
+      - name
+      - owner_user_id
+      - pass_auth
+      - satisfy_any
+    getAccessLists_200_response_inner_clients_inner:
+      additionalProperties: {}
+      example:
+        modified_on: modified_on
+        address: getAccessLists_200_response_inner_clients_inner_address
+        created_on: created_on
+        meta: "{}"
+        access_list_id: 0
+        id: 1
+        directive: allow
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        access_list_id:
+          description: Access List ID
+          minimum: 0
+        address:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_clients_inner_address'
+        directive:
+          enum:
+          - allow
+          - deny
+        meta: {}
+      required:
+      - access_list_id
+      - address
+      - created_on
+      - directive
+      - id
+      - meta
+      - modified_on
+    createAccessList_request_clients_inner:
+      additionalProperties: {}
+      properties:
+        address:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_clients_inner_address'
+        directive:
+          enum:
+          - allow
+          - deny
+    updateUser_request:
+      additionalProperties: {}
+      minProperties: 1
+      properties:
+        name:
+          description: Name
+          example: Jamie Curnow
+          minLength: 1
+        nickname:
+          description: Nickname
+          example: James
+        email:
+          description: Email
+          example: jc@jc21.com
+          minLength: 3
+        roles:
+          description: Roles applied
+          example:
+          - admin
+          items: {}
+        is_disabled:
+          description: Is user Disabled
+          example: true
+    createProxyHost_request:
+      additionalProperties: {}
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        forward_scheme:
+          enum:
+          - http
+          - https
+        forward_host:
+          maxLength: 255
+          minLength: 1
+        forward_port:
+          maximum: 65535
+          minimum: 1
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        http2_support:
+          description: HTTP2 Protocol Support
+        block_exploits:
+          description: Should we block common exploits
+        caching_enabled:
+          description: Should we cache assets
+        allow_websocket_upgrade:
+          description: Allow Websocket Upgrade for all paths
+          example: true
+        access_list_id:
+          description: Access List ID
+          minimum: 0
+        advanced_config: {}
+        enabled:
+          description: Is Enabled
+        meta: {}
+        locations:
+          items:
+            $ref: '#/components/schemas/getProxyHosts_200_response_inner_locations_inner'
+          minItems: 0
+      required:
+      - domain_names
+      - forward_host
+      - forward_port
+      - forward_scheme
+    create404Host_request:
+      additionalProperties: {}
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        http2_support:
+          description: HTTP2 Protocol Support
+        advanced_config: {}
+        meta: {}
+      required:
+      - domain_names
+    createCertificate_400_response_error:
+      additionalProperties: {}
+      description: Error object
+      example:
+        code: 0
+        message: message
+      properties:
+        code: {}
+        message: {}
+      required:
+      - code
+      - message
+    validateCertificates_200_response_certificate_dates:
+      additionalProperties: {}
+      example:
+        from: 0
+        to: 6
+      properties:
+        from: {}
+        to: {}
+      required:
+      - from
+      - to
+    updateRedirectionHost_request:
+      additionalProperties: {}
+      minProperties: 1
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        forward_http_code:
+          description: Redirect HTTP Status Code
+          example: 302
+          maximum: 308
+          minimum: 300
+        forward_scheme:
+          enum:
+          - auto
+          - http
+          - https
+        forward_domain_name:
+          description: Domain Name
+          example: jc21.com
+          pattern: "^(?:[^.*]+\\.?)+[^.]$"
+        preserve_path:
+          description: Should the path be preserved
+          example: true
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        http2_support:
+          description: HTTP2 Protocol Support
+        block_exploits:
+          description: Should we block common exploits
+        advanced_config: {}
+        meta: {}
+    getStreams_200_response_inner_forwarding_host:
+      anyOf:
+      - description: Domain Name
+        example: jc21.com
+        pattern: "^(?:[^.*]+\\.?)+[^.]$"
+      - format: ipv4
+      - format: ipv6
+    updateAccessList_request:
+      additionalProperties: {}
+      minProperties: 1
+      properties:
+        name:
+          minLength: 1
+          type: string
+        satisfy_any:
+          type: boolean
+        pass_auth:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/createAccessList_request_items_inner'
+        clients:
+          items:
+            $ref: '#/components/schemas/createAccessList_request_clients_inner'
+    getProxyHosts_200_response_inner_certificate_id:
+      anyOf:
+      - minimum: 0
+      - pattern: ^new$
+      description: Certificate ID
+    getAccessLists_200_response_inner_owner_permissions:
+      additionalProperties: {}
+      example:
+        access_lists: hidden
+        visibility: all
+        certificates: hidden
+        streams: hidden
+        redirection_hosts: hidden
+        dead_hosts: hidden
+        proxy_hosts: hidden
+      properties:
+        visibility:
+          description: Visibility Type
+          enum:
+          - all
+          - user
+        access_lists:
+          description: Access Lists Permissions
+          enum:
+          - hidden
+          - view
+          - manage
+        dead_hosts:
+          description: 404 Hosts Permissions
+          enum:
+          - hidden
+          - view
+          - manage
+        proxy_hosts:
+          description: Proxy Hosts Permissions
+          enum:
+          - hidden
+          - view
+          - manage
+        redirection_hosts:
+          description: Redirection Permissions
+          enum:
+          - hidden
+          - view
+          - manage
+        streams:
+          description: Streams Permissions
+          enum:
+          - hidden
+          - view
+          - manage
+        certificates:
+          description: Certificates Permissions
+          enum:
+          - hidden
+          - view
+          - manage
+      required:
+      - access_lists
+      - certificates
+      - dead_hosts
+      - proxy_hosts
+      - redirection_hosts
+      - streams
+      - visibility
+    getCertificates_200_response_inner_meta:
+      additionalProperties: {}
+      example:
+        dns_provider_credentials: dns_provider_credentials
+        letsencrypt_certificate: "{}"
+        certificate_key: certificate_key
+        dns_challenge: true
+        dns_provider: dns_provider
+        letsencrypt_email: letsencrypt_email
+        certificate: certificate
+        letsencrypt_agree: true
+        propagation_seconds: 0
+      properties:
+        certificate:
+          minLength: 1
+          type: string
+        certificate_key:
+          minLength: 1
+          type: string
+        dns_challenge:
+          type: boolean
+        dns_provider: {}
+        dns_provider_credentials: {}
+        letsencrypt_agree:
+          type: boolean
+        letsencrypt_certificate: {}
+        letsencrypt_email: {}
+        propagation_seconds:
+          minimum: 0
+    reportsHosts_200_response:
+      example:
+        proxy: 0
+        stream: 1
+        dead: 5
+        redirection: 6
+      properties:
+        proxy:
+          description: Proxy Hosts Count
+          type: integer
+        redirection:
+          description: Redirection Hosts Count
+          type: integer
+        stream:
+          description: Streams Count
+          type: integer
+        dead:
+          description: 404 Hosts Count
+          type: integer
+    getAccessLists_200_response_inner_clients_inner_address:
+      oneOf:
+      - pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}(/([0-9]|[1-2][0-9]|3[0-2]))?$"
+      - pattern: "^s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:)))(%.+)?s*(/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8]))?$"
+      - pattern: ^all$
+    createRedirectionHost_request:
+      additionalProperties: {}
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          minItems: 1
+          uniqueItems: true
+        forward_http_code:
+          description: Redirect HTTP Status Code
+          example: 302
+          maximum: 308
+          minimum: 300
+        forward_scheme:
+          enum:
+          - auto
+          - http
+          - https
+        forward_domain_name:
+          description: Domain Name
+          example: jc21.com
+          pattern: "^(?:[^.*]+\\.?)+[^.]$"
+        preserve_path:
+          description: Should the path be preserved
+          example: true
+        certificate_id:
+          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+        hsts_enabled:
+          description: Is HSTS Enabled
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+        http2_support:
+          description: HTTP2 Protocol Support
+        block_exploits:
+          description: Should we block common exploits
+        advanced_config: {}
+        meta: {}
+      required:
+      - domain_names
+      - forward_domain_name
+      - forward_http_code
+      - forward_scheme
+    createCertificate_400_response:
+      description: Error
+      example:
+        error:
+          code: 0
+          message: message
+      properties:
+        error:
+          $ref: '#/components/schemas/createCertificate_400_response_error'
+    getAccessLists_200_response_inner_owner:
+      additionalProperties: {}
+      description: User object
+      example:
+        modified_on: modified_on
+        created_on: created_on
+        permissions:
+          access_lists: hidden
+          visibility: all
+          certificates: hidden
+          streams: hidden
+          redirection_hosts: hidden
+          dead_hosts: hidden
+          proxy_hosts: hidden
+        is_disabled: true
+        roles:
+        - admin
+        name: Jamie Curnow
+        nickname: James
+        id: 1
+        avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+        email: jc@jc21.com
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        is_disabled:
+          description: Is user Disabled
+          example: true
+        email:
+          description: Email
+          example: jc@jc21.com
+          minLength: 3
+        name:
+          description: Name
+          example: Jamie Curnow
+          minLength: 1
+        nickname:
+          description: Nickname
+          example: James
+        avatar:
+          description: "Gravatar URL based on email, without scheme"
+          example: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+        roles:
+          description: Roles applied
+          example:
+          - admin
+          items: {}
+        permissions:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_owner_permissions'
+      required:
+      - avatar
+      - created_on
+      - email
+      - id
+      - is_disabled
+      - modified_on
+      - name
+      - nickname
+      - roles
+    uploadCertificate_request:
+      additionalProperties: {}
+      properties:
+        certificate:
+          format: binary
+          type: string
+        certificate_key:
+          format: binary
+          type: string
+        intermediate_certificate:
+          format: binary
+          type: string
+      required:
+      - certificate
+      - certificate_key
+    getCertificates_200_response_inner:
+      additionalProperties: {}
+      description: Certificate object
+      example:
+        modified_on: modified_on
+        owner:
+          modified_on: modified_on
+          created_on: created_on
+          permissions:
+            access_lists: hidden
+            visibility: all
+            certificates: hidden
+            streams: hidden
+            redirection_hosts: hidden
+            dead_hosts: hidden
+            proxy_hosts: hidden
+          is_disabled: true
+          roles:
+          - admin
+          name: Jamie Curnow
+          nickname: James
+          id: 1
+          avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+          email: jc@jc21.com
+        created_on: created_on
+        owner_user_id: 1
+        provider: provider
+        meta:
+          dns_provider_credentials: dns_provider_credentials
+          letsencrypt_certificate: "{}"
+          certificate_key: certificate_key
+          dns_challenge: true
+          dns_provider: dns_provider
+          letsencrypt_email: letsencrypt_email
+          certificate: certificate
+          letsencrypt_agree: true
+          propagation_seconds: 0
+        expires_on: expires_on
+        id: 1
+        nice_name: nice_name
+        domain_names:
+        - domain_names
+        - domain_names
+        - domain_names
+        - domain_names
+        - domain_names
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        owner_user_id:
+          description: User ID
+          minimum: 1
+        provider:
+          pattern: ^(letsencrypt|other)$
+        nice_name:
+          description: Nice Name for the custom certificate
+        domain_names:
+          description: Domain Names separated by a comma
+          items:
+            pattern: "^[^&| @!#%^();:/\\\\}{=+?<>,~`'\"]+$"
+          maxItems: 100
+          uniqueItems: true
+        expires_on:
+          description: Date and time of expiration
+          readOnly: true
+        owner:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+        meta:
+          $ref: '#/components/schemas/getCertificates_200_response_inner_meta'
+      required:
+      - created_on
+      - domain_names
+      - expires_on
+      - id
+      - meta
+      - modified_on
+      - nice_name
+      - owner_user_id
+      - provider
+    health_200_response:
+      additionalProperties: {}
+      description: Health object
+      example:
+        version:
+          major: 2
+          minor: 0
+          revision: 0
+        status: OK
+      properties:
+        status:
+          description: Healthy
+          example: OK
+        version:
+          $ref: '#/components/schemas/health_200_response_version'
+      required:
+      - status
+      - version
+    getProxyHosts_200_response_inner_access_list:
+      oneOf:
+      - {}
+      - $ref: '#/components/schemas/createAccessList_201_response'
+    createAccessList_request_items_inner:
+      additionalProperties: {}
+      properties:
+        username:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+    getAccessLists_200_response_inner:
+      additionalProperties: {}
+      description: Access List object
+      example:
+        modified_on: modified_on
+        owner:
+          modified_on: modified_on
+          created_on: created_on
+          permissions:
+            access_lists: hidden
+            visibility: all
+            certificates: hidden
+            streams: hidden
+            redirection_hosts: hidden
+            dead_hosts: hidden
+            proxy_hosts: hidden
+          is_disabled: true
+          roles:
+          - admin
+          name: Jamie Curnow
+          nickname: James
+          id: 1
+          avatar: //www.gravatar.com/avatar/6193176330f8d38747f038c170ddb193?default=mm
+          email: jc@jc21.com
+        pass_auth: true
+        clients:
+        - modified_on: modified_on
+          address: getAccessLists_200_response_inner_clients_inner_address
+          created_on: created_on
+          meta: "{}"
+          access_list_id: 0
+          id: 1
+          directive: allow
+        - modified_on: modified_on
+          address: getAccessLists_200_response_inner_clients_inner_address
+          created_on: created_on
+          meta: "{}"
+          access_list_id: 0
+          id: 1
+          directive: allow
+        created_on: created_on
+        owner_user_id: 1
+        meta: "{}"
+        name: name
+        id: 1
+        items:
+        - modified_on: modified_on
+          password: password
+          created_on: created_on
+          meta: "{}"
+          access_list_id: 0
+          hint: hint
+          id: 1
+          username: username
+        - modified_on: modified_on
+          password: password
+          created_on: created_on
+          meta: "{}"
+          access_list_id: 0
+          hint: hint
+          id: 1
+          username: username
+        satisfy_any: true
+      properties:
+        id:
+          description: Unique identifier
+          minimum: 1
+          readOnly: true
+        created_on:
+          description: Date and time of creation
+          readOnly: true
+        modified_on:
+          description: Date and time of last update
+          readOnly: true
+        owner_user_id:
+          description: User ID
+          minimum: 1
+        name:
+          minLength: 1
+        satisfy_any: {}
+        pass_auth:
+          type: boolean
+        meta: {}
+        owner:
+          $ref: '#/components/schemas/getAccessLists_200_response_inner_owner'
+        items:
+          items:
+            $ref: '#/components/schemas/getAccessLists_200_response_inner_items_inner'
+          minItems: 0
+        clients:
+          items:
+            $ref: '#/components/schemas/getAccessLists_200_response_inner_clients_inner'
+          minItems: 0
+      required:
+      - address
+      - created_on
+      - directive
+      - id
+      - meta
+      - modified_on
+      - name
+      - owner_user_id
+      - pass_auth
+      - satisfy_any
+    getProxyHosts_200_response_inner_locations_inner:
+      additionalProperties: {}
+      example:
+        path: path
+        forward_scheme: http
+        advanced_config: advanced_config
+        forward_port: 46277
+        id: 2
+        forward_host: forward_host
+        forward_path: forward_path
+      properties:
+        id: {}
+        path:
+          minLength: 1
+          type: string
+        forward_scheme:
+          enum:
+          - http
+          - https
+        forward_host:
+          maxLength: 255
+          minLength: 1
+        forward_port:
+          maximum: 65535
+          minimum: 1
+        forward_path: {}
+        advanced_config: {}
+      required:
+      - forward_host
+      - forward_port
+      - forward_scheme
+      - path
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
