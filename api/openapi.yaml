@@ -1,0 +1,3514 @@
+openapi: 3.0.0
+info:
+  title: Nginx Proxy Manager API
+  version: 2.x.x
+servers:
+- url: "{url}/api"
+  variables:
+    url:
+      default: http://localhost:81
+paths:
+  /:
+    get:
+      operationId: health
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+          description: 200 response
+      summary: Returns the API health status.
+  /tokens:
+    get:
+      operationId: getTokenRefresh
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefreshResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a new token.
+      tags:
+      - Tokens
+    post:
+      operationId: postTokenCreate
+      requestBody:
+        $ref: '#/components/requestBodies/TokenCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenCreateResponse'
+          description: 200 response
+      summary: Creates a new token.
+      tags:
+      - Tokens
+  /users/{id}:
+    delete:
+      operationId: deleteUserDelete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDeleteResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Deletes a existing User
+      tags:
+      - Users
+    get:
+      operationId: getUserGet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGetResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a  User
+      tags:
+      - Users
+    put:
+      operationId: putUserUpdate
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UserUpdateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserUpdateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Updates a existing User
+      tags:
+      - Users
+  /users:
+    get:
+      operationId: getUserList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a list of Users
+      tags:
+      - Users
+    post:
+      operationId: postUserCreate
+      requestBody:
+        $ref: '#/components/requestBodies/UserCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Creates a new User
+      tags:
+      - Users
+  /users/{id}/auth:
+    put:
+      operationId: putUserSetPassword
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UserSetPasswordRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSetPasswordResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Sets a password for an existing User
+      tags:
+      - Users
+  /users/{id}/permissions:
+    put:
+      operationId: putUserSetPermissions
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UserSetPermissionsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSetPermissionsResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Sets Permissions for a User
+      tags:
+      - Users
+  /nginx/proxy-hosts/{id}:
+    delete:
+      operationId: deleteProxyHostDelete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyHostDeleteResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Deletes a existing Proxy Host
+      tags:
+      - ProxyHosts
+    get:
+      operationId: getProxyHostGet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyHostGetResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a  Proxy Host
+      tags:
+      - ProxyHosts
+    put:
+      operationId: putProxyHostUpdate
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/ProxyHostUpdateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyHostUpdateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Updates a existing Proxy Host
+      tags:
+      - ProxyHosts
+  /nginx/proxy-hosts:
+    get:
+      operationId: getProxyHostList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyHostListResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a list of Proxy Hosts
+      tags:
+      - ProxyHosts
+    post:
+      operationId: postProxyHostCreate
+      requestBody:
+        $ref: '#/components/requestBodies/ProxyHostCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyHostCreateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Creates a new Proxy Host
+      tags:
+      - ProxyHosts
+  /nginx/proxy-hosts/{id}/enable:
+    post:
+      operationId: postProxyHostEnable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyHostEnableResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Enables a existing Proxy Host
+      tags:
+      - ProxyHosts
+  /nginx/proxy-hosts/{id}/disable:
+    post:
+      operationId: postProxyHostDisable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyHostDisableResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Disables a existing Proxy Host
+      tags:
+      - ProxyHosts
+  /nginx/redirection-hosts/{id}:
+    delete:
+      operationId: deleteRedirectionHostDelete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionHostDeleteResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Deletes a existing Redirection Host
+      tags:
+      - RedirectionHosts
+    get:
+      operationId: getRedirectionHostGet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionHostGetResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a  Redirection Host
+      tags:
+      - RedirectionHosts
+    put:
+      operationId: putRedirectionHostUpdate
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/RedirectionHostUpdateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionHostUpdateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Updates a existing Redirection Host
+      tags:
+      - RedirectionHosts
+  /nginx/redirection-hosts:
+    get:
+      operationId: getRedirectionHostList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionHostListResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a list of Redirection Hosts
+      tags:
+      - RedirectionHosts
+    post:
+      operationId: postRedirectionHostCreate
+      requestBody:
+        $ref: '#/components/requestBodies/RedirectionHostCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionHostCreateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Creates a new Redirection Host
+      tags:
+      - RedirectionHosts
+  /nginx/redirection-hosts/{id}/enable:
+    post:
+      operationId: postRedirectionHostEnable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionHostEnableResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Enables a existing Redirection Host
+      tags:
+      - RedirectionHosts
+  /nginx/redirection-hosts/{id}/disable:
+    post:
+      operationId: postRedirectionHostDisable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectionHostDisableResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Disables a existing Redirection Host
+      tags:
+      - RedirectionHosts
+  /nginx/dead-hosts/{id}:
+    delete:
+      operationId: deleteDeadHostDelete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeadHostDeleteResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Deletes a existing 404 Host
+      tags:
+      - DeadHosts
+    get:
+      operationId: getDeadHostGet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeadHostGetResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a  404 Host
+      tags:
+      - DeadHosts
+    put:
+      operationId: putDeadHostUpdate
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/DeadHostUpdateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeadHostUpdateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Updates a existing 404 Host
+      tags:
+      - DeadHosts
+  /nginx/dead-hosts:
+    get:
+      operationId: getDeadHostList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeadHostListResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a list of 404 Hosts
+      tags:
+      - DeadHosts
+    post:
+      operationId: postDeadHostCreate
+      requestBody:
+        $ref: '#/components/requestBodies/DeadHostCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeadHostCreateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Creates a new 404 Host
+      tags:
+      - DeadHosts
+  /nginx/dead-hosts/{id}/enable:
+    post:
+      operationId: postDeadHostEnable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeadHostEnableResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Enables a existing 404 Host
+      tags:
+      - DeadHosts
+  /nginx/dead-hosts/{id}/disable:
+    post:
+      operationId: postDeadHostDisable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeadHostDisableResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Disables a existing 404 Host
+      tags:
+      - DeadHosts
+  /nginx/streams/{id}:
+    delete:
+      operationId: deleteStreamDelete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamDeleteResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Deletes a existing Stream
+      tags:
+      - Streams
+    get:
+      operationId: getStreamGet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamGetResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a  Steam
+      tags:
+      - Streams
+    put:
+      operationId: putStreamUpdate
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/StreamUpdateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamUpdateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Updates a existing Stream
+      tags:
+      - Streams
+  /nginx/streams:
+    get:
+      operationId: getStreamList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamListResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a list of Steams
+      tags:
+      - Streams
+    post:
+      operationId: postStreamCreate
+      requestBody:
+        $ref: '#/components/requestBodies/StreamCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamCreateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Creates a new Stream
+      tags:
+      - Streams
+  /nginx/streams/{id}/enable:
+    post:
+      operationId: postStreamEnable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamEnableResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Enables a existing Stream
+      tags:
+      - Streams
+  /nginx/streams/{id}/disable:
+    post:
+      operationId: postStreamDisable
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamDisableResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Disables a existing Stream
+      tags:
+      - Streams
+  /nginx/certificates/{id}:
+    delete:
+      operationId: deleteCertificateDelete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateDeleteResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Deletes a existing Certificate
+      tags:
+      - Certificates
+    get:
+      operationId: getCertificateGet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateGetResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a  Certificate
+      tags:
+      - Certificates
+  /nginx/certificates:
+    get:
+      operationId: getCertificateList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateListResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a list of Certificates
+      tags:
+      - Certificates
+    post:
+      operationId: postCertificateCreate
+      requestBody:
+        $ref: '#/components/requestBodies/CertificateCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateCreateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Creates a new Certificate
+      tags:
+      - Certificates
+  /nginx/certificates/{id}/test-http:
+    get:
+      operationId: getCertificateTestHTTPChallenge
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Tests whether the HTTP challenge should work
+      tags:
+      - Certificates
+  /nginx/access-lists/{id}:
+    delete:
+      operationId: deleteAccessListDelete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessListDeleteResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Deletes a existing Access List
+      tags:
+      - AccessLists
+    get:
+      operationId: getAccessListGet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessListGetResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a  Access List
+      tags:
+      - AccessLists
+    put:
+      operationId: putAccessListUpdate
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/AccessListUpdateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessListUpdateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Updates a existing Access List
+      tags:
+      - AccessLists
+  /nginx/access-lists:
+    get:
+      operationId: getAccessListList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessListListResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a list of Access Lists
+      tags:
+      - AccessLists
+    post:
+      operationId: postAccessListCreate
+      requestBody:
+        $ref: '#/components/requestBodies/AccessListCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessListCreateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Creates a new Access List
+      tags:
+      - AccessLists
+  /settings/{id}:
+    get:
+      operationId: getSettingGet
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingGetResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a  Setting
+      tags:
+      - Settings
+    put:
+      operationId: putSettingUpdate
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/SettingUpdateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingUpdateResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Updates a existing Setting
+      tags:
+      - Settings
+  /settings:
+    get:
+      operationId: getSettingList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingListResponse'
+          description: 200 response
+      security:
+      - BearerAuth:
+        - users
+      summary: Returns a list of Settings
+      tags:
+      - Settings
+components:
+  requestBodies:
+    AccessListCreateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/postAccessListCreate_request'
+    AccessListUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putAccessListUpdate_request'
+    CertificateCreateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/postCertificateCreate_request'
+    DeadHostCreateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/postDeadHostCreate_request'
+    DeadHostUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putDeadHostUpdate_request'
+    ProxyHostCreateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/postProxyHostCreate_request'
+    ProxyHostUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putProxyHostUpdate_request'
+    RedirectionHostCreateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/postRedirectionHostCreate_request'
+    RedirectionHostUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putRedirectionHostUpdate_request'
+    SettingUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putSettingUpdate_request'
+    StreamCreateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/postStreamCreate_request'
+    StreamUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putStreamUpdate_request'
+    TokenCreateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/postTokenCreate_request'
+    UserCreateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/postUserCreate_request'
+    UserSetPasswordRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putUserSetPassword_request'
+    UserSetPermissionsRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putUserSetPermissions_request'
+    UserUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/putUserUpdate_request'
+  schemas:
+    AccessListCreateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        name: name
+        id: 123456
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        name:
+          description: Name of the Access List
+          type: string
+        meta:
+          type: object
+    AccessListDeleteResponse:
+      type: boolean
+    AccessListGetResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        name: name
+        id: 123456
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        name:
+          description: Name of the Access List
+          type: string
+        meta:
+          type: object
+      type: object
+    AccessListListResponse:
+      items:
+        $ref: '#/components/schemas/AccessListGetResponse'
+      type: array
+    AccessListUpdateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        name: name
+        id: 123456
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        name:
+          description: Name of the Access List
+          type: string
+        meta:
+          type: object
+    CertificateCreateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        created_on: 2000-01-23T04:56:07.000+00:00
+        provider: provider
+        meta:
+          dns_provider_credentials: dns_provider_credentials
+          dns_challenge: true
+          letsencrypt_email: letsencrypt_email
+          dns_provider: dns_provider
+          letsencrypt_agree: true
+          propagation_seconds: 0
+        expires_on: 2000-01-23T04:56:07.000+00:00
+        id: 123456
+        nice_name: nice_name
+        domain_names: "*.jc21.com,blog.jc21.com"
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        provider:
+          pattern: ^(letsencrypt|other)$
+          type: string
+        nice_name:
+          description: Nice Name for the custom certificate
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        expires_on:
+          description: Date and time of expiration
+          format: date-time
+          readOnly: true
+          type: string
+        meta:
+          $ref: '#/components/schemas/postCertificateCreate_request_meta'
+    CertificateDeleteResponse:
+      type: boolean
+    CertificateGetResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        created_on: 2000-01-23T04:56:07.000+00:00
+        provider: provider
+        meta:
+          dns_provider_credentials: dns_provider_credentials
+          dns_challenge: true
+          letsencrypt_email: letsencrypt_email
+          dns_provider: dns_provider
+          letsencrypt_agree: true
+          propagation_seconds: 0
+        expires_on: 2000-01-23T04:56:07.000+00:00
+        id: 123456
+        nice_name: nice_name
+        domain_names: "*.jc21.com,blog.jc21.com"
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        provider:
+          pattern: ^(letsencrypt|other)$
+          type: string
+        nice_name:
+          description: Nice Name for the custom certificate
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        expires_on:
+          description: Date and time of expiration
+          format: date-time
+          readOnly: true
+          type: string
+        meta:
+          $ref: '#/components/schemas/postCertificateCreate_request_meta'
+      type: object
+    CertificateListResponse:
+      items:
+        $ref: '#/components/schemas/CertificateGetResponse'
+      type: array
+    DeadHostCreateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        certificate_id: 1234
+        http2_support: false
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        ssl_forced: false
+        meta: "{}"
+        hsts_enabled: false
+        hsts_subdomains: false
+        id: 123456
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+    DeadHostDeleteResponse:
+      type: boolean
+    DeadHostDisableResponse:
+      type: boolean
+    DeadHostEnableResponse:
+      type: boolean
+    DeadHostGetResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        certificate_id: 1234
+        http2_support: false
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        ssl_forced: false
+        meta: "{}"
+        hsts_enabled: false
+        hsts_subdomains: false
+        id: 123456
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+      type: object
+    DeadHostListResponse:
+      items:
+        $ref: '#/components/schemas/DeadHostGetResponse'
+      type: array
+    DeadHostUpdateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        certificate_id: 1234
+        http2_support: false
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        ssl_forced: false
+        meta: "{}"
+        hsts_enabled: false
+        hsts_subdomains: false
+        id: 123456
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+    HealthResponse:
+      additionalProperties: false
+      description: Health object
+      example:
+        version:
+          major: 2
+          minor: 0
+          revision: 0
+        status: OK
+      properties:
+        status:
+          description: Healthy
+          example: OK
+          type: string
+        version:
+          $ref: '#/components/schemas/HealthResponse_version'
+      required:
+      - status
+      - version
+      type: object
+    ProxyHostCreateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        http2_support: false
+        ssl_forced: false
+        hsts_enabled: false
+        access_list_id: 1234
+        hsts_subdomains: false
+        allow_websocket_upgrade: true
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+        certificate_id: 1234
+        forward_scheme: http
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        forward_port: 5249
+        locations:
+        - path: path
+          forward_scheme: http
+          advanced_config: advanced_config
+          forward_port: 9607
+          id: 6
+          forward_host: forward_host
+          forward_path: forward_path
+        - path: path
+          forward_scheme: http
+          advanced_config: advanced_config
+          forward_port: 9607
+          id: 6
+          forward_host: forward_host
+          forward_path: forward_path
+        id: 123456
+        forward_host: forward_host
+        caching_enabled: true
+        block_exploits: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_scheme:
+          enum:
+          - http
+          - https
+          type: string
+        forward_host:
+          maxLength: 255
+          minLength: 1
+          type: string
+        forward_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        caching_enabled:
+          description: Should we cache assets
+          example: true
+          type: boolean
+        allow_websocket_upgrade:
+          description: Allow Websocket Upgrade for all paths
+          example: true
+          type: boolean
+        access_list_id:
+          description: Access List ID
+          example: 1234
+          minimum: 0
+          type: integer
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+        locations:
+          items:
+            $ref: '#/components/schemas/putProxyHostUpdate_request_locations_inner'
+          minItems: 0
+          type: array
+    ProxyHostDeleteResponse:
+      type: boolean
+    ProxyHostDisableResponse:
+      type: boolean
+    ProxyHostEnableResponse:
+      type: boolean
+    ProxyHostGetResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        http2_support: false
+        ssl_forced: false
+        hsts_enabled: false
+        access_list_id: 1234
+        hsts_subdomains: false
+        allow_websocket_upgrade: true
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+        certificate_id: 1234
+        forward_scheme: http
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        forward_port: 5249
+        locations:
+        - path: path
+          forward_scheme: http
+          advanced_config: advanced_config
+          forward_port: 9607
+          id: 6
+          forward_host: forward_host
+          forward_path: forward_path
+        - path: path
+          forward_scheme: http
+          advanced_config: advanced_config
+          forward_port: 9607
+          id: 6
+          forward_host: forward_host
+          forward_path: forward_path
+        id: 123456
+        forward_host: forward_host
+        caching_enabled: true
+        block_exploits: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_scheme:
+          enum:
+          - http
+          - https
+          type: string
+        forward_host:
+          maxLength: 255
+          minLength: 1
+          type: string
+        forward_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        caching_enabled:
+          description: Should we cache assets
+          example: true
+          type: boolean
+        allow_websocket_upgrade:
+          description: Allow Websocket Upgrade for all paths
+          example: true
+          type: boolean
+        access_list_id:
+          description: Access List ID
+          example: 1234
+          minimum: 0
+          type: integer
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+        locations:
+          items:
+            $ref: '#/components/schemas/putProxyHostUpdate_request_locations_inner'
+          minItems: 0
+          type: array
+      type: object
+    ProxyHostListResponse:
+      items:
+        $ref: '#/components/schemas/ProxyHostGetResponse'
+      type: array
+    ProxyHostUpdateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        http2_support: false
+        ssl_forced: false
+        hsts_enabled: false
+        access_list_id: 1234
+        hsts_subdomains: false
+        allow_websocket_upgrade: true
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+        certificate_id: 1234
+        forward_scheme: http
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        forward_port: 5249
+        locations:
+        - path: path
+          forward_scheme: http
+          advanced_config: advanced_config
+          forward_port: 9607
+          id: 6
+          forward_host: forward_host
+          forward_path: forward_path
+        - path: path
+          forward_scheme: http
+          advanced_config: advanced_config
+          forward_port: 9607
+          id: 6
+          forward_host: forward_host
+          forward_path: forward_path
+        id: 123456
+        forward_host: forward_host
+        caching_enabled: true
+        block_exploits: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_scheme:
+          enum:
+          - http
+          - https
+          type: string
+        forward_host:
+          maxLength: 255
+          minLength: 1
+          type: string
+        forward_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        caching_enabled:
+          description: Should we cache assets
+          example: true
+          type: boolean
+        allow_websocket_upgrade:
+          description: Allow Websocket Upgrade for all paths
+          example: true
+          type: boolean
+        access_list_id:
+          description: Access List ID
+          example: 1234
+          minimum: 0
+          type: integer
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+        locations:
+          items:
+            $ref: '#/components/schemas/putProxyHostUpdate_request_locations_inner'
+          minItems: 0
+          type: array
+    RedirectionHostCreateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        forward_domain_name: jc21.com
+        http2_support: false
+        ssl_forced: false
+        hsts_enabled: false
+        hsts_subdomains: false
+        preserve_path: true
+        forward_http_code: 302
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+        certificate_id: 1234
+        forward_scheme: HTTPS or $scheme
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        id: 123456
+        block_exploits: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_http_code:
+          description: Redirect HTTP Status Code
+          example: 302
+          maximum: 308
+          minimum: 300
+          type: integer
+        forward_scheme:
+          description: RFC Protocol
+          example: HTTPS or $scheme
+          minLength: 4
+          type: string
+        forward_domain_name:
+          description: Domain Name
+          example: jc21.com
+          pattern: "^(?:[^.*]+\\.?)+[^.]$"
+          type: string
+        preserve_path:
+          description: Should the path be preserved
+          example: true
+          type: boolean
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+    RedirectionHostDeleteResponse:
+      type: boolean
+    RedirectionHostDisableResponse:
+      type: boolean
+    RedirectionHostEnableResponse:
+      type: boolean
+    RedirectionHostGetResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        forward_domain_name: jc21.com
+        http2_support: false
+        ssl_forced: false
+        hsts_enabled: false
+        hsts_subdomains: false
+        preserve_path: true
+        forward_http_code: 302
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+        certificate_id: 1234
+        forward_scheme: HTTPS or $scheme
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        id: 123456
+        block_exploits: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_http_code:
+          description: Redirect HTTP Status Code
+          example: 302
+          maximum: 308
+          minimum: 300
+          type: integer
+        forward_scheme:
+          description: RFC Protocol
+          example: HTTPS or $scheme
+          minLength: 4
+          type: string
+        forward_domain_name:
+          description: Domain Name
+          example: jc21.com
+          pattern: "^(?:[^.*]+\\.?)+[^.]$"
+          type: string
+        preserve_path:
+          description: Should the path be preserved
+          example: true
+          type: boolean
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+      type: object
+    RedirectionHostListResponse:
+      items:
+        $ref: '#/components/schemas/RedirectionHostGetResponse'
+      type: array
+    RedirectionHostUpdateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        forward_domain_name: jc21.com
+        http2_support: false
+        ssl_forced: false
+        hsts_enabled: false
+        hsts_subdomains: false
+        preserve_path: true
+        forward_http_code: 302
+        enabled: true
+        domain_names: "*.jc21.com,blog.jc21.com"
+        certificate_id: 1234
+        forward_scheme: HTTPS or $scheme
+        advanced_config: advanced_config
+        created_on: 2000-01-23T04:56:07.000+00:00
+        meta: "{}"
+        id: 123456
+        block_exploits: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_http_code:
+          description: Redirect HTTP Status Code
+          example: 302
+          maximum: 308
+          minimum: 300
+          type: integer
+        forward_scheme:
+          description: RFC Protocol
+          example: HTTPS or $scheme
+          minLength: 4
+          type: string
+        forward_domain_name:
+          description: Domain Name
+          example: jc21.com
+          pattern: "^(?:[^.*]+\\.?)+[^.]$"
+          type: string
+        preserve_path:
+          description: Should the path be preserved
+          example: true
+          type: boolean
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS applicable to all subdomains
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+    SettingGetResponse:
+      example:
+        meta: "{}"
+        name: Default Site
+        description: Default Site
+        id: default-site
+        value: "404"
+      properties:
+        id:
+          description: Unique identifier for a Setting
+          example: default-site
+          minLength: 2
+          readOnly: true
+          type: string
+        name:
+          description: Description
+          example: Default Site
+          maxLength: 255
+          minLength: 2
+          type: string
+        description:
+          description: Description
+          example: Default Site
+          maxLength: 255
+          minLength: 2
+          type: string
+        value:
+          description: Value
+          example: "404"
+          maxLength: 255
+          type: string
+        meta:
+          type: object
+      type: object
+    SettingListResponse:
+      items:
+        $ref: '#/components/schemas/SettingGetResponse'
+      type: array
+    SettingUpdateResponse:
+      example:
+        meta: "{}"
+        name: Default Site
+        description: Default Site
+        id: default-site
+        value: "404"
+      properties:
+        id:
+          description: Unique identifier for a Setting
+          example: default-site
+          minLength: 2
+          readOnly: true
+          type: string
+        name:
+          description: Description
+          example: Default Site
+          maxLength: 255
+          minLength: 2
+          type: string
+        description:
+          description: Description
+          example: Default Site
+          maxLength: 255
+          minLength: 2
+          type: string
+        value:
+          description: Value
+          example: "404"
+          maxLength: 255
+          type: string
+        meta:
+          type: object
+    StreamCreateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        incoming_port: 5249
+        udp_forwarding: true
+        created_on: 2000-01-23T04:56:07.000+00:00
+        forwarding_port: 39501
+        meta: "{}"
+        forwarding_host: jc21.com
+        id: 123456
+        tcp_forwarding: true
+        enabled: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        incoming_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        forwarding_host:
+          $ref: '#/components/schemas/putStreamUpdate_request_forwarding_host'
+        forwarding_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        tcp_forwarding:
+          type: boolean
+        udp_forwarding:
+          type: boolean
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+    StreamDeleteResponse:
+      type: boolean
+    StreamDisableResponse:
+      type: boolean
+    StreamEnableResponse:
+      type: boolean
+    StreamGetResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        incoming_port: 5249
+        udp_forwarding: true
+        created_on: 2000-01-23T04:56:07.000+00:00
+        forwarding_port: 39501
+        meta: "{}"
+        forwarding_host: jc21.com
+        id: 123456
+        tcp_forwarding: true
+        enabled: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        incoming_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        forwarding_host:
+          $ref: '#/components/schemas/putStreamUpdate_request_forwarding_host'
+        forwarding_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        tcp_forwarding:
+          type: boolean
+        udp_forwarding:
+          type: boolean
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+      type: object
+    StreamListResponse:
+      items:
+        $ref: '#/components/schemas/StreamGetResponse'
+      type: array
+    StreamUpdateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        incoming_port: 5249
+        udp_forwarding: true
+        created_on: 2000-01-23T04:56:07.000+00:00
+        forwarding_port: 39501
+        meta: "{}"
+        forwarding_host: jc21.com
+        id: 123456
+        tcp_forwarding: true
+        enabled: true
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        incoming_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        forwarding_host:
+          $ref: '#/components/schemas/putStreamUpdate_request_forwarding_host'
+        forwarding_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        tcp_forwarding:
+          type: boolean
+        udp_forwarding:
+          type: boolean
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+    TokenCreateResponse:
+      example:
+        expires: 2000-01-23T04:56:07.000+00:00
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.O_frfYM8RzmRsUNigHtu0_jZ_utSejyr1axMGa8rlsk
+      properties:
+        token:
+          description: JWT
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.O_frfYM8RzmRsUNigHtu0_jZ_utSejyr1axMGa8rlsk
+          type: string
+        expires:
+          description: Token expiry time
+          format: date-time
+          type: string
+      type: object
+    TokenRefreshResponse:
+      example:
+        expires: 2000-01-23T04:56:07.000+00:00
+        scope: user
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.O_frfYM8RzmRsUNigHtu0_jZ_utSejyr1axMGa8rlsk
+      properties:
+        token:
+          description: JWT
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.O_frfYM8RzmRsUNigHtu0_jZ_utSejyr1axMGa8rlsk
+          type: string
+        expires:
+          description: Token expiry time
+          format: date-time
+          type: string
+        scope:
+          description: "Scope of the Token, defaults to 'user'"
+          example: user
+          type: string
+      type: object
+    UserCreateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        created_on: 2000-01-23T04:56:07.000+00:00
+        roles:
+        - admin
+        is_disabled: false
+        name: Jamie Curnow
+        nickname: Jamie
+        id: 123456
+        avatar: http://somewhere.jpg
+        email: john@example.com
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        name:
+          description: Name
+          example: Jamie Curnow
+          maxLength: 100
+          minLength: 2
+          type: string
+        nickname:
+          description: Nickname
+          example: Jamie
+          maxLength: 50
+          minLength: 2
+          type: string
+        email:
+          description: Email Address
+          example: john@example.com
+          format: email
+          maxLength: 100
+          minLength: 6
+          type: string
+        avatar:
+          description: Avatar
+          example: http://somewhere.jpg
+          maxLength: 150
+          minLength: 2
+          readOnly: true
+          type: string
+        roles:
+          description: Roles
+          example:
+          - admin
+          items: {}
+          type: array
+        is_disabled:
+          description: Is Disabled
+          example: false
+          type: boolean
+    UserDeleteResponse:
+      type: boolean
+    UserGetResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        created_on: 2000-01-23T04:56:07.000+00:00
+        roles:
+        - admin
+        is_disabled: false
+        name: Jamie Curnow
+        nickname: Jamie
+        id: 123456
+        avatar: http://somewhere.jpg
+        email: john@example.com
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        name:
+          description: Name
+          example: Jamie Curnow
+          maxLength: 100
+          minLength: 2
+          type: string
+        nickname:
+          description: Nickname
+          example: Jamie
+          maxLength: 50
+          minLength: 2
+          type: string
+        email:
+          description: Email Address
+          example: john@example.com
+          format: email
+          maxLength: 100
+          minLength: 6
+          type: string
+        avatar:
+          description: Avatar
+          example: http://somewhere.jpg
+          maxLength: 150
+          minLength: 2
+          readOnly: true
+          type: string
+        roles:
+          description: Roles
+          example:
+          - admin
+          items: {}
+          type: array
+        is_disabled:
+          description: Is Disabled
+          example: false
+          type: boolean
+      type: object
+    UserListResponse:
+      items:
+        $ref: '#/components/schemas/UserGetResponse'
+      type: array
+    UserSetPasswordResponse:
+      type: boolean
+    UserSetPermissionsResponse:
+      type: boolean
+    UserUpdateResponse:
+      example:
+        modified_on: 2000-01-23T04:56:07.000+00:00
+        created_on: 2000-01-23T04:56:07.000+00:00
+        roles:
+        - admin
+        is_disabled: false
+        name: Jamie Curnow
+        nickname: Jamie
+        id: 123456
+        avatar: http://somewhere.jpg
+        email: john@example.com
+      properties:
+        id:
+          description: Unique identifier
+          example: 123456
+          minimum: 1
+          readOnly: true
+          type: integer
+        created_on:
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+          type: string
+        modified_on:
+          description: Date and time of last update
+          format: date-time
+          readOnly: true
+          type: string
+        name:
+          description: Name
+          example: Jamie Curnow
+          maxLength: 100
+          minLength: 2
+          type: string
+        nickname:
+          description: Nickname
+          example: Jamie
+          maxLength: 50
+          minLength: 2
+          type: string
+        email:
+          description: Email Address
+          example: john@example.com
+          format: email
+          maxLength: 100
+          minLength: 6
+          type: string
+        avatar:
+          description: Avatar
+          example: http://somewhere.jpg
+          maxLength: 150
+          minLength: 2
+          readOnly: true
+          type: string
+        roles:
+          description: Roles
+          example:
+          - admin
+          items: {}
+          type: array
+        is_disabled:
+          description: Is Disabled
+          example: false
+          type: boolean
+    postTokenCreate_request:
+      properties:
+        identity:
+          description: Email Address or other 3rd party providers identifier
+          example: john@example.com
+          type: string
+        secret:
+          description: A password or key
+          example: correct horse battery staple
+          type: string
+        scope:
+          description: "Scope of the Token, defaults to 'user'"
+          example: user
+          type: string
+      required:
+      - identity
+      - secret
+      type: object
+    putUserUpdate_request:
+      properties:
+        name:
+          description: Name
+          example: Jamie Curnow
+          maxLength: 100
+          minLength: 2
+          type: string
+        nickname:
+          description: Nickname
+          example: Jamie
+          maxLength: 50
+          minLength: 2
+          type: string
+        email:
+          description: Email Address
+          example: john@example.com
+          format: email
+          maxLength: 100
+          minLength: 6
+          type: string
+        roles:
+          description: Roles
+          example:
+          - admin
+          items: {}
+          type: array
+        is_disabled:
+          description: Is Disabled
+          example: false
+          type: boolean
+      type: object
+    postUserCreate_request:
+      properties:
+        name:
+          description: Name
+          example: Jamie Curnow
+          maxLength: 100
+          minLength: 2
+          type: string
+        nickname:
+          description: Nickname
+          example: Jamie
+          maxLength: 50
+          minLength: 2
+          type: string
+        email:
+          description: Email Address
+          example: john@example.com
+          format: email
+          maxLength: 100
+          minLength: 6
+          type: string
+        roles:
+          description: Roles
+          example:
+          - admin
+          items: {}
+          type: array
+        is_disabled:
+          description: Is Disabled
+          example: false
+          type: boolean
+        auth:
+          description: Auth Credentials
+          example:
+            type: password
+            secret: bigredhorsebanana
+          type: object
+      required:
+      - email
+      - name
+      - nickname
+      type: object
+    putUserSetPassword_request:
+      properties:
+        type:
+          pattern: ^password$
+          type: string
+        current:
+          maxLength: 64
+          minLength: 1
+          type: string
+        secret:
+          maxLength: 64
+          minLength: 8
+          type: string
+      required:
+      - secret
+      - type
+      type: object
+    putUserSetPermissions_request:
+      properties:
+        visibility:
+          pattern: ^(all|user)$
+          type: string
+        access_lists:
+          pattern: ^(hidden|view|manage)$
+          type: string
+        dead_hosts:
+          pattern: ^(hidden|view|manage)$
+          type: string
+        proxy_hosts:
+          pattern: ^(hidden|view|manage)$
+          type: string
+        redirection_hosts:
+          pattern: ^(hidden|view|manage)$
+          type: string
+        streams:
+          pattern: ^(hidden|view|manage)$
+          type: string
+        certificates:
+          pattern: ^(hidden|view|manage)$
+          type: string
+      type: object
+    putProxyHostUpdate_request_certificate_id:
+      anyOf:
+      - minimum: 0
+        type: integer
+      - pattern: ^new$
+        type: string
+      description: Certificate ID
+      example: 1234
+    putProxyHostUpdate_request_locations_inner:
+      additionalProperties: false
+      example:
+        path: path
+        forward_scheme: http
+        advanced_config: advanced_config
+        forward_port: 9607
+        id: 6
+        forward_host: forward_host
+        forward_path: forward_path
+      properties:
+        id:
+          nullable: true
+          type: integer
+        path:
+          minLength: 1
+          type: string
+        forward_scheme:
+          enum:
+          - http
+          - https
+          type: string
+        forward_host:
+          maxLength: 255
+          minLength: 1
+          type: string
+        forward_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        forward_path:
+          type: string
+        advanced_config:
+          type: string
+      required:
+      - forward_host
+      - forward_port
+      - forward_scheme
+      - path
+      type: object
+    putProxyHostUpdate_request:
+      additionalProperties: false
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_scheme:
+          enum:
+          - http
+          - https
+          type: string
+        forward_host:
+          maxLength: 255
+          minLength: 1
+          type: string
+        forward_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        caching_enabled:
+          description: Should we cache assets
+          example: true
+          type: boolean
+        allow_websocket_upgrade:
+          description: Allow Websocket Upgrade for all paths
+          example: true
+          type: boolean
+        access_list_id:
+          description: Access List ID
+          example: 1234
+          minimum: 0
+          type: integer
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+        locations:
+          items:
+            $ref: '#/components/schemas/putProxyHostUpdate_request_locations_inner'
+          minItems: 0
+          type: array
+      type: object
+    postProxyHostCreate_request:
+      additionalProperties: false
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_scheme:
+          enum:
+          - http
+          - https
+          type: string
+        forward_host:
+          maxLength: 255
+          minLength: 1
+          type: string
+        forward_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        caching_enabled:
+          description: Should we cache assets
+          example: true
+          type: boolean
+        allow_websocket_upgrade:
+          description: Allow Websocket Upgrade for all paths
+          example: true
+          type: boolean
+        access_list_id:
+          description: Access List ID
+          example: 1234
+          minimum: 0
+          type: integer
+        advanced_config:
+          type: string
+        enabled:
+          description: Is Enabled
+          example: true
+          type: boolean
+        meta:
+          type: object
+        locations:
+          items:
+            $ref: '#/components/schemas/putProxyHostUpdate_request_locations_inner'
+          minItems: 0
+          type: array
+      required:
+      - domain_names
+      - forward_host
+      - forward_port
+      - forward_scheme
+      type: object
+    putRedirectionHostUpdate_request:
+      additionalProperties: false
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_http_code:
+          description: Redirect HTTP Status Code
+          example: 302
+          maximum: 308
+          minimum: 300
+          type: integer
+        forward_scheme:
+          description: RFC Protocol
+          example: HTTPS or $scheme
+          minLength: 4
+          type: string
+        forward_domain_name:
+          description: Domain Name
+          example: jc21.com
+          pattern: "^(?:[^.*]+\\.?)+[^.]$"
+          type: string
+        preserve_path:
+          description: Should the path be preserved
+          example: true
+          type: boolean
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        advanced_config:
+          type: string
+        meta:
+          type: object
+      type: object
+    postRedirectionHostCreate_request:
+      additionalProperties: false
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        forward_http_code:
+          description: Redirect HTTP Status Code
+          example: 302
+          maximum: 308
+          minimum: 300
+          type: integer
+        forward_scheme:
+          description: RFC Protocol
+          example: HTTPS or $scheme
+          minLength: 4
+          type: string
+        forward_domain_name:
+          description: Domain Name
+          example: jc21.com
+          pattern: "^(?:[^.*]+\\.?)+[^.]$"
+          type: string
+        preserve_path:
+          description: Should the path be preserved
+          example: true
+          type: boolean
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        block_exploits:
+          description: Should we block common exploits
+          example: true
+          type: boolean
+        advanced_config:
+          type: string
+        meta:
+          type: object
+      required:
+      - domain_names
+      - forward_domain_name
+      - forward_http_code
+      - forward_scheme
+      type: object
+    putDeadHostUpdate_request:
+      additionalProperties: false
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        advanced_config:
+          type: string
+        meta:
+          type: object
+      type: object
+    postDeadHostCreate_request:
+      additionalProperties: false
+      properties:
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        certificate_id:
+          $ref: '#/components/schemas/putProxyHostUpdate_request_certificate_id'
+        ssl_forced:
+          description: Is SSL Forced
+          example: false
+          type: boolean
+        hsts_enabled:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        hsts_subdomains:
+          description: Is HSTS Enabled
+          example: false
+          type: boolean
+        http2_support:
+          description: HTTP2 Protocol Support
+          example: false
+          type: boolean
+        advanced_config:
+          type: string
+        meta:
+          type: object
+      required:
+      - domain_names
+      type: object
+    putStreamUpdate_request_forwarding_host:
+      anyOf:
+      - description: Domain Name
+        example: jc21.com
+        pattern: "^(?:[^.*]+\\.?)+[^.]$"
+        type: string
+      - format: ipv4
+        type: string
+      - format: ipv6
+        type: string
+    putStreamUpdate_request:
+      additionalProperties: false
+      properties:
+        incoming_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        forwarding_host:
+          $ref: '#/components/schemas/putStreamUpdate_request_forwarding_host'
+        forwarding_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        tcp_forwarding:
+          type: boolean
+        udp_forwarding:
+          type: boolean
+        meta:
+          type: object
+      type: object
+    postStreamCreate_request:
+      additionalProperties: false
+      properties:
+        incoming_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        forwarding_host:
+          $ref: '#/components/schemas/putStreamUpdate_request_forwarding_host'
+        forwarding_port:
+          maximum: 65535
+          minimum: 1
+          type: integer
+        tcp_forwarding:
+          type: boolean
+        udp_forwarding:
+          type: boolean
+        meta:
+          type: object
+      required:
+      - forwarding_host
+      - forwarding_port
+      - incoming_port
+      type: object
+    postCertificateCreate_request_meta:
+      additionalProperties: false
+      example:
+        dns_provider_credentials: dns_provider_credentials
+        dns_challenge: true
+        letsencrypt_email: letsencrypt_email
+        dns_provider: dns_provider
+        letsencrypt_agree: true
+        propagation_seconds: 0
+      properties:
+        letsencrypt_email:
+          format: email
+          type: string
+        letsencrypt_agree:
+          type: boolean
+        dns_challenge:
+          type: boolean
+        dns_provider:
+          type: string
+        dns_provider_credentials:
+          type: string
+        propagation_seconds:
+          minimum: 0
+          type: integer
+      type: object
+    postCertificateCreate_request:
+      additionalProperties: false
+      properties:
+        provider:
+          pattern: ^(letsencrypt|other)$
+          type: string
+        nice_name:
+          description: Nice Name for the custom certificate
+          type: string
+        domain_names:
+          description: Domain Names separated by a comma
+          example: "*.jc21.com,blog.jc21.com"
+          items:
+            pattern: "^(?:\\*\\.)?(?:[^.*]+\\.?)+[^.]$"
+            type: string
+          maxItems: 100
+          type: array
+          uniqueItems: true
+        meta:
+          $ref: '#/components/schemas/postCertificateCreate_request_meta'
+      required:
+      - provider
+      type: object
+    putAccessListUpdate_request_items_inner:
+      additionalProperties: false
+      properties:
+        username:
+          minLength: 1
+          type: string
+        password:
+          minLength: 0
+          type: string
+      type: object
+    putAccessListUpdate_request_clients_inner_address:
+      oneOf:
+      - pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}(/([0-9]|[1-2][0-9]|3[0-2]))?$"
+        type: string
+      - pattern: "^s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:)))(%.+)?s*(/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8]))?$"
+        type: string
+      - pattern: ^all$
+        type: string
+    putAccessListUpdate_request_clients_inner:
+      additionalProperties: false
+      properties:
+        address:
+          $ref: '#/components/schemas/putAccessListUpdate_request_clients_inner_address'
+        directive:
+          enum:
+          - allow
+          - deny
+          type: string
+      type: object
+    putAccessListUpdate_request:
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of the Access List
+          type: string
+        satisfy_any:
+          type: boolean
+        pass_auth:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/putAccessListUpdate_request_items_inner'
+          minItems: 0
+          type: array
+        clients:
+          items:
+            $ref: '#/components/schemas/putAccessListUpdate_request_clients_inner'
+          minItems: 0
+          type: array
+      type: object
+    postAccessListCreate_request_items_inner:
+      additionalProperties: false
+      properties:
+        username:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+      type: object
+    postAccessListCreate_request:
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of the Access List
+          type: string
+        satisfy_any:
+          type: boolean
+        pass_auth:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/postAccessListCreate_request_items_inner'
+          minItems: 0
+          type: array
+        clients:
+          items:
+            $ref: '#/components/schemas/putAccessListUpdate_request_clients_inner'
+          minItems: 0
+          type: array
+        meta:
+          type: object
+      required:
+      - name
+      type: object
+    putSettingUpdate_request:
+      properties:
+        value:
+          description: Value
+          example: "404"
+          maxLength: 255
+          type: string
+        meta:
+          type: object
+      type: object
+    HealthResponse_version:
+      additionalProperties: false
+      description: The version object
+      example:
+        major: 2
+        minor: 0
+        revision: 0
+      properties:
+        major:
+          minimum: 0
+          type: integer
+        minor:
+          minimum: 0
+          type: integer
+        revision:
+          minimum: 0
+          type: integer
+      required:
+      - major
+      - minor
+      - revision
+      type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http
