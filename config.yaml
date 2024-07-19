@@ -1,0 +1,5 @@
+packageName: nginxproxymanager
+gitUserId: sander0542
+gitRepoId: nginxproxymanager-go
+typeMappings:
+  integer: int64
