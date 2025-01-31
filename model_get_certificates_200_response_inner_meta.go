@@ -27,7 +27,7 @@ type GetCertificates200ResponseInnerMeta struct {
 	LetsencryptAgree *bool `json:"letsencrypt_agree,omitempty"`
 	LetsencryptCertificate map[string]interface{} `json:"letsencrypt_certificate,omitempty"`
 	LetsencryptEmail *string `json:"letsencrypt_email,omitempty"`
-	PropagationSeconds *int32 `json:"propagation_seconds,omitempty"`
+	PropagationSeconds *int64 `json:"propagation_seconds,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -307,9 +307,9 @@ func (o *GetCertificates200ResponseInnerMeta) SetLetsencryptEmail(v string) {
 }
 
 // GetPropagationSeconds returns the PropagationSeconds field value if set, zero value otherwise.
-func (o *GetCertificates200ResponseInnerMeta) GetPropagationSeconds() int32 {
+func (o *GetCertificates200ResponseInnerMeta) GetPropagationSeconds() int64 {
 	if o == nil || IsNil(o.PropagationSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PropagationSeconds
@@ -317,7 +317,7 @@ func (o *GetCertificates200ResponseInnerMeta) GetPropagationSeconds() int32 {
 
 // GetPropagationSecondsOk returns a tuple with the PropagationSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetCertificates200ResponseInnerMeta) GetPropagationSecondsOk() (*int32, bool) {
+func (o *GetCertificates200ResponseInnerMeta) GetPropagationSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.PropagationSeconds) {
 		return nil, false
 	}
@@ -333,8 +333,8 @@ func (o *GetCertificates200ResponseInnerMeta) HasPropagationSeconds() bool {
 	return false
 }
 
-// SetPropagationSeconds gets a reference to the given int32 and assigns it to the PropagationSeconds field.
-func (o *GetCertificates200ResponseInnerMeta) SetPropagationSeconds(v int32) {
+// SetPropagationSeconds gets a reference to the given int64 and assigns it to the PropagationSeconds field.
+func (o *GetCertificates200ResponseInnerMeta) SetPropagationSeconds(v int64) {
 	o.PropagationSeconds = &v
 }
 

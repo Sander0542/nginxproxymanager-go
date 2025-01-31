@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** | Unique identifier | [readonly] 
+**Id** | **int64** | Unique identifier | [readonly] 
 **CreatedOn** | **string** | Date and time of creation | [readonly] 
 **ModifiedOn** | **string** | Date and time of last update | [readonly] 
-**UserId** | **int32** | User ID | 
+**UserId** | **int64** | User ID | 
 **ObjectType** | **string** |  | 
-**ObjectId** | **int32** | Unique identifier | [readonly] 
+**ObjectId** | **int64** | Unique identifier | [readonly] 
 **Action** | **string** |  | 
 **Meta** | **map[string]interface{}** |  | 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewGetAuditLog200Response
 
-`func NewGetAuditLog200Response(id int32, createdOn string, modifiedOn string, userId int32, objectType string, objectId int32, action string, meta map[string]interface{}, ) *GetAuditLog200Response`
+`func NewGetAuditLog200Response(id int64, createdOn string, modifiedOn string, userId int64, objectType string, objectId int64, action string, meta map[string]interface{}, ) *GetAuditLog200Response`
 
 NewGetAuditLog200Response instantiates a new GetAuditLog200Response object
 This constructor will assign default values to properties that have it defined,
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GetAuditLog200Response) GetId() int32`
+`func (o *GetAuditLog200Response) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetAuditLog200Response) GetIdOk() (*int32, bool)`
+`func (o *GetAuditLog200Response) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetAuditLog200Response) SetId(v int32)`
+`func (o *GetAuditLog200Response) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -94,20 +94,20 @@ SetModifiedOn sets ModifiedOn field to given value.
 
 ### GetUserId
 
-`func (o *GetAuditLog200Response) GetUserId() int32`
+`func (o *GetAuditLog200Response) GetUserId() int64`
 
 GetUserId returns the UserId field if non-nil, zero value otherwise.
 
 ### GetUserIdOk
 
-`func (o *GetAuditLog200Response) GetUserIdOk() (*int32, bool)`
+`func (o *GetAuditLog200Response) GetUserIdOk() (*int64, bool)`
 
 GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserId
 
-`func (o *GetAuditLog200Response) SetUserId(v int32)`
+`func (o *GetAuditLog200Response) SetUserId(v int64)`
 
 SetUserId sets UserId field to given value.
 
@@ -134,20 +134,20 @@ SetObjectType sets ObjectType field to given value.
 
 ### GetObjectId
 
-`func (o *GetAuditLog200Response) GetObjectId() int32`
+`func (o *GetAuditLog200Response) GetObjectId() int64`
 
 GetObjectId returns the ObjectId field if non-nil, zero value otherwise.
 
 ### GetObjectIdOk
 
-`func (o *GetAuditLog200Response) GetObjectIdOk() (*int32, bool)`
+`func (o *GetAuditLog200Response) GetObjectIdOk() (*int64, bool)`
 
 GetObjectIdOk returns a tuple with the ObjectId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObjectId
 
-`func (o *GetAuditLog200Response) SetObjectId(v int32)`
+`func (o *GetAuditLog200Response) SetObjectId(v int64)`
 
 SetObjectId sets ObjectId field to given value.
 

@@ -135,7 +135,7 @@ func (a *Class404HostsAPIService) Create404HostExecute(r ApiCreate404HostRequest
 type ApiDeleteDeadHostRequest struct {
 	ctx context.Context
 	ApiService *Class404HostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiDeleteDeadHostRequest) Execute() (bool, *http.Response, error) {
@@ -149,7 +149,7 @@ DeleteDeadHost Delete a 404 Host
  @param hostID
  @return ApiDeleteDeadHostRequest
 */
-func (a *Class404HostsAPIService) DeleteDeadHost(ctx context.Context, hostID int32) ApiDeleteDeadHostRequest {
+func (a *Class404HostsAPIService) DeleteDeadHost(ctx context.Context, hostID int64) ApiDeleteDeadHostRequest {
 	return ApiDeleteDeadHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -239,7 +239,7 @@ func (a *Class404HostsAPIService) DeleteDeadHostExecute(r ApiDeleteDeadHostReque
 type ApiDisableDeadHostRequest struct {
 	ctx context.Context
 	ApiService *Class404HostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiDisableDeadHostRequest) Execute() (bool, *http.Response, error) {
@@ -253,7 +253,7 @@ DisableDeadHost Disable a 404 Host
  @param hostID
  @return ApiDisableDeadHostRequest
 */
-func (a *Class404HostsAPIService) DisableDeadHost(ctx context.Context, hostID int32) ApiDisableDeadHostRequest {
+func (a *Class404HostsAPIService) DisableDeadHost(ctx context.Context, hostID int64) ApiDisableDeadHostRequest {
 	return ApiDisableDeadHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -353,7 +353,7 @@ func (a *Class404HostsAPIService) DisableDeadHostExecute(r ApiDisableDeadHostReq
 type ApiEnableDeadHostRequest struct {
 	ctx context.Context
 	ApiService *Class404HostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiEnableDeadHostRequest) Execute() (bool, *http.Response, error) {
@@ -367,7 +367,7 @@ EnableDeadHost Enable a 404 Host
  @param hostID
  @return ApiEnableDeadHostRequest
 */
-func (a *Class404HostsAPIService) EnableDeadHost(ctx context.Context, hostID int32) ApiEnableDeadHostRequest {
+func (a *Class404HostsAPIService) EnableDeadHost(ctx context.Context, hostID int64) ApiEnableDeadHostRequest {
 	return ApiEnableDeadHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -467,7 +467,7 @@ func (a *Class404HostsAPIService) EnableDeadHostExecute(r ApiEnableDeadHostReque
 type ApiGetDeadHostRequest struct {
 	ctx context.Context
 	ApiService *Class404HostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiGetDeadHostRequest) Execute() (*GetDeadHosts200ResponseInner, *http.Response, error) {
@@ -481,7 +481,7 @@ GetDeadHost Get a 404 Host
  @param hostID
  @return ApiGetDeadHostRequest
 */
-func (a *Class404HostsAPIService) GetDeadHost(ctx context.Context, hostID int32) ApiGetDeadHostRequest {
+func (a *Class404HostsAPIService) GetDeadHost(ctx context.Context, hostID int64) ApiGetDeadHostRequest {
 	return ApiGetDeadHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -678,7 +678,7 @@ func (a *Class404HostsAPIService) GetDeadHostsExecute(r ApiGetDeadHostsRequest) 
 type ApiUpdateDeadHostRequest struct {
 	ctx context.Context
 	ApiService *Class404HostsAPIService
-	hostID int32
+	hostID int64
 	updateDeadHostRequest *UpdateDeadHostRequest
 }
 
@@ -699,7 +699,7 @@ UpdateDeadHost Update a 404 Host
  @param hostID
  @return ApiUpdateDeadHostRequest
 */
-func (a *Class404HostsAPIService) UpdateDeadHost(ctx context.Context, hostID int32) ApiUpdateDeadHostRequest {
+func (a *Class404HostsAPIService) UpdateDeadHost(ctx context.Context, hostID int64) ApiUpdateDeadHostRequest {
 	return ApiUpdateDeadHostRequest{
 		ApiService: a,
 		ctx: ctx,

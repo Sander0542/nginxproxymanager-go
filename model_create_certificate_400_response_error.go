@@ -20,7 +20,7 @@ var _ MappedNullable = &CreateCertificate400ResponseError{}
 
 // CreateCertificate400ResponseError Error object
 type CreateCertificate400ResponseError struct {
-	Code int32 `json:"code"`
+	Code int64 `json:"code"`
 	Message string `json:"message"`
 	AdditionalProperties map[string]interface{}
 }
@@ -31,7 +31,7 @@ type _CreateCertificate400ResponseError CreateCertificate400ResponseError
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateCertificate400ResponseError(code int32, message string) *CreateCertificate400ResponseError {
+func NewCreateCertificate400ResponseError(code int64, message string) *CreateCertificate400ResponseError {
 	this := CreateCertificate400ResponseError{}
 	this.Code = code
 	this.Message = message
@@ -47,9 +47,9 @@ func NewCreateCertificate400ResponseErrorWithDefaults() *CreateCertificate400Res
 }
 
 // GetCode returns the Code field value
-func (o *CreateCertificate400ResponseError) GetCode() int32 {
+func (o *CreateCertificate400ResponseError) GetCode() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *CreateCertificate400ResponseError) GetCode() int32 {
 
 // GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
-func (o *CreateCertificate400ResponseError) GetCodeOk() (*int32, bool) {
+func (o *CreateCertificate400ResponseError) GetCodeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *CreateCertificate400ResponseError) GetCodeOk() (*int32, bool) {
 }
 
 // SetCode sets field value
-func (o *CreateCertificate400ResponseError) SetCode(v int32) {
+func (o *CreateCertificate400ResponseError) SetCode(v int64) {
 	o.Code = v
 }
 

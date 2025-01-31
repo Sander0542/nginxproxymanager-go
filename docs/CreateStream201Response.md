@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** | Unique identifier | [readonly] 
+**Id** | **int64** | Unique identifier | [readonly] 
 **CreatedOn** | **string** | Date and time of creation | [readonly] 
 **ModifiedOn** | **string** | Date and time of last update | [readonly] 
-**OwnerUserId** | **int32** | User ID | 
-**IncomingPort** | **int32** |  | 
+**OwnerUserId** | **int64** | User ID | 
+**IncomingPort** | **int64** |  | 
 **ForwardingHost** | [**CreateStreamRequestForwardingHost**](CreateStreamRequestForwardingHost.md) |  | 
-**ForwardingPort** | **int32** |  | 
+**ForwardingPort** | **int64** |  | 
 **TcpForwarding** | **bool** |  | 
 **UdpForwarding** | **bool** |  | 
 **Enabled** | **bool** | Is Enabled | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewCreateStream201Response
 
-`func NewCreateStream201Response(id int32, createdOn string, modifiedOn string, ownerUserId int32, incomingPort int32, forwardingHost CreateStreamRequestForwardingHost, forwardingPort int32, tcpForwarding bool, udpForwarding bool, enabled bool, meta map[string]interface{}, ) *CreateStream201Response`
+`func NewCreateStream201Response(id int64, createdOn string, modifiedOn string, ownerUserId int64, incomingPort int64, forwardingHost CreateStreamRequestForwardingHost, forwardingPort int64, tcpForwarding bool, udpForwarding bool, enabled bool, meta map[string]interface{}, ) *CreateStream201Response`
 
 NewCreateStream201Response instantiates a new CreateStream201Response object
 This constructor will assign default values to properties that have it defined,
@@ -37,20 +37,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *CreateStream201Response) GetId() int32`
+`func (o *CreateStream201Response) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *CreateStream201Response) GetIdOk() (*int32, bool)`
+`func (o *CreateStream201Response) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *CreateStream201Response) SetId(v int32)`
+`func (o *CreateStream201Response) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -97,40 +97,40 @@ SetModifiedOn sets ModifiedOn field to given value.
 
 ### GetOwnerUserId
 
-`func (o *CreateStream201Response) GetOwnerUserId() int32`
+`func (o *CreateStream201Response) GetOwnerUserId() int64`
 
 GetOwnerUserId returns the OwnerUserId field if non-nil, zero value otherwise.
 
 ### GetOwnerUserIdOk
 
-`func (o *CreateStream201Response) GetOwnerUserIdOk() (*int32, bool)`
+`func (o *CreateStream201Response) GetOwnerUserIdOk() (*int64, bool)`
 
 GetOwnerUserIdOk returns a tuple with the OwnerUserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerUserId
 
-`func (o *CreateStream201Response) SetOwnerUserId(v int32)`
+`func (o *CreateStream201Response) SetOwnerUserId(v int64)`
 
 SetOwnerUserId sets OwnerUserId field to given value.
 
 
 ### GetIncomingPort
 
-`func (o *CreateStream201Response) GetIncomingPort() int32`
+`func (o *CreateStream201Response) GetIncomingPort() int64`
 
 GetIncomingPort returns the IncomingPort field if non-nil, zero value otherwise.
 
 ### GetIncomingPortOk
 
-`func (o *CreateStream201Response) GetIncomingPortOk() (*int32, bool)`
+`func (o *CreateStream201Response) GetIncomingPortOk() (*int64, bool)`
 
 GetIncomingPortOk returns a tuple with the IncomingPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIncomingPort
 
-`func (o *CreateStream201Response) SetIncomingPort(v int32)`
+`func (o *CreateStream201Response) SetIncomingPort(v int64)`
 
 SetIncomingPort sets IncomingPort field to given value.
 
@@ -157,20 +157,20 @@ SetForwardingHost sets ForwardingHost field to given value.
 
 ### GetForwardingPort
 
-`func (o *CreateStream201Response) GetForwardingPort() int32`
+`func (o *CreateStream201Response) GetForwardingPort() int64`
 
 GetForwardingPort returns the ForwardingPort field if non-nil, zero value otherwise.
 
 ### GetForwardingPortOk
 
-`func (o *CreateStream201Response) GetForwardingPortOk() (*int32, bool)`
+`func (o *CreateStream201Response) GetForwardingPortOk() (*int64, bool)`
 
 GetForwardingPortOk returns a tuple with the ForwardingPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardingPort
 
-`func (o *CreateStream201Response) SetForwardingPort(v int32)`
+`func (o *CreateStream201Response) SetForwardingPort(v int64)`
 
 SetForwardingPort sets ForwardingPort field to given value.
 

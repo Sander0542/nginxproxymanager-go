@@ -20,9 +20,9 @@ var _ MappedNullable = &Health200ResponseVersion{}
 
 // Health200ResponseVersion The version object
 type Health200ResponseVersion struct {
-	Major int32 `json:"major"`
-	Minor int32 `json:"minor"`
-	Revision int32 `json:"revision"`
+	Major int64 `json:"major"`
+	Minor int64 `json:"minor"`
+	Revision int64 `json:"revision"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,7 +32,7 @@ type _Health200ResponseVersion Health200ResponseVersion
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHealth200ResponseVersion(major int32, minor int32, revision int32) *Health200ResponseVersion {
+func NewHealth200ResponseVersion(major int64, minor int64, revision int64) *Health200ResponseVersion {
 	this := Health200ResponseVersion{}
 	this.Major = major
 	this.Minor = minor
@@ -49,9 +49,9 @@ func NewHealth200ResponseVersionWithDefaults() *Health200ResponseVersion {
 }
 
 // GetMajor returns the Major field value
-func (o *Health200ResponseVersion) GetMajor() int32 {
+func (o *Health200ResponseVersion) GetMajor() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -60,7 +60,7 @@ func (o *Health200ResponseVersion) GetMajor() int32 {
 
 // GetMajorOk returns a tuple with the Major field value
 // and a boolean to check if the value has been set.
-func (o *Health200ResponseVersion) GetMajorOk() (*int32, bool) {
+func (o *Health200ResponseVersion) GetMajorOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,14 +68,14 @@ func (o *Health200ResponseVersion) GetMajorOk() (*int32, bool) {
 }
 
 // SetMajor sets field value
-func (o *Health200ResponseVersion) SetMajor(v int32) {
+func (o *Health200ResponseVersion) SetMajor(v int64) {
 	o.Major = v
 }
 
 // GetMinor returns the Minor field value
-func (o *Health200ResponseVersion) GetMinor() int32 {
+func (o *Health200ResponseVersion) GetMinor() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *Health200ResponseVersion) GetMinor() int32 {
 
 // GetMinorOk returns a tuple with the Minor field value
 // and a boolean to check if the value has been set.
-func (o *Health200ResponseVersion) GetMinorOk() (*int32, bool) {
+func (o *Health200ResponseVersion) GetMinorOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,14 +92,14 @@ func (o *Health200ResponseVersion) GetMinorOk() (*int32, bool) {
 }
 
 // SetMinor sets field value
-func (o *Health200ResponseVersion) SetMinor(v int32) {
+func (o *Health200ResponseVersion) SetMinor(v int64) {
 	o.Minor = v
 }
 
 // GetRevision returns the Revision field value
-func (o *Health200ResponseVersion) GetRevision() int32 {
+func (o *Health200ResponseVersion) GetRevision() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -108,7 +108,7 @@ func (o *Health200ResponseVersion) GetRevision() int32 {
 
 // GetRevisionOk returns a tuple with the Revision field value
 // and a boolean to check if the value has been set.
-func (o *Health200ResponseVersion) GetRevisionOk() (*int32, bool) {
+func (o *Health200ResponseVersion) GetRevisionOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *Health200ResponseVersion) GetRevisionOk() (*int32, bool) {
 }
 
 // SetRevision sets field value
-func (o *Health200ResponseVersion) SetRevision(v int32) {
+func (o *Health200ResponseVersion) SetRevision(v int64) {
 	o.Revision = v
 }
 

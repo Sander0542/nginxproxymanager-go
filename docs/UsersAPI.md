@@ -98,7 +98,7 @@ import (
 )
 
 func main() {
-	userID := int32(2) // int32 | User ID
+	userID := int64(2) // int64 | User ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -118,7 +118,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userID** | **int32** | User ID | 
+**userID** | **int64** | User ID | 
 
 ### Other Parameters
 
@@ -166,7 +166,7 @@ import (
 )
 
 func main() {
-	userID := openapiclient.getUser_userID_parameter{Int32: new(int32)} // GetUserUserIDParameter | User ID or 'me' for yourself
+	userID := openapiclient.getUser_userID_parameter{Int64: new(int64)} // GetUserUserIDParameter | User ID or 'me' for yourself
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -298,7 +298,7 @@ import (
 )
 
 func main() {
-	userID := int32(2) // int32 | User ID
+	userID := int64(2) // int64 | User ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -318,7 +318,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userID** | **int32** | User ID | 
+**userID** | **int64** | User ID | 
 
 ### Other Parameters
 
@@ -366,7 +366,7 @@ import (
 )
 
 func main() {
-	userID := openapiclient.getUser_userID_parameter{Int32: new(int32)} // GetUserUserIDParameter | User ID or 'me' for yourself
+	userID := openapiclient.getUser_userID_parameter{Int64: new(int64)} // GetUserUserIDParameter | User ID or 'me' for yourself
 	updateUserRequest := *openapiclient.NewUpdateUserRequest() // UpdateUserRequest | User Payload
 
 	configuration := openapiclient.NewConfiguration()
@@ -436,7 +436,7 @@ import (
 )
 
 func main() {
-	userID := openapiclient.getUser_userID_parameter{Int32: new(int32)} // GetUserUserIDParameter | User ID or 'me' for yourself
+	userID := openapiclient.getUser_userID_parameter{Int64: new(int64)} // GetUserUserIDParameter | User ID or 'me' for yourself
 	updateUserAuthRequest := *openapiclient.NewUpdateUserAuthRequest("password", "mySuperN3wP@ssword!") // UpdateUserAuthRequest | Auth Payload
 
 	configuration := openapiclient.NewConfiguration()
@@ -506,7 +506,7 @@ import (
 )
 
 func main() {
-	userID := int32(2) // int32 | User ID
+	userID := int64(2) // int64 | User ID
 	updateUserPermissionsRequest := *openapiclient.NewUpdateUserPermissionsRequest() // UpdateUserPermissionsRequest | Permissions Payload
 
 	configuration := openapiclient.NewConfiguration()
@@ -527,7 +527,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userID** | **int32** | User ID | 
+**userID** | **int64** | User ID | 
 
 ### Other Parameters
 

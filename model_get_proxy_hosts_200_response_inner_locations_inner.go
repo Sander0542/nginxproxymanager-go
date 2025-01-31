@@ -20,11 +20,11 @@ var _ MappedNullable = &GetProxyHosts200ResponseInnerLocationsInner{}
 
 // GetProxyHosts200ResponseInnerLocationsInner struct for GetProxyHosts200ResponseInnerLocationsInner
 type GetProxyHosts200ResponseInnerLocationsInner struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Path string `json:"path"`
 	ForwardScheme string `json:"forward_scheme"`
 	ForwardHost string `json:"forward_host"`
-	ForwardPort int32 `json:"forward_port"`
+	ForwardPort int64 `json:"forward_port"`
 	ForwardPath *string `json:"forward_path,omitempty"`
 	AdvancedConfig *string `json:"advanced_config,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -36,7 +36,7 @@ type _GetProxyHosts200ResponseInnerLocationsInner GetProxyHosts200ResponseInnerL
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetProxyHosts200ResponseInnerLocationsInner(path string, forwardScheme string, forwardHost string, forwardPort int32) *GetProxyHosts200ResponseInnerLocationsInner {
+func NewGetProxyHosts200ResponseInnerLocationsInner(path string, forwardScheme string, forwardHost string, forwardPort int64) *GetProxyHosts200ResponseInnerLocationsInner {
 	this := GetProxyHosts200ResponseInnerLocationsInner{}
 	this.Path = path
 	this.ForwardScheme = forwardScheme
@@ -54,9 +54,9 @@ func NewGetProxyHosts200ResponseInnerLocationsInnerWithDefaults() *GetProxyHosts
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *GetProxyHosts200ResponseInnerLocationsInner) GetId() int32 {
+func (o *GetProxyHosts200ResponseInnerLocationsInner) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -64,7 +64,7 @@ func (o *GetProxyHosts200ResponseInnerLocationsInner) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetProxyHosts200ResponseInnerLocationsInner) GetIdOk() (*int32, bool) {
+func (o *GetProxyHosts200ResponseInnerLocationsInner) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -80,8 +80,8 @@ func (o *GetProxyHosts200ResponseInnerLocationsInner) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *GetProxyHosts200ResponseInnerLocationsInner) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *GetProxyHosts200ResponseInnerLocationsInner) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -158,9 +158,9 @@ func (o *GetProxyHosts200ResponseInnerLocationsInner) SetForwardHost(v string) {
 }
 
 // GetForwardPort returns the ForwardPort field value
-func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPort() int32 {
+func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPort() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -169,7 +169,7 @@ func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPort() int32 {
 
 // GetForwardPortOk returns a tuple with the ForwardPort field value
 // and a boolean to check if the value has been set.
-func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPortOk() (*int32, bool) {
+func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPortOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -177,7 +177,7 @@ func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPortOk() (*int32
 }
 
 // SetForwardPort sets field value
-func (o *GetProxyHosts200ResponseInnerLocationsInner) SetForwardPort(v int32) {
+func (o *GetProxyHosts200ResponseInnerLocationsInner) SetForwardPort(v int64) {
 	o.ForwardPort = v
 }
 

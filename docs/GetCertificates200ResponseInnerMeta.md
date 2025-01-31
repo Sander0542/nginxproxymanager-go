@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **LetsencryptAgree** | Pointer to **bool** |  | [optional] 
 **LetsencryptCertificate** | Pointer to **map[string]interface{}** |  | [optional] 
 **LetsencryptEmail** | Pointer to **string** |  | [optional] 
-**PropagationSeconds** | Pointer to **int32** |  | [optional] 
+**PropagationSeconds** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -235,20 +235,20 @@ HasLetsencryptEmail returns a boolean if a field has been set.
 
 ### GetPropagationSeconds
 
-`func (o *GetCertificates200ResponseInnerMeta) GetPropagationSeconds() int32`
+`func (o *GetCertificates200ResponseInnerMeta) GetPropagationSeconds() int64`
 
 GetPropagationSeconds returns the PropagationSeconds field if non-nil, zero value otherwise.
 
 ### GetPropagationSecondsOk
 
-`func (o *GetCertificates200ResponseInnerMeta) GetPropagationSecondsOk() (*int32, bool)`
+`func (o *GetCertificates200ResponseInnerMeta) GetPropagationSecondsOk() (*int64, bool)`
 
 GetPropagationSecondsOk returns a tuple with the PropagationSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPropagationSeconds
 
-`func (o *GetCertificates200ResponseInnerMeta) SetPropagationSeconds(v int32)`
+`func (o *GetCertificates200ResponseInnerMeta) SetPropagationSeconds(v int64)`
 
 SetPropagationSeconds sets PropagationSeconds field to given value.
 

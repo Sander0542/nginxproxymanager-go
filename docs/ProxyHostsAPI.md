@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	createProxyHostRequest := *openapiclient.NewCreateProxyHostRequest([]string{"DomainNames_example"}, "ForwardScheme_example", "ForwardHost_example", int32(123)) // CreateProxyHostRequest | Proxy Host Payload
+	createProxyHostRequest := *openapiclient.NewCreateProxyHostRequest([]string{"DomainNames_example"}, "ForwardScheme_example", "ForwardHost_example", int64(123)) // CreateProxyHostRequest | Proxy Host Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	hostID := int32(2) // int32 | 
+	hostID := int64(2) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int32** |  | 
+**hostID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -165,7 +165,7 @@ import (
 )
 
 func main() {
-	hostID := int32(2) // int32 | 
+	hostID := int64(2) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -185,7 +185,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int32** |  | 
+**hostID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -233,7 +233,7 @@ import (
 )
 
 func main() {
-	hostID := int32(2) // int32 | 
+	hostID := int64(2) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -253,7 +253,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int32** |  | 
+**hostID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -301,7 +301,7 @@ import (
 )
 
 func main() {
-	hostID := int32(1) // int32 | 
+	hostID := int64(1) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -321,7 +321,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int32** |  | 
+**hostID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -433,7 +433,7 @@ import (
 )
 
 func main() {
-	hostID := int32(2) // int32 | 
+	hostID := int64(2) // int64 | 
 	updateProxyHostRequest := *openapiclient.NewUpdateProxyHostRequest() // UpdateProxyHostRequest | Proxy Host Payload
 
 	configuration := openapiclient.NewConfiguration()
@@ -454,7 +454,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int32** |  | 
+**hostID** | **int64** |  | 
 
 ### Other Parameters
 

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Path** | **string** |  | 
 **ForwardScheme** | **string** |  | 
 **ForwardHost** | **string** |  | 
-**ForwardPort** | **int32** |  | 
+**ForwardPort** | **int64** |  | 
 **ForwardPath** | Pointer to **string** |  | [optional] 
 **AdvancedConfig** | Pointer to **string** |  | [optional] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewGetProxyHosts200ResponseInnerLocationsInner
 
-`func NewGetProxyHosts200ResponseInnerLocationsInner(path string, forwardScheme string, forwardHost string, forwardPort int32, ) *GetProxyHosts200ResponseInnerLocationsInner`
+`func NewGetProxyHosts200ResponseInnerLocationsInner(path string, forwardScheme string, forwardHost string, forwardPort int64, ) *GetProxyHosts200ResponseInnerLocationsInner`
 
 NewGetProxyHosts200ResponseInnerLocationsInner instantiates a new GetProxyHosts200ResponseInnerLocationsInner object
 This constructor will assign default values to properties that have it defined,
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GetProxyHosts200ResponseInnerLocationsInner) GetId() int32`
+`func (o *GetProxyHosts200ResponseInnerLocationsInner) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetProxyHosts200ResponseInnerLocationsInner) GetIdOk() (*int32, bool)`
+`func (o *GetProxyHosts200ResponseInnerLocationsInner) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetProxyHosts200ResponseInnerLocationsInner) SetId(v int32)`
+`func (o *GetProxyHosts200ResponseInnerLocationsInner) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -118,20 +118,20 @@ SetForwardHost sets ForwardHost field to given value.
 
 ### GetForwardPort
 
-`func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPort() int32`
+`func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPort() int64`
 
 GetForwardPort returns the ForwardPort field if non-nil, zero value otherwise.
 
 ### GetForwardPortOk
 
-`func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPortOk() (*int32, bool)`
+`func (o *GetProxyHosts200ResponseInnerLocationsInner) GetForwardPortOk() (*int64, bool)`
 
 GetForwardPortOk returns a tuple with the ForwardPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardPort
 
-`func (o *GetProxyHosts200ResponseInnerLocationsInner) SetForwardPort(v int32)`
+`func (o *GetProxyHosts200ResponseInnerLocationsInner) SetForwardPort(v int64)`
 
 SetForwardPort sets ForwardPort field to given value.
 

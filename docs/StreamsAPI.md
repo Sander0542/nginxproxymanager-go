@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	createStreamRequest := *openapiclient.NewCreateStreamRequest(int32(123), *openapiclient.NewCreateStreamRequestForwardingHost(), int32(123)) // CreateStreamRequest | Stream Payload
+	createStreamRequest := *openapiclient.NewCreateStreamRequest(int64(123), *openapiclient.NewCreateStreamRequestForwardingHost(), int64(123)) // CreateStreamRequest | Stream Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	streamID := int32(2) // int32 | 
+	streamID := int64(2) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int32** |  | 
+**streamID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -165,7 +165,7 @@ import (
 )
 
 func main() {
-	streamID := int32(2) // int32 | 
+	streamID := int64(2) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -185,7 +185,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int32** |  | 
+**streamID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -233,7 +233,7 @@ import (
 )
 
 func main() {
-	streamID := int32(2) // int32 | 
+	streamID := int64(2) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -253,7 +253,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int32** |  | 
+**streamID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -301,7 +301,7 @@ import (
 )
 
 func main() {
-	streamID := int32(2) // int32 | 
+	streamID := int64(2) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -321,7 +321,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int32** |  | 
+**streamID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -433,7 +433,7 @@ import (
 )
 
 func main() {
-	streamID := int32(2) // int32 | 
+	streamID := int64(2) // int64 | 
 	updateProxyHostRequest := *openapiclient.NewUpdateProxyHostRequest() // UpdateProxyHostRequest | Stream Payload
 
 	configuration := openapiclient.NewConfiguration()
@@ -454,7 +454,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int32** |  | 
+**streamID** | **int64** |  | 
 
 ### Other Parameters
 

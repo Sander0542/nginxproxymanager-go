@@ -21,17 +21,17 @@ var _ MappedNullable = &GetRedirectionHosts200ResponseInner{}
 // GetRedirectionHosts200ResponseInner Redirection Host object
 type GetRedirectionHosts200ResponseInner struct {
 	// Unique identifier
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	// Date and time of creation
 	CreatedOn string `json:"created_on"`
 	// Date and time of last update
 	ModifiedOn string `json:"modified_on"`
 	// User ID
-	OwnerUserId int32 `json:"owner_user_id"`
+	OwnerUserId int64 `json:"owner_user_id"`
 	// Domain Names separated by a comma
 	DomainNames []string `json:"domain_names"`
 	// Redirect HTTP Status Code
-	ForwardHttpCode int32 `json:"forward_http_code"`
+	ForwardHttpCode int64 `json:"forward_http_code"`
 	ForwardScheme string `json:"forward_scheme"`
 	// Domain Name
 	ForwardDomainName string `json:"forward_domain_name" validate:"regexp=^(?:[^.*]+\\\\.?)+[^.]$"`
@@ -61,7 +61,7 @@ type _GetRedirectionHosts200ResponseInner GetRedirectionHosts200ResponseInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetRedirectionHosts200ResponseInner(id int32, createdOn string, modifiedOn string, ownerUserId int32, domainNames []string, forwardHttpCode int32, forwardScheme string, forwardDomainName string, preservePath bool, certificateId GetProxyHosts200ResponseInnerCertificateId, sslForced bool, hstsEnabled bool, hstsSubdomains bool, http2Support bool, blockExploits bool, advancedConfig string, enabled bool, meta map[string]interface{}) *GetRedirectionHosts200ResponseInner {
+func NewGetRedirectionHosts200ResponseInner(id int64, createdOn string, modifiedOn string, ownerUserId int64, domainNames []string, forwardHttpCode int64, forwardScheme string, forwardDomainName string, preservePath bool, certificateId GetProxyHosts200ResponseInnerCertificateId, sslForced bool, hstsEnabled bool, hstsSubdomains bool, http2Support bool, blockExploits bool, advancedConfig string, enabled bool, meta map[string]interface{}) *GetRedirectionHosts200ResponseInner {
 	this := GetRedirectionHosts200ResponseInner{}
 	this.Id = id
 	this.CreatedOn = createdOn
@@ -93,9 +93,9 @@ func NewGetRedirectionHosts200ResponseInnerWithDefaults() *GetRedirectionHosts20
 }
 
 // GetId returns the Id field value
-func (o *GetRedirectionHosts200ResponseInner) GetId() int32 {
+func (o *GetRedirectionHosts200ResponseInner) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -104,7 +104,7 @@ func (o *GetRedirectionHosts200ResponseInner) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *GetRedirectionHosts200ResponseInner) GetIdOk() (*int32, bool) {
+func (o *GetRedirectionHosts200ResponseInner) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,7 +112,7 @@ func (o *GetRedirectionHosts200ResponseInner) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *GetRedirectionHosts200ResponseInner) SetId(v int32) {
+func (o *GetRedirectionHosts200ResponseInner) SetId(v int64) {
 	o.Id = v
 }
 
@@ -165,9 +165,9 @@ func (o *GetRedirectionHosts200ResponseInner) SetModifiedOn(v string) {
 }
 
 // GetOwnerUserId returns the OwnerUserId field value
-func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserId() int32 {
+func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -176,7 +176,7 @@ func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserId() int32 {
 
 // GetOwnerUserIdOk returns a tuple with the OwnerUserId field value
 // and a boolean to check if the value has been set.
-func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserIdOk() (*int32, bool) {
+func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -184,7 +184,7 @@ func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserIdOk() (*int32, bool) 
 }
 
 // SetOwnerUserId sets field value
-func (o *GetRedirectionHosts200ResponseInner) SetOwnerUserId(v int32) {
+func (o *GetRedirectionHosts200ResponseInner) SetOwnerUserId(v int64) {
 	o.OwnerUserId = v
 }
 
@@ -213,9 +213,9 @@ func (o *GetRedirectionHosts200ResponseInner) SetDomainNames(v []string) {
 }
 
 // GetForwardHttpCode returns the ForwardHttpCode field value
-func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCode() int32 {
+func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCode() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -224,7 +224,7 @@ func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCode() int32 {
 
 // GetForwardHttpCodeOk returns a tuple with the ForwardHttpCode field value
 // and a boolean to check if the value has been set.
-func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCodeOk() (*int32, bool) {
+func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCodeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -232,7 +232,7 @@ func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCodeOk() (*int32, bo
 }
 
 // SetForwardHttpCode sets field value
-func (o *GetRedirectionHosts200ResponseInner) SetForwardHttpCode(v int32) {
+func (o *GetRedirectionHosts200ResponseInner) SetForwardHttpCode(v int64) {
 	o.ForwardHttpCode = v
 }
 

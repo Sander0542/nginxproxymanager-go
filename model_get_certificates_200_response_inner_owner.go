@@ -21,7 +21,7 @@ var _ MappedNullable = &GetCertificates200ResponseInnerOwner{}
 // GetCertificates200ResponseInnerOwner User object
 type GetCertificates200ResponseInnerOwner struct {
 	// User ID
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	// Created Date
 	CreatedOn string `json:"created_on"`
 	// Modified Date
@@ -47,7 +47,7 @@ type _GetCertificates200ResponseInnerOwner GetCertificates200ResponseInnerOwner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetCertificates200ResponseInnerOwner(id int32, createdOn string, modifiedOn string, isDisabled bool, email string, name string, nickname string, avatar string, roles []string) *GetCertificates200ResponseInnerOwner {
+func NewGetCertificates200ResponseInnerOwner(id int64, createdOn string, modifiedOn string, isDisabled bool, email string, name string, nickname string, avatar string, roles []string) *GetCertificates200ResponseInnerOwner {
 	this := GetCertificates200ResponseInnerOwner{}
 	this.Id = id
 	this.CreatedOn = createdOn
@@ -70,9 +70,9 @@ func NewGetCertificates200ResponseInnerOwnerWithDefaults() *GetCertificates200Re
 }
 
 // GetId returns the Id field value
-func (o *GetCertificates200ResponseInnerOwner) GetId() int32 {
+func (o *GetCertificates200ResponseInnerOwner) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -81,7 +81,7 @@ func (o *GetCertificates200ResponseInnerOwner) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *GetCertificates200ResponseInnerOwner) GetIdOk() (*int32, bool) {
+func (o *GetCertificates200ResponseInnerOwner) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *GetCertificates200ResponseInnerOwner) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *GetCertificates200ResponseInnerOwner) SetId(v int32) {
+func (o *GetCertificates200ResponseInnerOwner) SetId(v int64) {
 	o.Id = v
 }
 

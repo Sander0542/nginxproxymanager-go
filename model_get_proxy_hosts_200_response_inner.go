@@ -21,19 +21,19 @@ var _ MappedNullable = &GetProxyHosts200ResponseInner{}
 // GetProxyHosts200ResponseInner Proxy Host object
 type GetProxyHosts200ResponseInner struct {
 	// Unique identifier
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	// Date and time of creation
 	CreatedOn string `json:"created_on"`
 	// Date and time of last update
 	ModifiedOn string `json:"modified_on"`
 	// User ID
-	OwnerUserId int32 `json:"owner_user_id"`
+	OwnerUserId int64 `json:"owner_user_id"`
 	// Domain Names separated by a comma
 	DomainNames []string `json:"domain_names"`
 	ForwardHost string `json:"forward_host"`
-	ForwardPort int32 `json:"forward_port"`
+	ForwardPort int64 `json:"forward_port"`
 	// Access List ID
-	AccessListId int32 `json:"access_list_id"`
+	AccessListId int64 `json:"access_list_id"`
 	CertificateId GetProxyHosts200ResponseInnerCertificateId `json:"certificate_id"`
 	// Is SSL Forced
 	SslForced bool `json:"ssl_forced"`
@@ -67,7 +67,7 @@ type _GetProxyHosts200ResponseInner GetProxyHosts200ResponseInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetProxyHosts200ResponseInner(id int32, createdOn string, modifiedOn string, ownerUserId int32, domainNames []string, forwardHost string, forwardPort int32, accessListId int32, certificateId GetProxyHosts200ResponseInnerCertificateId, sslForced bool, cachingEnabled bool, blockExploits bool, advancedConfig string, meta map[string]interface{}, allowWebsocketUpgrade bool, http2Support bool, forwardScheme string, enabled bool, locations []GetProxyHosts200ResponseInnerLocationsInner, hstsEnabled bool, hstsSubdomains bool, certificate GetProxyHosts200ResponseInnerCertificate) *GetProxyHosts200ResponseInner {
+func NewGetProxyHosts200ResponseInner(id int64, createdOn string, modifiedOn string, ownerUserId int64, domainNames []string, forwardHost string, forwardPort int64, accessListId int64, certificateId GetProxyHosts200ResponseInnerCertificateId, sslForced bool, cachingEnabled bool, blockExploits bool, advancedConfig string, meta map[string]interface{}, allowWebsocketUpgrade bool, http2Support bool, forwardScheme string, enabled bool, locations []GetProxyHosts200ResponseInnerLocationsInner, hstsEnabled bool, hstsSubdomains bool, certificate GetProxyHosts200ResponseInnerCertificate) *GetProxyHosts200ResponseInner {
 	this := GetProxyHosts200ResponseInner{}
 	this.Id = id
 	this.CreatedOn = createdOn
@@ -103,9 +103,9 @@ func NewGetProxyHosts200ResponseInnerWithDefaults() *GetProxyHosts200ResponseInn
 }
 
 // GetId returns the Id field value
-func (o *GetProxyHosts200ResponseInner) GetId() int32 {
+func (o *GetProxyHosts200ResponseInner) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -114,7 +114,7 @@ func (o *GetProxyHosts200ResponseInner) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *GetProxyHosts200ResponseInner) GetIdOk() (*int32, bool) {
+func (o *GetProxyHosts200ResponseInner) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *GetProxyHosts200ResponseInner) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *GetProxyHosts200ResponseInner) SetId(v int32) {
+func (o *GetProxyHosts200ResponseInner) SetId(v int64) {
 	o.Id = v
 }
 
@@ -175,9 +175,9 @@ func (o *GetProxyHosts200ResponseInner) SetModifiedOn(v string) {
 }
 
 // GetOwnerUserId returns the OwnerUserId field value
-func (o *GetProxyHosts200ResponseInner) GetOwnerUserId() int32 {
+func (o *GetProxyHosts200ResponseInner) GetOwnerUserId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -186,7 +186,7 @@ func (o *GetProxyHosts200ResponseInner) GetOwnerUserId() int32 {
 
 // GetOwnerUserIdOk returns a tuple with the OwnerUserId field value
 // and a boolean to check if the value has been set.
-func (o *GetProxyHosts200ResponseInner) GetOwnerUserIdOk() (*int32, bool) {
+func (o *GetProxyHosts200ResponseInner) GetOwnerUserIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -194,7 +194,7 @@ func (o *GetProxyHosts200ResponseInner) GetOwnerUserIdOk() (*int32, bool) {
 }
 
 // SetOwnerUserId sets field value
-func (o *GetProxyHosts200ResponseInner) SetOwnerUserId(v int32) {
+func (o *GetProxyHosts200ResponseInner) SetOwnerUserId(v int64) {
 	o.OwnerUserId = v
 }
 
@@ -247,9 +247,9 @@ func (o *GetProxyHosts200ResponseInner) SetForwardHost(v string) {
 }
 
 // GetForwardPort returns the ForwardPort field value
-func (o *GetProxyHosts200ResponseInner) GetForwardPort() int32 {
+func (o *GetProxyHosts200ResponseInner) GetForwardPort() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -258,7 +258,7 @@ func (o *GetProxyHosts200ResponseInner) GetForwardPort() int32 {
 
 // GetForwardPortOk returns a tuple with the ForwardPort field value
 // and a boolean to check if the value has been set.
-func (o *GetProxyHosts200ResponseInner) GetForwardPortOk() (*int32, bool) {
+func (o *GetProxyHosts200ResponseInner) GetForwardPortOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -266,14 +266,14 @@ func (o *GetProxyHosts200ResponseInner) GetForwardPortOk() (*int32, bool) {
 }
 
 // SetForwardPort sets field value
-func (o *GetProxyHosts200ResponseInner) SetForwardPort(v int32) {
+func (o *GetProxyHosts200ResponseInner) SetForwardPort(v int64) {
 	o.ForwardPort = v
 }
 
 // GetAccessListId returns the AccessListId field value
-func (o *GetProxyHosts200ResponseInner) GetAccessListId() int32 {
+func (o *GetProxyHosts200ResponseInner) GetAccessListId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -282,7 +282,7 @@ func (o *GetProxyHosts200ResponseInner) GetAccessListId() int32 {
 
 // GetAccessListIdOk returns a tuple with the AccessListId field value
 // and a boolean to check if the value has been set.
-func (o *GetProxyHosts200ResponseInner) GetAccessListIdOk() (*int32, bool) {
+func (o *GetProxyHosts200ResponseInner) GetAccessListIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -290,7 +290,7 @@ func (o *GetProxyHosts200ResponseInner) GetAccessListIdOk() (*int32, bool) {
 }
 
 // SetAccessListId sets field value
-func (o *GetProxyHosts200ResponseInner) SetAccessListId(v int32) {
+func (o *GetProxyHosts200ResponseInner) SetAccessListId(v int64) {
 	o.AccessListId = v
 }
 

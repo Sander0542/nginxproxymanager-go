@@ -135,7 +135,7 @@ func (a *ProxyHostsAPIService) CreateProxyHostExecute(r ApiCreateProxyHostReques
 type ApiDeleteProxyHostRequest struct {
 	ctx context.Context
 	ApiService *ProxyHostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiDeleteProxyHostRequest) Execute() (bool, *http.Response, error) {
@@ -149,7 +149,7 @@ DeleteProxyHost Delete a Proxy Host
  @param hostID
  @return ApiDeleteProxyHostRequest
 */
-func (a *ProxyHostsAPIService) DeleteProxyHost(ctx context.Context, hostID int32) ApiDeleteProxyHostRequest {
+func (a *ProxyHostsAPIService) DeleteProxyHost(ctx context.Context, hostID int64) ApiDeleteProxyHostRequest {
 	return ApiDeleteProxyHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -239,7 +239,7 @@ func (a *ProxyHostsAPIService) DeleteProxyHostExecute(r ApiDeleteProxyHostReques
 type ApiDisableProxyHostRequest struct {
 	ctx context.Context
 	ApiService *ProxyHostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiDisableProxyHostRequest) Execute() (bool, *http.Response, error) {
@@ -253,7 +253,7 @@ DisableProxyHost Disable a Proxy Host
  @param hostID
  @return ApiDisableProxyHostRequest
 */
-func (a *ProxyHostsAPIService) DisableProxyHost(ctx context.Context, hostID int32) ApiDisableProxyHostRequest {
+func (a *ProxyHostsAPIService) DisableProxyHost(ctx context.Context, hostID int64) ApiDisableProxyHostRequest {
 	return ApiDisableProxyHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -353,7 +353,7 @@ func (a *ProxyHostsAPIService) DisableProxyHostExecute(r ApiDisableProxyHostRequ
 type ApiEnableProxyHostRequest struct {
 	ctx context.Context
 	ApiService *ProxyHostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiEnableProxyHostRequest) Execute() (bool, *http.Response, error) {
@@ -367,7 +367,7 @@ EnableProxyHost Enable a Proxy Host
  @param hostID
  @return ApiEnableProxyHostRequest
 */
-func (a *ProxyHostsAPIService) EnableProxyHost(ctx context.Context, hostID int32) ApiEnableProxyHostRequest {
+func (a *ProxyHostsAPIService) EnableProxyHost(ctx context.Context, hostID int64) ApiEnableProxyHostRequest {
 	return ApiEnableProxyHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -467,7 +467,7 @@ func (a *ProxyHostsAPIService) EnableProxyHostExecute(r ApiEnableProxyHostReques
 type ApiGetProxyHostRequest struct {
 	ctx context.Context
 	ApiService *ProxyHostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiGetProxyHostRequest) Execute() (*GetProxyHosts200ResponseInner, *http.Response, error) {
@@ -481,7 +481,7 @@ GetProxyHost Get a Proxy Host
  @param hostID
  @return ApiGetProxyHostRequest
 */
-func (a *ProxyHostsAPIService) GetProxyHost(ctx context.Context, hostID int32) ApiGetProxyHostRequest {
+func (a *ProxyHostsAPIService) GetProxyHost(ctx context.Context, hostID int64) ApiGetProxyHostRequest {
 	return ApiGetProxyHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -678,7 +678,7 @@ func (a *ProxyHostsAPIService) GetProxyHostsExecute(r ApiGetProxyHostsRequest) (
 type ApiUpdateProxyHostRequest struct {
 	ctx context.Context
 	ApiService *ProxyHostsAPIService
-	hostID int32
+	hostID int64
 	updateProxyHostRequest *UpdateProxyHostRequest
 }
 
@@ -699,7 +699,7 @@ UpdateProxyHost Update a Proxy Host
  @param hostID
  @return ApiUpdateProxyHostRequest
 */
-func (a *ProxyHostsAPIService) UpdateProxyHost(ctx context.Context, hostID int32) ApiUpdateProxyHostRequest {
+func (a *ProxyHostsAPIService) UpdateProxyHost(ctx context.Context, hostID int64) ApiUpdateProxyHostRequest {
 	return ApiUpdateProxyHostRequest{
 		ApiService: a,
 		ctx: ctx,

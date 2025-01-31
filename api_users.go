@@ -135,7 +135,7 @@ func (a *UsersAPIService) CreateUserExecute(r ApiCreateUserRequest) (*GetCertifi
 type ApiDeleteUserRequest struct {
 	ctx context.Context
 	ApiService *UsersAPIService
-	userID int32
+	userID int64
 }
 
 func (r ApiDeleteUserRequest) Execute() (bool, *http.Response, error) {
@@ -149,7 +149,7 @@ DeleteUser Delete a User
  @param userID User ID
  @return ApiDeleteUserRequest
 */
-func (a *UsersAPIService) DeleteUser(ctx context.Context, userID int32) ApiDeleteUserRequest {
+func (a *UsersAPIService) DeleteUser(ctx context.Context, userID int64) ApiDeleteUserRequest {
 	return ApiDeleteUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -447,7 +447,7 @@ func (a *UsersAPIService) GetUsersExecute(r ApiGetUsersRequest) ([]GetCertificat
 type ApiLoginAsUserRequest struct {
 	ctx context.Context
 	ApiService *UsersAPIService
-	userID int32
+	userID int64
 }
 
 func (r ApiLoginAsUserRequest) Execute() (*LoginAsUser200Response, *http.Response, error) {
@@ -461,7 +461,7 @@ LoginAsUser Login as this user
  @param userID User ID
  @return ApiLoginAsUserRequest
 */
-func (a *UsersAPIService) LoginAsUser(ctx context.Context, userID int32) ApiLoginAsUserRequest {
+func (a *UsersAPIService) LoginAsUser(ctx context.Context, userID int64) ApiLoginAsUserRequest {
 	return ApiLoginAsUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -777,7 +777,7 @@ func (a *UsersAPIService) UpdateUserAuthExecute(r ApiUpdateUserAuthRequest) (boo
 type ApiUpdateUserPermissionsRequest struct {
 	ctx context.Context
 	ApiService *UsersAPIService
-	userID int32
+	userID int64
 	updateUserPermissionsRequest *UpdateUserPermissionsRequest
 }
 
@@ -798,7 +798,7 @@ UpdateUserPermissions Update a User's Permissions
  @param userID User ID
  @return ApiUpdateUserPermissionsRequest
 */
-func (a *UsersAPIService) UpdateUserPermissions(ctx context.Context, userID int32) ApiUpdateUserPermissionsRequest {
+func (a *UsersAPIService) UpdateUserPermissions(ctx context.Context, userID int64) ApiUpdateUserPermissionsRequest {
 	return ApiUpdateUserPermissionsRequest{
 		ApiService: a,
 		ctx: ctx,

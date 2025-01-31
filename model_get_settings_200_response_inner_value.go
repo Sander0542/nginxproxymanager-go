@@ -20,7 +20,7 @@ import (
 type GetSettings200ResponseInnerValue struct {
 	ArrayOfAny *[]interface{}
 	Float32 *float32
-	Int32 *int32
+	Int64 *int64
 	MapmapOfStringAny *map[string]interface{}
 	String *string
 }
@@ -54,17 +54,17 @@ func (dst *GetSettings200ResponseInnerValue) UnmarshalJSON(data []byte) error {
 		dst.Float32 = nil
 	}
 
-	// try to unmarshal JSON data into Int32
-	err = json.Unmarshal(data, &dst.Int32);
+	// try to unmarshal JSON data into Int64
+	err = json.Unmarshal(data, &dst.Int64);
 	if err == nil {
-		jsonInt32, _ := json.Marshal(dst.Int32)
-		if string(jsonInt32) == "{}" { // empty struct
-			dst.Int32 = nil
+		jsonInt64, _ := json.Marshal(dst.Int64)
+		if string(jsonInt64) == "{}" { // empty struct
+			dst.Int64 = nil
 		} else {
-			return nil // data stored in dst.Int32, return on the first match
+			return nil // data stored in dst.Int64, return on the first match
 		}
 	} else {
-		dst.Int32 = nil
+		dst.Int64 = nil
 	}
 
 	// try to unmarshal JSON data into MapmapOfStringAny
@@ -106,8 +106,8 @@ func (src GetSettings200ResponseInnerValue) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.Float32)
 	}
 
-	if src.Int32 != nil {
-		return json.Marshal(&src.Int32)
+	if src.Int64 != nil {
+		return json.Marshal(&src.Int64)
 	}
 
 	if src.MapmapOfStringAny != nil {

@@ -22,7 +22,7 @@ type UpdateRedirectionHostRequest struct {
 	// Domain Names separated by a comma
 	DomainNames []string `json:"domain_names,omitempty"`
 	// Redirect HTTP Status Code
-	ForwardHttpCode *int32 `json:"forward_http_code,omitempty"`
+	ForwardHttpCode *int64 `json:"forward_http_code,omitempty"`
 	ForwardScheme *string `json:"forward_scheme,omitempty"`
 	// Domain Name
 	ForwardDomainName *string `json:"forward_domain_name,omitempty" validate:"regexp=^(?:[^.*]+\\\\.?)+[^.]$"`
@@ -96,9 +96,9 @@ func (o *UpdateRedirectionHostRequest) SetDomainNames(v []string) {
 }
 
 // GetForwardHttpCode returns the ForwardHttpCode field value if set, zero value otherwise.
-func (o *UpdateRedirectionHostRequest) GetForwardHttpCode() int32 {
+func (o *UpdateRedirectionHostRequest) GetForwardHttpCode() int64 {
 	if o == nil || IsNil(o.ForwardHttpCode) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ForwardHttpCode
@@ -106,7 +106,7 @@ func (o *UpdateRedirectionHostRequest) GetForwardHttpCode() int32 {
 
 // GetForwardHttpCodeOk returns a tuple with the ForwardHttpCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateRedirectionHostRequest) GetForwardHttpCodeOk() (*int32, bool) {
+func (o *UpdateRedirectionHostRequest) GetForwardHttpCodeOk() (*int64, bool) {
 	if o == nil || IsNil(o.ForwardHttpCode) {
 		return nil, false
 	}
@@ -122,8 +122,8 @@ func (o *UpdateRedirectionHostRequest) HasForwardHttpCode() bool {
 	return false
 }
 
-// SetForwardHttpCode gets a reference to the given int32 and assigns it to the ForwardHttpCode field.
-func (o *UpdateRedirectionHostRequest) SetForwardHttpCode(v int32) {
+// SetForwardHttpCode gets a reference to the given int64 and assigns it to the ForwardHttpCode field.
+func (o *UpdateRedirectionHostRequest) SetForwardHttpCode(v int64) {
 	o.ForwardHttpCode = &v
 }
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **DomainNames** | **[]string** | Domain Names separated by a comma | 
 **ForwardScheme** | **string** |  | 
 **ForwardHost** | **string** |  | 
-**ForwardPort** | **int32** |  | 
+**ForwardPort** | **int64** |  | 
 **CertificateId** | Pointer to [**GetProxyHosts200ResponseInnerCertificateId**](GetProxyHosts200ResponseInnerCertificateId.md) |  | [optional] 
 **SslForced** | Pointer to **bool** | Is SSL Forced | [optional] 
 **HstsEnabled** | Pointer to **bool** | Is HSTS Enabled | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **BlockExploits** | Pointer to **bool** | Should we block common exploits | [optional] 
 **CachingEnabled** | Pointer to **bool** | Should we cache assets | [optional] 
 **AllowWebsocketUpgrade** | Pointer to **bool** | Allow Websocket Upgrade for all paths | [optional] 
-**AccessListId** | Pointer to **int32** | Access List ID | [optional] 
+**AccessListId** | Pointer to **int64** | Access List ID | [optional] 
 **AdvancedConfig** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** | Is Enabled | [optional] 
 **Meta** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewCreateProxyHostRequest
 
-`func NewCreateProxyHostRequest(domainNames []string, forwardScheme string, forwardHost string, forwardPort int32, ) *CreateProxyHostRequest`
+`func NewCreateProxyHostRequest(domainNames []string, forwardScheme string, forwardHost string, forwardPort int64, ) *CreateProxyHostRequest`
 
 NewCreateProxyHostRequest instantiates a new CreateProxyHostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -103,20 +103,20 @@ SetForwardHost sets ForwardHost field to given value.
 
 ### GetForwardPort
 
-`func (o *CreateProxyHostRequest) GetForwardPort() int32`
+`func (o *CreateProxyHostRequest) GetForwardPort() int64`
 
 GetForwardPort returns the ForwardPort field if non-nil, zero value otherwise.
 
 ### GetForwardPortOk
 
-`func (o *CreateProxyHostRequest) GetForwardPortOk() (*int32, bool)`
+`func (o *CreateProxyHostRequest) GetForwardPortOk() (*int64, bool)`
 
 GetForwardPortOk returns a tuple with the ForwardPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardPort
 
-`func (o *CreateProxyHostRequest) SetForwardPort(v int32)`
+`func (o *CreateProxyHostRequest) SetForwardPort(v int64)`
 
 SetForwardPort sets ForwardPort field to given value.
 
@@ -323,20 +323,20 @@ HasAllowWebsocketUpgrade returns a boolean if a field has been set.
 
 ### GetAccessListId
 
-`func (o *CreateProxyHostRequest) GetAccessListId() int32`
+`func (o *CreateProxyHostRequest) GetAccessListId() int64`
 
 GetAccessListId returns the AccessListId field if non-nil, zero value otherwise.
 
 ### GetAccessListIdOk
 
-`func (o *CreateProxyHostRequest) GetAccessListIdOk() (*int32, bool)`
+`func (o *CreateProxyHostRequest) GetAccessListIdOk() (*int64, bool)`
 
 GetAccessListIdOk returns a tuple with the AccessListId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessListId
 
-`func (o *CreateProxyHostRequest) SetAccessListId(v int32)`
+`func (o *CreateProxyHostRequest) SetAccessListId(v int64)`
 
 SetAccessListId sets AccessListId field to given value.
 

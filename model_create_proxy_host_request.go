@@ -24,7 +24,7 @@ type CreateProxyHostRequest struct {
 	DomainNames []string `json:"domain_names"`
 	ForwardScheme string `json:"forward_scheme"`
 	ForwardHost string `json:"forward_host"`
-	ForwardPort int32 `json:"forward_port"`
+	ForwardPort int64 `json:"forward_port"`
 	CertificateId *GetProxyHosts200ResponseInnerCertificateId `json:"certificate_id,omitempty"`
 	// Is SSL Forced
 	SslForced *bool `json:"ssl_forced,omitempty"`
@@ -41,7 +41,7 @@ type CreateProxyHostRequest struct {
 	// Allow Websocket Upgrade for all paths
 	AllowWebsocketUpgrade *bool `json:"allow_websocket_upgrade,omitempty"`
 	// Access List ID
-	AccessListId *int32 `json:"access_list_id,omitempty"`
+	AccessListId *int64 `json:"access_list_id,omitempty"`
 	AdvancedConfig *string `json:"advanced_config,omitempty"`
 	// Is Enabled
 	Enabled *bool `json:"enabled,omitempty"`
@@ -56,7 +56,7 @@ type _CreateProxyHostRequest CreateProxyHostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateProxyHostRequest(domainNames []string, forwardScheme string, forwardHost string, forwardPort int32) *CreateProxyHostRequest {
+func NewCreateProxyHostRequest(domainNames []string, forwardScheme string, forwardHost string, forwardPort int64) *CreateProxyHostRequest {
 	this := CreateProxyHostRequest{}
 	this.DomainNames = domainNames
 	this.ForwardScheme = forwardScheme
@@ -146,9 +146,9 @@ func (o *CreateProxyHostRequest) SetForwardHost(v string) {
 }
 
 // GetForwardPort returns the ForwardPort field value
-func (o *CreateProxyHostRequest) GetForwardPort() int32 {
+func (o *CreateProxyHostRequest) GetForwardPort() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -157,7 +157,7 @@ func (o *CreateProxyHostRequest) GetForwardPort() int32 {
 
 // GetForwardPortOk returns a tuple with the ForwardPort field value
 // and a boolean to check if the value has been set.
-func (o *CreateProxyHostRequest) GetForwardPortOk() (*int32, bool) {
+func (o *CreateProxyHostRequest) GetForwardPortOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -165,7 +165,7 @@ func (o *CreateProxyHostRequest) GetForwardPortOk() (*int32, bool) {
 }
 
 // SetForwardPort sets field value
-func (o *CreateProxyHostRequest) SetForwardPort(v int32) {
+func (o *CreateProxyHostRequest) SetForwardPort(v int64) {
 	o.ForwardPort = v
 }
 
@@ -426,9 +426,9 @@ func (o *CreateProxyHostRequest) SetAllowWebsocketUpgrade(v bool) {
 }
 
 // GetAccessListId returns the AccessListId field value if set, zero value otherwise.
-func (o *CreateProxyHostRequest) GetAccessListId() int32 {
+func (o *CreateProxyHostRequest) GetAccessListId() int64 {
 	if o == nil || IsNil(o.AccessListId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AccessListId
@@ -436,7 +436,7 @@ func (o *CreateProxyHostRequest) GetAccessListId() int32 {
 
 // GetAccessListIdOk returns a tuple with the AccessListId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateProxyHostRequest) GetAccessListIdOk() (*int32, bool) {
+func (o *CreateProxyHostRequest) GetAccessListIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.AccessListId) {
 		return nil, false
 	}
@@ -452,8 +452,8 @@ func (o *CreateProxyHostRequest) HasAccessListId() bool {
 	return false
 }
 
-// SetAccessListId gets a reference to the given int32 and assigns it to the AccessListId field.
-func (o *CreateProxyHostRequest) SetAccessListId(v int32) {
+// SetAccessListId gets a reference to the given int64 and assigns it to the AccessListId field.
+func (o *CreateProxyHostRequest) SetAccessListId(v int64) {
 	o.AccessListId = &v
 }
 

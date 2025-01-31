@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** | Unique identifier | [readonly] 
+**Id** | **int64** | Unique identifier | [readonly] 
 **CreatedOn** | **string** | Date and time of creation | [readonly] 
 **ModifiedOn** | **string** | Date and time of last update | [readonly] 
-**OwnerUserId** | **int32** | User ID | 
+**OwnerUserId** | **int64** | User ID | 
 **DomainNames** | **[]string** | Domain Names separated by a comma | 
 **ForwardHost** | **string** |  | 
-**ForwardPort** | **int32** |  | 
-**AccessListId** | **int32** | Access List ID | 
+**ForwardPort** | **int64** |  | 
+**AccessListId** | **int64** | Access List ID | 
 **CertificateId** | [**GetProxyHosts200ResponseInnerCertificateId**](GetProxyHosts200ResponseInnerCertificateId.md) |  | 
 **SslForced** | **bool** | Is SSL Forced | 
 **CachingEnabled** | **bool** | Should we cache assets | 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewGetProxyHosts200ResponseInner
 
-`func NewGetProxyHosts200ResponseInner(id int32, createdOn string, modifiedOn string, ownerUserId int32, domainNames []string, forwardHost string, forwardPort int32, accessListId int32, certificateId GetProxyHosts200ResponseInnerCertificateId, sslForced bool, cachingEnabled bool, blockExploits bool, advancedConfig string, meta map[string]interface{}, allowWebsocketUpgrade bool, http2Support bool, forwardScheme string, enabled bool, locations []GetProxyHosts200ResponseInnerLocationsInner, hstsEnabled bool, hstsSubdomains bool, certificate GetProxyHosts200ResponseInnerCertificate, ) *GetProxyHosts200ResponseInner`
+`func NewGetProxyHosts200ResponseInner(id int64, createdOn string, modifiedOn string, ownerUserId int64, domainNames []string, forwardHost string, forwardPort int64, accessListId int64, certificateId GetProxyHosts200ResponseInnerCertificateId, sslForced bool, cachingEnabled bool, blockExploits bool, advancedConfig string, meta map[string]interface{}, allowWebsocketUpgrade bool, http2Support bool, forwardScheme string, enabled bool, locations []GetProxyHosts200ResponseInnerLocationsInner, hstsEnabled bool, hstsSubdomains bool, certificate GetProxyHosts200ResponseInnerCertificate, ) *GetProxyHosts200ResponseInner`
 
 NewGetProxyHosts200ResponseInner instantiates a new GetProxyHosts200ResponseInner object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GetProxyHosts200ResponseInner) GetId() int32`
+`func (o *GetProxyHosts200ResponseInner) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetProxyHosts200ResponseInner) GetIdOk() (*int32, bool)`
+`func (o *GetProxyHosts200ResponseInner) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetProxyHosts200ResponseInner) SetId(v int32)`
+`func (o *GetProxyHosts200ResponseInner) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -110,20 +110,20 @@ SetModifiedOn sets ModifiedOn field to given value.
 
 ### GetOwnerUserId
 
-`func (o *GetProxyHosts200ResponseInner) GetOwnerUserId() int32`
+`func (o *GetProxyHosts200ResponseInner) GetOwnerUserId() int64`
 
 GetOwnerUserId returns the OwnerUserId field if non-nil, zero value otherwise.
 
 ### GetOwnerUserIdOk
 
-`func (o *GetProxyHosts200ResponseInner) GetOwnerUserIdOk() (*int32, bool)`
+`func (o *GetProxyHosts200ResponseInner) GetOwnerUserIdOk() (*int64, bool)`
 
 GetOwnerUserIdOk returns a tuple with the OwnerUserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerUserId
 
-`func (o *GetProxyHosts200ResponseInner) SetOwnerUserId(v int32)`
+`func (o *GetProxyHosts200ResponseInner) SetOwnerUserId(v int64)`
 
 SetOwnerUserId sets OwnerUserId field to given value.
 
@@ -170,40 +170,40 @@ SetForwardHost sets ForwardHost field to given value.
 
 ### GetForwardPort
 
-`func (o *GetProxyHosts200ResponseInner) GetForwardPort() int32`
+`func (o *GetProxyHosts200ResponseInner) GetForwardPort() int64`
 
 GetForwardPort returns the ForwardPort field if non-nil, zero value otherwise.
 
 ### GetForwardPortOk
 
-`func (o *GetProxyHosts200ResponseInner) GetForwardPortOk() (*int32, bool)`
+`func (o *GetProxyHosts200ResponseInner) GetForwardPortOk() (*int64, bool)`
 
 GetForwardPortOk returns a tuple with the ForwardPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardPort
 
-`func (o *GetProxyHosts200ResponseInner) SetForwardPort(v int32)`
+`func (o *GetProxyHosts200ResponseInner) SetForwardPort(v int64)`
 
 SetForwardPort sets ForwardPort field to given value.
 
 
 ### GetAccessListId
 
-`func (o *GetProxyHosts200ResponseInner) GetAccessListId() int32`
+`func (o *GetProxyHosts200ResponseInner) GetAccessListId() int64`
 
 GetAccessListId returns the AccessListId field if non-nil, zero value otherwise.
 
 ### GetAccessListIdOk
 
-`func (o *GetProxyHosts200ResponseInner) GetAccessListIdOk() (*int32, bool)`
+`func (o *GetProxyHosts200ResponseInner) GetAccessListIdOk() (*int64, bool)`
 
 GetAccessListIdOk returns a tuple with the AccessListId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessListId
 
-`func (o *GetProxyHosts200ResponseInner) SetAccessListId(v int32)`
+`func (o *GetProxyHosts200ResponseInner) SetAccessListId(v int64)`
 
 SetAccessListId sets AccessListId field to given value.
 

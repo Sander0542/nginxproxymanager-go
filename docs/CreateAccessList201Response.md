@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** | Unique identifier | [readonly] 
+**Id** | **int64** | Unique identifier | [readonly] 
 **CreatedOn** | **string** | Date and time of creation | [readonly] 
 **ModifiedOn** | **string** | Date and time of last update | [readonly] 
-**OwnerUserId** | **int32** | User ID | 
+**OwnerUserId** | **int64** | User ID | 
 **Name** | **string** |  | 
 **Directive** | **string** |  | 
 **Address** | [**GetAccessLists200ResponseAddress**](GetAccessLists200ResponseAddress.md) |  | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewCreateAccessList201Response
 
-`func NewCreateAccessList201Response(id int32, createdOn string, modifiedOn string, ownerUserId int32, name string, directive string, address GetAccessLists200ResponseAddress, satisfyAny bool, passAuth bool, meta map[string]interface{}, ) *CreateAccessList201Response`
+`func NewCreateAccessList201Response(id int64, createdOn string, modifiedOn string, ownerUserId int64, name string, directive string, address GetAccessLists200ResponseAddress, satisfyAny bool, passAuth bool, meta map[string]interface{}, ) *CreateAccessList201Response`
 
 NewCreateAccessList201Response instantiates a new CreateAccessList201Response object
 This constructor will assign default values to properties that have it defined,
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *CreateAccessList201Response) GetId() int32`
+`func (o *CreateAccessList201Response) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *CreateAccessList201Response) GetIdOk() (*int32, bool)`
+`func (o *CreateAccessList201Response) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *CreateAccessList201Response) SetId(v int32)`
+`func (o *CreateAccessList201Response) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -96,20 +96,20 @@ SetModifiedOn sets ModifiedOn field to given value.
 
 ### GetOwnerUserId
 
-`func (o *CreateAccessList201Response) GetOwnerUserId() int32`
+`func (o *CreateAccessList201Response) GetOwnerUserId() int64`
 
 GetOwnerUserId returns the OwnerUserId field if non-nil, zero value otherwise.
 
 ### GetOwnerUserIdOk
 
-`func (o *CreateAccessList201Response) GetOwnerUserIdOk() (*int32, bool)`
+`func (o *CreateAccessList201Response) GetOwnerUserIdOk() (*int64, bool)`
 
 GetOwnerUserIdOk returns a tuple with the OwnerUserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerUserId
 
-`func (o *CreateAccessList201Response) SetOwnerUserId(v int32)`
+`func (o *CreateAccessList201Response) SetOwnerUserId(v int64)`
 
 SetOwnerUserId sets OwnerUserId field to given value.
 

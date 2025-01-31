@@ -21,13 +21,13 @@ var _ MappedNullable = &GetAccessLists200Response{}
 // GetAccessLists200Response Access List object
 type GetAccessLists200Response struct {
 	// Unique identifier
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	// Date and time of creation
 	CreatedOn string `json:"created_on"`
 	// Date and time of last update
 	ModifiedOn string `json:"modified_on"`
 	// User ID
-	OwnerUserId int32 `json:"owner_user_id"`
+	OwnerUserId int64 `json:"owner_user_id"`
 	Name string `json:"name"`
 	Directive string `json:"directive"`
 	Address GetAccessLists200ResponseAddress `json:"address"`
@@ -43,7 +43,7 @@ type _GetAccessLists200Response GetAccessLists200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetAccessLists200Response(id int32, createdOn string, modifiedOn string, ownerUserId int32, name string, directive string, address GetAccessLists200ResponseAddress, satisfyAny bool, passAuth bool, meta map[string]interface{}) *GetAccessLists200Response {
+func NewGetAccessLists200Response(id int64, createdOn string, modifiedOn string, ownerUserId int64, name string, directive string, address GetAccessLists200ResponseAddress, satisfyAny bool, passAuth bool, meta map[string]interface{}) *GetAccessLists200Response {
 	this := GetAccessLists200Response{}
 	this.Id = id
 	this.CreatedOn = createdOn
@@ -67,9 +67,9 @@ func NewGetAccessLists200ResponseWithDefaults() *GetAccessLists200Response {
 }
 
 // GetId returns the Id field value
-func (o *GetAccessLists200Response) GetId() int32 {
+func (o *GetAccessLists200Response) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -78,7 +78,7 @@ func (o *GetAccessLists200Response) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *GetAccessLists200Response) GetIdOk() (*int32, bool) {
+func (o *GetAccessLists200Response) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,7 +86,7 @@ func (o *GetAccessLists200Response) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *GetAccessLists200Response) SetId(v int32) {
+func (o *GetAccessLists200Response) SetId(v int64) {
 	o.Id = v
 }
 
@@ -139,9 +139,9 @@ func (o *GetAccessLists200Response) SetModifiedOn(v string) {
 }
 
 // GetOwnerUserId returns the OwnerUserId field value
-func (o *GetAccessLists200Response) GetOwnerUserId() int32 {
+func (o *GetAccessLists200Response) GetOwnerUserId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -150,7 +150,7 @@ func (o *GetAccessLists200Response) GetOwnerUserId() int32 {
 
 // GetOwnerUserIdOk returns a tuple with the OwnerUserId field value
 // and a boolean to check if the value has been set.
-func (o *GetAccessLists200Response) GetOwnerUserIdOk() (*int32, bool) {
+func (o *GetAccessLists200Response) GetOwnerUserIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -158,7 +158,7 @@ func (o *GetAccessLists200Response) GetOwnerUserIdOk() (*int32, bool) {
 }
 
 // SetOwnerUserId sets field value
-func (o *GetAccessLists200Response) SetOwnerUserId(v int32) {
+func (o *GetAccessLists200Response) SetOwnerUserId(v int64) {
 	o.OwnerUserId = v
 }
 

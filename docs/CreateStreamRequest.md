@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IncomingPort** | **int32** |  | 
+**IncomingPort** | **int64** |  | 
 **ForwardingHost** | [**CreateStreamRequestForwardingHost**](CreateStreamRequestForwardingHost.md) |  | 
-**ForwardingPort** | **int32** |  | 
+**ForwardingPort** | **int64** |  | 
 **TcpForwarding** | Pointer to **bool** |  | [optional] 
 **UdpForwarding** | Pointer to **bool** |  | [optional] 
 **Meta** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCreateStreamRequest
 
-`func NewCreateStreamRequest(incomingPort int32, forwardingHost CreateStreamRequestForwardingHost, forwardingPort int32, ) *CreateStreamRequest`
+`func NewCreateStreamRequest(incomingPort int64, forwardingHost CreateStreamRequestForwardingHost, forwardingPort int64, ) *CreateStreamRequest`
 
 NewCreateStreamRequest instantiates a new CreateStreamRequest object
 This constructor will assign default values to properties that have it defined,
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIncomingPort
 
-`func (o *CreateStreamRequest) GetIncomingPort() int32`
+`func (o *CreateStreamRequest) GetIncomingPort() int64`
 
 GetIncomingPort returns the IncomingPort field if non-nil, zero value otherwise.
 
 ### GetIncomingPortOk
 
-`func (o *CreateStreamRequest) GetIncomingPortOk() (*int32, bool)`
+`func (o *CreateStreamRequest) GetIncomingPortOk() (*int64, bool)`
 
 GetIncomingPortOk returns a tuple with the IncomingPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIncomingPort
 
-`func (o *CreateStreamRequest) SetIncomingPort(v int32)`
+`func (o *CreateStreamRequest) SetIncomingPort(v int64)`
 
 SetIncomingPort sets IncomingPort field to given value.
 
@@ -72,20 +72,20 @@ SetForwardingHost sets ForwardingHost field to given value.
 
 ### GetForwardingPort
 
-`func (o *CreateStreamRequest) GetForwardingPort() int32`
+`func (o *CreateStreamRequest) GetForwardingPort() int64`
 
 GetForwardingPort returns the ForwardingPort field if non-nil, zero value otherwise.
 
 ### GetForwardingPortOk
 
-`func (o *CreateStreamRequest) GetForwardingPortOk() (*int32, bool)`
+`func (o *CreateStreamRequest) GetForwardingPortOk() (*int64, bool)`
 
 GetForwardingPortOk returns a tuple with the ForwardingPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardingPort
 
-`func (o *CreateStreamRequest) SetForwardingPort(v int32)`
+`func (o *CreateStreamRequest) SetForwardingPort(v int64)`
 
 SetForwardingPort sets ForwardingPort field to given value.
 

@@ -146,7 +146,7 @@ func (a *CertificatesAPIService) CreateCertificateExecute(r ApiCreateCertificate
 type ApiDeleteCertificateRequest struct {
 	ctx context.Context
 	ApiService *CertificatesAPIService
-	certID int32
+	certID int64
 }
 
 func (r ApiDeleteCertificateRequest) Execute() (bool, *http.Response, error) {
@@ -160,7 +160,7 @@ DeleteCertificate Delete a Certificate
  @param certID
  @return ApiDeleteCertificateRequest
 */
-func (a *CertificatesAPIService) DeleteCertificate(ctx context.Context, certID int32) ApiDeleteCertificateRequest {
+func (a *CertificatesAPIService) DeleteCertificate(ctx context.Context, certID int64) ApiDeleteCertificateRequest {
 	return ApiDeleteCertificateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -250,7 +250,7 @@ func (a *CertificatesAPIService) DeleteCertificateExecute(r ApiDeleteCertificate
 type ApiDownloadCertificateRequest struct {
 	ctx context.Context
 	ApiService *CertificatesAPIService
-	certID int32
+	certID int64
 }
 
 func (r ApiDownloadCertificateRequest) Execute() (*os.File, *http.Response, error) {
@@ -264,7 +264,7 @@ DownloadCertificate Downloads a Certificate
  @param certID
  @return ApiDownloadCertificateRequest
 */
-func (a *CertificatesAPIService) DownloadCertificate(ctx context.Context, certID int32) ApiDownloadCertificateRequest {
+func (a *CertificatesAPIService) DownloadCertificate(ctx context.Context, certID int64) ApiDownloadCertificateRequest {
 	return ApiDownloadCertificateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -354,7 +354,7 @@ func (a *CertificatesAPIService) DownloadCertificateExecute(r ApiDownloadCertifi
 type ApiGetCertificateRequest struct {
 	ctx context.Context
 	ApiService *CertificatesAPIService
-	certID int32
+	certID int64
 }
 
 func (r ApiGetCertificateRequest) Execute() (*GetCertificates200ResponseInner, *http.Response, error) {
@@ -368,7 +368,7 @@ GetCertificate Get a Certificate
  @param certID
  @return ApiGetCertificateRequest
 */
-func (a *CertificatesAPIService) GetCertificate(ctx context.Context, certID int32) ApiGetCertificateRequest {
+func (a *CertificatesAPIService) GetCertificate(ctx context.Context, certID int64) ApiGetCertificateRequest {
 	return ApiGetCertificateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -565,7 +565,7 @@ func (a *CertificatesAPIService) GetCertificatesExecute(r ApiGetCertificatesRequ
 type ApiRenewCertificateRequest struct {
 	ctx context.Context
 	ApiService *CertificatesAPIService
-	certID int32
+	certID int64
 }
 
 func (r ApiRenewCertificateRequest) Execute() (*GetCertificates200ResponseInner, *http.Response, error) {
@@ -579,7 +579,7 @@ RenewCertificate Renews a Certificate
  @param certID
  @return ApiRenewCertificateRequest
 */
-func (a *CertificatesAPIService) RenewCertificate(ctx context.Context, certID int32) ApiRenewCertificateRequest {
+func (a *CertificatesAPIService) RenewCertificate(ctx context.Context, certID int64) ApiRenewCertificateRequest {
 	return ApiRenewCertificateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -766,7 +766,7 @@ func (a *CertificatesAPIService) TestHttpReachExecute(r ApiTestHttpReachRequest)
 type ApiUploadCertificateRequest struct {
 	ctx context.Context
 	ApiService *CertificatesAPIService
-	certID int32
+	certID int64
 	certificate *string
 	certificateKey *string
 	intermediateCertificate *string
@@ -798,7 +798,7 @@ UploadCertificate Uploads a custom Certificate
  @param certID
  @return ApiUploadCertificateRequest
 */
-func (a *CertificatesAPIService) UploadCertificate(ctx context.Context, certID int32) ApiUploadCertificateRequest {
+func (a *CertificatesAPIService) UploadCertificate(ctx context.Context, certID int64) ApiUploadCertificateRequest {
 	return ApiUploadCertificateRequest{
 		ApiService: a,
 		ctx: ctx,

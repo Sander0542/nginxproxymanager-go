@@ -21,13 +21,13 @@ var _ MappedNullable = &GetCertificates200ResponseInner{}
 // GetCertificates200ResponseInner Certificate object
 type GetCertificates200ResponseInner struct {
 	// Unique identifier
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	// Date and time of creation
 	CreatedOn string `json:"created_on"`
 	// Date and time of last update
 	ModifiedOn string `json:"modified_on"`
 	// User ID
-	OwnerUserId int32 `json:"owner_user_id"`
+	OwnerUserId int64 `json:"owner_user_id"`
 	Provider string `json:"provider" validate:"regexp=^(letsencrypt|other)$"`
 	// Nice Name for the custom certificate
 	NiceName string `json:"nice_name"`
@@ -46,7 +46,7 @@ type _GetCertificates200ResponseInner GetCertificates200ResponseInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetCertificates200ResponseInner(id int32, createdOn string, modifiedOn string, ownerUserId int32, provider string, niceName string, domainNames []string, expiresOn string, meta GetCertificates200ResponseInnerMeta) *GetCertificates200ResponseInner {
+func NewGetCertificates200ResponseInner(id int64, createdOn string, modifiedOn string, ownerUserId int64, provider string, niceName string, domainNames []string, expiresOn string, meta GetCertificates200ResponseInnerMeta) *GetCertificates200ResponseInner {
 	this := GetCertificates200ResponseInner{}
 	this.Id = id
 	this.CreatedOn = createdOn
@@ -69,9 +69,9 @@ func NewGetCertificates200ResponseInnerWithDefaults() *GetCertificates200Respons
 }
 
 // GetId returns the Id field value
-func (o *GetCertificates200ResponseInner) GetId() int32 {
+func (o *GetCertificates200ResponseInner) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -80,7 +80,7 @@ func (o *GetCertificates200ResponseInner) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *GetCertificates200ResponseInner) GetIdOk() (*int32, bool) {
+func (o *GetCertificates200ResponseInner) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *GetCertificates200ResponseInner) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *GetCertificates200ResponseInner) SetId(v int32) {
+func (o *GetCertificates200ResponseInner) SetId(v int64) {
 	o.Id = v
 }
 
@@ -141,9 +141,9 @@ func (o *GetCertificates200ResponseInner) SetModifiedOn(v string) {
 }
 
 // GetOwnerUserId returns the OwnerUserId field value
-func (o *GetCertificates200ResponseInner) GetOwnerUserId() int32 {
+func (o *GetCertificates200ResponseInner) GetOwnerUserId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -152,7 +152,7 @@ func (o *GetCertificates200ResponseInner) GetOwnerUserId() int32 {
 
 // GetOwnerUserIdOk returns a tuple with the OwnerUserId field value
 // and a boolean to check if the value has been set.
-func (o *GetCertificates200ResponseInner) GetOwnerUserIdOk() (*int32, bool) {
+func (o *GetCertificates200ResponseInner) GetOwnerUserIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -160,7 +160,7 @@ func (o *GetCertificates200ResponseInner) GetOwnerUserIdOk() (*int32, bool) {
 }
 
 // SetOwnerUserId sets field value
-func (o *GetCertificates200ResponseInner) SetOwnerUserId(v int32) {
+func (o *GetCertificates200ResponseInner) SetOwnerUserId(v int64) {
 	o.OwnerUserId = v
 }
 

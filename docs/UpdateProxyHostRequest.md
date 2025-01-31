@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **DomainNames** | Pointer to **[]string** | Domain Names separated by a comma | [optional] 
 **ForwardScheme** | Pointer to **string** |  | [optional] 
 **ForwardHost** | Pointer to **string** |  | [optional] 
-**ForwardPort** | Pointer to **int32** |  | [optional] 
+**ForwardPort** | Pointer to **int64** |  | [optional] 
 **CertificateId** | Pointer to [**GetProxyHosts200ResponseInnerCertificateId**](GetProxyHosts200ResponseInnerCertificateId.md) |  | [optional] 
 **SslForced** | Pointer to **bool** | Is SSL Forced | [optional] 
 **HstsEnabled** | Pointer to **bool** | Is HSTS Enabled | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **BlockExploits** | Pointer to **bool** | Should we block common exploits | [optional] 
 **CachingEnabled** | Pointer to **bool** | Should we cache assets | [optional] 
 **AllowWebsocketUpgrade** | Pointer to **bool** | Allow Websocket Upgrade for all paths | [optional] 
-**AccessListId** | Pointer to **int32** | Access List ID | [optional] 
+**AccessListId** | Pointer to **int64** | Access List ID | [optional] 
 **AdvancedConfig** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** | Is Enabled | [optional] 
 **Meta** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -118,20 +118,20 @@ HasForwardHost returns a boolean if a field has been set.
 
 ### GetForwardPort
 
-`func (o *UpdateProxyHostRequest) GetForwardPort() int32`
+`func (o *UpdateProxyHostRequest) GetForwardPort() int64`
 
 GetForwardPort returns the ForwardPort field if non-nil, zero value otherwise.
 
 ### GetForwardPortOk
 
-`func (o *UpdateProxyHostRequest) GetForwardPortOk() (*int32, bool)`
+`func (o *UpdateProxyHostRequest) GetForwardPortOk() (*int64, bool)`
 
 GetForwardPortOk returns a tuple with the ForwardPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardPort
 
-`func (o *UpdateProxyHostRequest) SetForwardPort(v int32)`
+`func (o *UpdateProxyHostRequest) SetForwardPort(v int64)`
 
 SetForwardPort sets ForwardPort field to given value.
 
@@ -343,20 +343,20 @@ HasAllowWebsocketUpgrade returns a boolean if a field has been set.
 
 ### GetAccessListId
 
-`func (o *UpdateProxyHostRequest) GetAccessListId() int32`
+`func (o *UpdateProxyHostRequest) GetAccessListId() int64`
 
 GetAccessListId returns the AccessListId field if non-nil, zero value otherwise.
 
 ### GetAccessListIdOk
 
-`func (o *UpdateProxyHostRequest) GetAccessListIdOk() (*int32, bool)`
+`func (o *UpdateProxyHostRequest) GetAccessListIdOk() (*int64, bool)`
 
 GetAccessListIdOk returns a tuple with the AccessListId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessListId
 
-`func (o *UpdateProxyHostRequest) SetAccessListId(v int32)`
+`func (o *UpdateProxyHostRequest) SetAccessListId(v int64)`
 
 SetAccessListId sets AccessListId field to given value.
 

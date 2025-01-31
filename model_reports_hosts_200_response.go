@@ -20,13 +20,13 @@ var _ MappedNullable = &ReportsHosts200Response{}
 // ReportsHosts200Response struct for ReportsHosts200Response
 type ReportsHosts200Response struct {
 	// Proxy Hosts Count
-	Proxy *int32 `json:"proxy,omitempty"`
+	Proxy *int64 `json:"proxy,omitempty"`
 	// Redirection Hosts Count
-	Redirection *int32 `json:"redirection,omitempty"`
+	Redirection *int64 `json:"redirection,omitempty"`
 	// Streams Count
-	Stream *int32 `json:"stream,omitempty"`
+	Stream *int64 `json:"stream,omitempty"`
 	// 404 Hosts Count
-	Dead *int32 `json:"dead,omitempty"`
+	Dead *int64 `json:"dead,omitempty"`
 }
 
 // NewReportsHosts200Response instantiates a new ReportsHosts200Response object
@@ -47,9 +47,9 @@ func NewReportsHosts200ResponseWithDefaults() *ReportsHosts200Response {
 }
 
 // GetProxy returns the Proxy field value if set, zero value otherwise.
-func (o *ReportsHosts200Response) GetProxy() int32 {
+func (o *ReportsHosts200Response) GetProxy() int64 {
 	if o == nil || IsNil(o.Proxy) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Proxy
@@ -57,7 +57,7 @@ func (o *ReportsHosts200Response) GetProxy() int32 {
 
 // GetProxyOk returns a tuple with the Proxy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReportsHosts200Response) GetProxyOk() (*int32, bool) {
+func (o *ReportsHosts200Response) GetProxyOk() (*int64, bool) {
 	if o == nil || IsNil(o.Proxy) {
 		return nil, false
 	}
@@ -73,15 +73,15 @@ func (o *ReportsHosts200Response) HasProxy() bool {
 	return false
 }
 
-// SetProxy gets a reference to the given int32 and assigns it to the Proxy field.
-func (o *ReportsHosts200Response) SetProxy(v int32) {
+// SetProxy gets a reference to the given int64 and assigns it to the Proxy field.
+func (o *ReportsHosts200Response) SetProxy(v int64) {
 	o.Proxy = &v
 }
 
 // GetRedirection returns the Redirection field value if set, zero value otherwise.
-func (o *ReportsHosts200Response) GetRedirection() int32 {
+func (o *ReportsHosts200Response) GetRedirection() int64 {
 	if o == nil || IsNil(o.Redirection) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Redirection
@@ -89,7 +89,7 @@ func (o *ReportsHosts200Response) GetRedirection() int32 {
 
 // GetRedirectionOk returns a tuple with the Redirection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReportsHosts200Response) GetRedirectionOk() (*int32, bool) {
+func (o *ReportsHosts200Response) GetRedirectionOk() (*int64, bool) {
 	if o == nil || IsNil(o.Redirection) {
 		return nil, false
 	}
@@ -105,15 +105,15 @@ func (o *ReportsHosts200Response) HasRedirection() bool {
 	return false
 }
 
-// SetRedirection gets a reference to the given int32 and assigns it to the Redirection field.
-func (o *ReportsHosts200Response) SetRedirection(v int32) {
+// SetRedirection gets a reference to the given int64 and assigns it to the Redirection field.
+func (o *ReportsHosts200Response) SetRedirection(v int64) {
 	o.Redirection = &v
 }
 
 // GetStream returns the Stream field value if set, zero value otherwise.
-func (o *ReportsHosts200Response) GetStream() int32 {
+func (o *ReportsHosts200Response) GetStream() int64 {
 	if o == nil || IsNil(o.Stream) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Stream
@@ -121,7 +121,7 @@ func (o *ReportsHosts200Response) GetStream() int32 {
 
 // GetStreamOk returns a tuple with the Stream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReportsHosts200Response) GetStreamOk() (*int32, bool) {
+func (o *ReportsHosts200Response) GetStreamOk() (*int64, bool) {
 	if o == nil || IsNil(o.Stream) {
 		return nil, false
 	}
@@ -137,15 +137,15 @@ func (o *ReportsHosts200Response) HasStream() bool {
 	return false
 }
 
-// SetStream gets a reference to the given int32 and assigns it to the Stream field.
-func (o *ReportsHosts200Response) SetStream(v int32) {
+// SetStream gets a reference to the given int64 and assigns it to the Stream field.
+func (o *ReportsHosts200Response) SetStream(v int64) {
 	o.Stream = &v
 }
 
 // GetDead returns the Dead field value if set, zero value otherwise.
-func (o *ReportsHosts200Response) GetDead() int32 {
+func (o *ReportsHosts200Response) GetDead() int64 {
 	if o == nil || IsNil(o.Dead) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Dead
@@ -153,7 +153,7 @@ func (o *ReportsHosts200Response) GetDead() int32 {
 
 // GetDeadOk returns a tuple with the Dead field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReportsHosts200Response) GetDeadOk() (*int32, bool) {
+func (o *ReportsHosts200Response) GetDeadOk() (*int64, bool) {
 	if o == nil || IsNil(o.Dead) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *ReportsHosts200Response) HasDead() bool {
 	return false
 }
 
-// SetDead gets a reference to the given int32 and assigns it to the Dead field.
-func (o *ReportsHosts200Response) SetDead(v int32) {
+// SetDead gets a reference to the given int64 and assigns it to the Dead field.
+func (o *ReportsHosts200Response) SetDead(v int64) {
 	o.Dead = &v
 }
 

@@ -135,7 +135,7 @@ func (a *StreamsAPIService) CreateStreamExecute(r ApiCreateStreamRequest) (*Crea
 type ApiDeleteStreamRequest struct {
 	ctx context.Context
 	ApiService *StreamsAPIService
-	streamID int32
+	streamID int64
 }
 
 func (r ApiDeleteStreamRequest) Execute() (bool, *http.Response, error) {
@@ -149,7 +149,7 @@ DeleteStream Delete a Stream
  @param streamID
  @return ApiDeleteStreamRequest
 */
-func (a *StreamsAPIService) DeleteStream(ctx context.Context, streamID int32) ApiDeleteStreamRequest {
+func (a *StreamsAPIService) DeleteStream(ctx context.Context, streamID int64) ApiDeleteStreamRequest {
 	return ApiDeleteStreamRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -239,7 +239,7 @@ func (a *StreamsAPIService) DeleteStreamExecute(r ApiDeleteStreamRequest) (bool,
 type ApiDisableStreamRequest struct {
 	ctx context.Context
 	ApiService *StreamsAPIService
-	streamID int32
+	streamID int64
 }
 
 func (r ApiDisableStreamRequest) Execute() (bool, *http.Response, error) {
@@ -253,7 +253,7 @@ DisableStream Disable a Stream
  @param streamID
  @return ApiDisableStreamRequest
 */
-func (a *StreamsAPIService) DisableStream(ctx context.Context, streamID int32) ApiDisableStreamRequest {
+func (a *StreamsAPIService) DisableStream(ctx context.Context, streamID int64) ApiDisableStreamRequest {
 	return ApiDisableStreamRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -353,7 +353,7 @@ func (a *StreamsAPIService) DisableStreamExecute(r ApiDisableStreamRequest) (boo
 type ApiEnableStreamRequest struct {
 	ctx context.Context
 	ApiService *StreamsAPIService
-	streamID int32
+	streamID int64
 }
 
 func (r ApiEnableStreamRequest) Execute() (bool, *http.Response, error) {
@@ -367,7 +367,7 @@ EnableStream Enable a Stream
  @param streamID
  @return ApiEnableStreamRequest
 */
-func (a *StreamsAPIService) EnableStream(ctx context.Context, streamID int32) ApiEnableStreamRequest {
+func (a *StreamsAPIService) EnableStream(ctx context.Context, streamID int64) ApiEnableStreamRequest {
 	return ApiEnableStreamRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -467,7 +467,7 @@ func (a *StreamsAPIService) EnableStreamExecute(r ApiEnableStreamRequest) (bool,
 type ApiGetStreamRequest struct {
 	ctx context.Context
 	ApiService *StreamsAPIService
-	streamID int32
+	streamID int64
 }
 
 func (r ApiGetStreamRequest) Execute() (*CreateStream201Response, *http.Response, error) {
@@ -481,7 +481,7 @@ GetStream Get a Stream
  @param streamID
  @return ApiGetStreamRequest
 */
-func (a *StreamsAPIService) GetStream(ctx context.Context, streamID int32) ApiGetStreamRequest {
+func (a *StreamsAPIService) GetStream(ctx context.Context, streamID int64) ApiGetStreamRequest {
 	return ApiGetStreamRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -678,7 +678,7 @@ func (a *StreamsAPIService) GetStreamsExecute(r ApiGetStreamsRequest) ([]GetProx
 type ApiUpdateStreamRequest struct {
 	ctx context.Context
 	ApiService *StreamsAPIService
-	streamID int32
+	streamID int64
 	updateProxyHostRequest *UpdateProxyHostRequest
 }
 
@@ -699,7 +699,7 @@ UpdateStream Update a Stream
  @param streamID
  @return ApiUpdateStreamRequest
 */
-func (a *StreamsAPIService) UpdateStream(ctx context.Context, streamID int32) ApiUpdateStreamRequest {
+func (a *StreamsAPIService) UpdateStream(ctx context.Context, streamID int64) ApiUpdateStreamRequest {
 	return ApiUpdateStreamRequest{
 		ApiService: a,
 		ctx: ctx,

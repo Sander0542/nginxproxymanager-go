@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** | User ID | 
+**Id** | **int64** | User ID | 
 **CreatedOn** | **string** | Created Date | 
 **ModifiedOn** | **string** | Modified Date | 
 **IsDisabled** | **bool** | Is user Disabled | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewGetCertificates200ResponseInnerOwner
 
-`func NewGetCertificates200ResponseInnerOwner(id int32, createdOn string, modifiedOn string, isDisabled bool, email string, name string, nickname string, avatar string, roles []string, ) *GetCertificates200ResponseInnerOwner`
+`func NewGetCertificates200ResponseInnerOwner(id int64, createdOn string, modifiedOn string, isDisabled bool, email string, name string, nickname string, avatar string, roles []string, ) *GetCertificates200ResponseInnerOwner`
 
 NewGetCertificates200ResponseInnerOwner instantiates a new GetCertificates200ResponseInnerOwner object
 This constructor will assign default values to properties that have it defined,
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GetCertificates200ResponseInnerOwner) GetId() int32`
+`func (o *GetCertificates200ResponseInnerOwner) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetCertificates200ResponseInnerOwner) GetIdOk() (*int32, bool)`
+`func (o *GetCertificates200ResponseInnerOwner) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetCertificates200ResponseInnerOwner) SetId(v int32)`
+`func (o *GetCertificates200ResponseInnerOwner) SetId(v int64)`
 
 SetId sets Id field to given value.
 

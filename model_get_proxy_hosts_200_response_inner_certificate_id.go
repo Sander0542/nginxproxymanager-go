@@ -18,24 +18,24 @@ import (
 
 // GetProxyHosts200ResponseInnerCertificateId Certificate ID
 type GetProxyHosts200ResponseInnerCertificateId struct {
-	Int32 *int32
+	Int64 *int64
 	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *GetProxyHosts200ResponseInnerCertificateId) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into Int32
-	err = json.Unmarshal(data, &dst.Int32);
+	// try to unmarshal JSON data into Int64
+	err = json.Unmarshal(data, &dst.Int64);
 	if err == nil {
-		jsonInt32, _ := json.Marshal(dst.Int32)
-		if string(jsonInt32) == "{}" { // empty struct
-			dst.Int32 = nil
+		jsonInt64, _ := json.Marshal(dst.Int64)
+		if string(jsonInt64) == "{}" { // empty struct
+			dst.Int64 = nil
 		} else {
-			return nil // data stored in dst.Int32, return on the first match
+			return nil // data stored in dst.Int64, return on the first match
 		}
 	} else {
-		dst.Int32 = nil
+		dst.Int64 = nil
 	}
 
 	// try to unmarshal JSON data into String
@@ -56,8 +56,8 @@ func (dst *GetProxyHosts200ResponseInnerCertificateId) UnmarshalJSON(data []byte
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src GetProxyHosts200ResponseInnerCertificateId) MarshalJSON() ([]byte, error) {
-	if src.Int32 != nil {
-		return json.Marshal(&src.Int32)
+	if src.Int64 != nil {
+		return json.Marshal(&src.Int64)
 	}
 
 	if src.String != nil {

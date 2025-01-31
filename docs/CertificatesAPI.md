@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-	certID := int32(2) // int32 | 
+	certID := int64(2) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -119,7 +119,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int32** |  | 
+**certID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -167,7 +167,7 @@ import (
 )
 
 func main() {
-	certID := int32(1) // int32 | 
+	certID := int64(1) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -187,7 +187,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int32** |  | 
+**certID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -235,7 +235,7 @@ import (
 )
 
 func main() {
-	certID := int32(1) // int32 | 
+	certID := int64(1) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -255,7 +255,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int32** |  | 
+**certID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -367,7 +367,7 @@ import (
 )
 
 func main() {
-	certID := int32(1) // int32 | 
+	certID := int64(1) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -387,7 +387,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int32** |  | 
+**certID** | **int64** |  | 
 
 ### Other Parameters
 
@@ -497,7 +497,7 @@ import (
 )
 
 func main() {
-	certID := int32(1) // int32 | 
+	certID := int64(1) // int64 | 
 	certificate := "certificate_example" // string | 
 	certificateKey := "certificateKey_example" // string | 
 	intermediateCertificate := "intermediateCertificate_example" // string |  (optional)
@@ -520,7 +520,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int32** |  | 
+**certID** | **int64** |  | 
 
 ### Other Parameters
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** | Unique identifier | [readonly] 
+**Id** | **int64** | Unique identifier | [readonly] 
 **CreatedOn** | **string** | Date and time of creation | [readonly] 
 **ModifiedOn** | **string** | Date and time of last update | [readonly] 
-**OwnerUserId** | **int32** | User ID | 
+**OwnerUserId** | **int64** | User ID | 
 **Provider** | **string** |  | 
 **NiceName** | **string** | Nice Name for the custom certificate | 
 **DomainNames** | **[]string** | Domain Names separated by a comma | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewGetProxyHosts200ResponseInnerCertificate
 
-`func NewGetProxyHosts200ResponseInnerCertificate(id int32, createdOn string, modifiedOn string, ownerUserId int32, provider string, niceName string, domainNames []string, expiresOn string, meta GetCertificates200ResponseInnerMeta, ) *GetProxyHosts200ResponseInnerCertificate`
+`func NewGetProxyHosts200ResponseInnerCertificate(id int64, createdOn string, modifiedOn string, ownerUserId int64, provider string, niceName string, domainNames []string, expiresOn string, meta GetCertificates200ResponseInnerMeta, ) *GetProxyHosts200ResponseInnerCertificate`
 
 NewGetProxyHosts200ResponseInnerCertificate instantiates a new GetProxyHosts200ResponseInnerCertificate object
 This constructor will assign default values to properties that have it defined,
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) GetId() int32`
+`func (o *GetProxyHosts200ResponseInnerCertificate) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) GetIdOk() (*int32, bool)`
+`func (o *GetProxyHosts200ResponseInnerCertificate) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) SetId(v int32)`
+`func (o *GetProxyHosts200ResponseInnerCertificate) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -96,20 +96,20 @@ SetModifiedOn sets ModifiedOn field to given value.
 
 ### GetOwnerUserId
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) GetOwnerUserId() int32`
+`func (o *GetProxyHosts200ResponseInnerCertificate) GetOwnerUserId() int64`
 
 GetOwnerUserId returns the OwnerUserId field if non-nil, zero value otherwise.
 
 ### GetOwnerUserIdOk
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) GetOwnerUserIdOk() (*int32, bool)`
+`func (o *GetProxyHosts200ResponseInnerCertificate) GetOwnerUserIdOk() (*int64, bool)`
 
 GetOwnerUserIdOk returns a tuple with the OwnerUserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerUserId
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) SetOwnerUserId(v int32)`
+`func (o *GetProxyHosts200ResponseInnerCertificate) SetOwnerUserId(v int64)`
 
 SetOwnerUserId sets OwnerUserId field to given value.
 

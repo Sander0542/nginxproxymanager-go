@@ -23,7 +23,7 @@ type CreateRedirectionHostRequest struct {
 	// Domain Names separated by a comma
 	DomainNames []string `json:"domain_names"`
 	// Redirect HTTP Status Code
-	ForwardHttpCode int32 `json:"forward_http_code"`
+	ForwardHttpCode int64 `json:"forward_http_code"`
 	ForwardScheme string `json:"forward_scheme"`
 	// Domain Name
 	ForwardDomainName string `json:"forward_domain_name" validate:"regexp=^(?:[^.*]+\\\\.?)+[^.]$"`
@@ -51,7 +51,7 @@ type _CreateRedirectionHostRequest CreateRedirectionHostRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRedirectionHostRequest(domainNames []string, forwardHttpCode int32, forwardScheme string, forwardDomainName string) *CreateRedirectionHostRequest {
+func NewCreateRedirectionHostRequest(domainNames []string, forwardHttpCode int64, forwardScheme string, forwardDomainName string) *CreateRedirectionHostRequest {
 	this := CreateRedirectionHostRequest{}
 	this.DomainNames = domainNames
 	this.ForwardHttpCode = forwardHttpCode
@@ -93,9 +93,9 @@ func (o *CreateRedirectionHostRequest) SetDomainNames(v []string) {
 }
 
 // GetForwardHttpCode returns the ForwardHttpCode field value
-func (o *CreateRedirectionHostRequest) GetForwardHttpCode() int32 {
+func (o *CreateRedirectionHostRequest) GetForwardHttpCode() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -104,7 +104,7 @@ func (o *CreateRedirectionHostRequest) GetForwardHttpCode() int32 {
 
 // GetForwardHttpCodeOk returns a tuple with the ForwardHttpCode field value
 // and a boolean to check if the value has been set.
-func (o *CreateRedirectionHostRequest) GetForwardHttpCodeOk() (*int32, bool) {
+func (o *CreateRedirectionHostRequest) GetForwardHttpCodeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,7 +112,7 @@ func (o *CreateRedirectionHostRequest) GetForwardHttpCodeOk() (*int32, bool) {
 }
 
 // SetForwardHttpCode sets field value
-func (o *CreateRedirectionHostRequest) SetForwardHttpCode(v int32) {
+func (o *CreateRedirectionHostRequest) SetForwardHttpCode(v int64) {
 	o.ForwardHttpCode = v
 }
 

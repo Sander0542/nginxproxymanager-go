@@ -135,7 +135,7 @@ func (a *AccessListsAPIService) CreateAccessListExecute(r ApiCreateAccessListReq
 type ApiDeleteAccessListRequest struct {
 	ctx context.Context
 	ApiService *AccessListsAPIService
-	listID int32
+	listID int64
 }
 
 func (r ApiDeleteAccessListRequest) Execute() (bool, *http.Response, error) {
@@ -149,7 +149,7 @@ DeleteAccessList Delete a Access List
  @param listID
  @return ApiDeleteAccessListRequest
 */
-func (a *AccessListsAPIService) DeleteAccessList(ctx context.Context, listID int32) ApiDeleteAccessListRequest {
+func (a *AccessListsAPIService) DeleteAccessList(ctx context.Context, listID int64) ApiDeleteAccessListRequest {
 	return ApiDeleteAccessListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -239,7 +239,7 @@ func (a *AccessListsAPIService) DeleteAccessListExecute(r ApiDeleteAccessListReq
 type ApiGetAccessListRequest struct {
 	ctx context.Context
 	ApiService *AccessListsAPIService
-	listID int32
+	listID int64
 }
 
 func (r ApiGetAccessListRequest) Execute() (*CreateAccessList201Response, *http.Response, error) {
@@ -253,7 +253,7 @@ GetAccessList Get a access List
  @param listID
  @return ApiGetAccessListRequest
 */
-func (a *AccessListsAPIService) GetAccessList(ctx context.Context, listID int32) ApiGetAccessListRequest {
+func (a *AccessListsAPIService) GetAccessList(ctx context.Context, listID int64) ApiGetAccessListRequest {
 	return ApiGetAccessListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -450,7 +450,7 @@ func (a *AccessListsAPIService) GetAccessListsExecute(r ApiGetAccessListsRequest
 type ApiUpdateAccessListRequest struct {
 	ctx context.Context
 	ApiService *AccessListsAPIService
-	listID int32
+	listID int64
 	updateAccessListRequest *UpdateAccessListRequest
 }
 
@@ -471,7 +471,7 @@ UpdateAccessList Update a Access List
  @param listID
  @return ApiUpdateAccessListRequest
 */
-func (a *AccessListsAPIService) UpdateAccessList(ctx context.Context, listID int32) ApiUpdateAccessListRequest {
+func (a *AccessListsAPIService) UpdateAccessList(ctx context.Context, listID int64) ApiUpdateAccessListRequest {
 	return ApiUpdateAccessListRequest{
 		ApiService: a,
 		ctx: ctx,

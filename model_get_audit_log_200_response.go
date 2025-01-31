@@ -21,16 +21,16 @@ var _ MappedNullable = &GetAuditLog200Response{}
 // GetAuditLog200Response Audit Log object
 type GetAuditLog200Response struct {
 	// Unique identifier
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	// Date and time of creation
 	CreatedOn string `json:"created_on"`
 	// Date and time of last update
 	ModifiedOn string `json:"modified_on"`
 	// User ID
-	UserId int32 `json:"user_id"`
+	UserId int64 `json:"user_id"`
 	ObjectType string `json:"object_type"`
 	// Unique identifier
-	ObjectId int32 `json:"object_id"`
+	ObjectId int64 `json:"object_id"`
 	Action string `json:"action"`
 	Meta map[string]interface{} `json:"meta"`
 	AdditionalProperties map[string]interface{}
@@ -42,7 +42,7 @@ type _GetAuditLog200Response GetAuditLog200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetAuditLog200Response(id int32, createdOn string, modifiedOn string, userId int32, objectType string, objectId int32, action string, meta map[string]interface{}) *GetAuditLog200Response {
+func NewGetAuditLog200Response(id int64, createdOn string, modifiedOn string, userId int64, objectType string, objectId int64, action string, meta map[string]interface{}) *GetAuditLog200Response {
 	this := GetAuditLog200Response{}
 	this.Id = id
 	this.CreatedOn = createdOn
@@ -64,9 +64,9 @@ func NewGetAuditLog200ResponseWithDefaults() *GetAuditLog200Response {
 }
 
 // GetId returns the Id field value
-func (o *GetAuditLog200Response) GetId() int32 {
+func (o *GetAuditLog200Response) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -75,7 +75,7 @@ func (o *GetAuditLog200Response) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *GetAuditLog200Response) GetIdOk() (*int32, bool) {
+func (o *GetAuditLog200Response) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -83,7 +83,7 @@ func (o *GetAuditLog200Response) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *GetAuditLog200Response) SetId(v int32) {
+func (o *GetAuditLog200Response) SetId(v int64) {
 	o.Id = v
 }
 
@@ -136,9 +136,9 @@ func (o *GetAuditLog200Response) SetModifiedOn(v string) {
 }
 
 // GetUserId returns the UserId field value
-func (o *GetAuditLog200Response) GetUserId() int32 {
+func (o *GetAuditLog200Response) GetUserId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -147,7 +147,7 @@ func (o *GetAuditLog200Response) GetUserId() int32 {
 
 // GetUserIdOk returns a tuple with the UserId field value
 // and a boolean to check if the value has been set.
-func (o *GetAuditLog200Response) GetUserIdOk() (*int32, bool) {
+func (o *GetAuditLog200Response) GetUserIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -155,7 +155,7 @@ func (o *GetAuditLog200Response) GetUserIdOk() (*int32, bool) {
 }
 
 // SetUserId sets field value
-func (o *GetAuditLog200Response) SetUserId(v int32) {
+func (o *GetAuditLog200Response) SetUserId(v int64) {
 	o.UserId = v
 }
 
@@ -184,9 +184,9 @@ func (o *GetAuditLog200Response) SetObjectType(v string) {
 }
 
 // GetObjectId returns the ObjectId field value
-func (o *GetAuditLog200Response) GetObjectId() int32 {
+func (o *GetAuditLog200Response) GetObjectId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -195,7 +195,7 @@ func (o *GetAuditLog200Response) GetObjectId() int32 {
 
 // GetObjectIdOk returns a tuple with the ObjectId field value
 // and a boolean to check if the value has been set.
-func (o *GetAuditLog200Response) GetObjectIdOk() (*int32, bool) {
+func (o *GetAuditLog200Response) GetObjectIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -203,7 +203,7 @@ func (o *GetAuditLog200Response) GetObjectIdOk() (*int32, bool) {
 }
 
 // SetObjectId sets field value
-func (o *GetAuditLog200Response) SetObjectId(v int32) {
+func (o *GetAuditLog200Response) SetObjectId(v int64) {
 	o.ObjectId = v
 }
 

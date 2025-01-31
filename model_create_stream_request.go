@@ -20,9 +20,9 @@ var _ MappedNullable = &CreateStreamRequest{}
 
 // CreateStreamRequest struct for CreateStreamRequest
 type CreateStreamRequest struct {
-	IncomingPort int32 `json:"incoming_port"`
+	IncomingPort int64 `json:"incoming_port"`
 	ForwardingHost CreateStreamRequestForwardingHost `json:"forwarding_host"`
-	ForwardingPort int32 `json:"forwarding_port"`
+	ForwardingPort int64 `json:"forwarding_port"`
 	TcpForwarding *bool `json:"tcp_forwarding,omitempty"`
 	UdpForwarding *bool `json:"udp_forwarding,omitempty"`
 	Meta map[string]interface{} `json:"meta,omitempty"`
@@ -35,7 +35,7 @@ type _CreateStreamRequest CreateStreamRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateStreamRequest(incomingPort int32, forwardingHost CreateStreamRequestForwardingHost, forwardingPort int32) *CreateStreamRequest {
+func NewCreateStreamRequest(incomingPort int64, forwardingHost CreateStreamRequestForwardingHost, forwardingPort int64) *CreateStreamRequest {
 	this := CreateStreamRequest{}
 	this.IncomingPort = incomingPort
 	this.ForwardingHost = forwardingHost
@@ -52,9 +52,9 @@ func NewCreateStreamRequestWithDefaults() *CreateStreamRequest {
 }
 
 // GetIncomingPort returns the IncomingPort field value
-func (o *CreateStreamRequest) GetIncomingPort() int32 {
+func (o *CreateStreamRequest) GetIncomingPort() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -63,7 +63,7 @@ func (o *CreateStreamRequest) GetIncomingPort() int32 {
 
 // GetIncomingPortOk returns a tuple with the IncomingPort field value
 // and a boolean to check if the value has been set.
-func (o *CreateStreamRequest) GetIncomingPortOk() (*int32, bool) {
+func (o *CreateStreamRequest) GetIncomingPortOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *CreateStreamRequest) GetIncomingPortOk() (*int32, bool) {
 }
 
 // SetIncomingPort sets field value
-func (o *CreateStreamRequest) SetIncomingPort(v int32) {
+func (o *CreateStreamRequest) SetIncomingPort(v int64) {
 	o.IncomingPort = v
 }
 
@@ -100,9 +100,9 @@ func (o *CreateStreamRequest) SetForwardingHost(v CreateStreamRequestForwardingH
 }
 
 // GetForwardingPort returns the ForwardingPort field value
-func (o *CreateStreamRequest) GetForwardingPort() int32 {
+func (o *CreateStreamRequest) GetForwardingPort() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -111,7 +111,7 @@ func (o *CreateStreamRequest) GetForwardingPort() int32 {
 
 // GetForwardingPortOk returns a tuple with the ForwardingPort field value
 // and a boolean to check if the value has been set.
-func (o *CreateStreamRequest) GetForwardingPortOk() (*int32, bool) {
+func (o *CreateStreamRequest) GetForwardingPortOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *CreateStreamRequest) GetForwardingPortOk() (*int32, bool) {
 }
 
 // SetForwardingPort sets field value
-func (o *CreateStreamRequest) SetForwardingPort(v int32) {
+func (o *CreateStreamRequest) SetForwardingPort(v int64) {
 	o.ForwardingPort = v
 }
 

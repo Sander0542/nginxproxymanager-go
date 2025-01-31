@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** | Unique identifier | [readonly] 
+**Id** | **int64** | Unique identifier | [readonly] 
 **CreatedOn** | **string** | Date and time of creation | [readonly] 
 **ModifiedOn** | **string** | Date and time of last update | [readonly] 
-**OwnerUserId** | **int32** | User ID | 
+**OwnerUserId** | **int64** | User ID | 
 **DomainNames** | **[]string** | Domain Names separated by a comma | 
-**ForwardHttpCode** | **int32** | Redirect HTTP Status Code | 
+**ForwardHttpCode** | **int64** | Redirect HTTP Status Code | 
 **ForwardScheme** | **string** |  | 
 **ForwardDomainName** | **string** | Domain Name | 
 **PreservePath** | **bool** | Should the path be preserved | 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewGetRedirectionHosts200ResponseInner
 
-`func NewGetRedirectionHosts200ResponseInner(id int32, createdOn string, modifiedOn string, ownerUserId int32, domainNames []string, forwardHttpCode int32, forwardScheme string, forwardDomainName string, preservePath bool, certificateId GetProxyHosts200ResponseInnerCertificateId, sslForced bool, hstsEnabled bool, hstsSubdomains bool, http2Support bool, blockExploits bool, advancedConfig string, enabled bool, meta map[string]interface{}, ) *GetRedirectionHosts200ResponseInner`
+`func NewGetRedirectionHosts200ResponseInner(id int64, createdOn string, modifiedOn string, ownerUserId int64, domainNames []string, forwardHttpCode int64, forwardScheme string, forwardDomainName string, preservePath bool, certificateId GetProxyHosts200ResponseInnerCertificateId, sslForced bool, hstsEnabled bool, hstsSubdomains bool, http2Support bool, blockExploits bool, advancedConfig string, enabled bool, meta map[string]interface{}, ) *GetRedirectionHosts200ResponseInner`
 
 NewGetRedirectionHosts200ResponseInner instantiates a new GetRedirectionHosts200ResponseInner object
 This constructor will assign default values to properties that have it defined,
@@ -44,20 +44,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GetRedirectionHosts200ResponseInner) GetId() int32`
+`func (o *GetRedirectionHosts200ResponseInner) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetRedirectionHosts200ResponseInner) GetIdOk() (*int32, bool)`
+`func (o *GetRedirectionHosts200ResponseInner) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetRedirectionHosts200ResponseInner) SetId(v int32)`
+`func (o *GetRedirectionHosts200ResponseInner) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -104,20 +104,20 @@ SetModifiedOn sets ModifiedOn field to given value.
 
 ### GetOwnerUserId
 
-`func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserId() int32`
+`func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserId() int64`
 
 GetOwnerUserId returns the OwnerUserId field if non-nil, zero value otherwise.
 
 ### GetOwnerUserIdOk
 
-`func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserIdOk() (*int32, bool)`
+`func (o *GetRedirectionHosts200ResponseInner) GetOwnerUserIdOk() (*int64, bool)`
 
 GetOwnerUserIdOk returns a tuple with the OwnerUserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerUserId
 
-`func (o *GetRedirectionHosts200ResponseInner) SetOwnerUserId(v int32)`
+`func (o *GetRedirectionHosts200ResponseInner) SetOwnerUserId(v int64)`
 
 SetOwnerUserId sets OwnerUserId field to given value.
 
@@ -144,20 +144,20 @@ SetDomainNames sets DomainNames field to given value.
 
 ### GetForwardHttpCode
 
-`func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCode() int32`
+`func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCode() int64`
 
 GetForwardHttpCode returns the ForwardHttpCode field if non-nil, zero value otherwise.
 
 ### GetForwardHttpCodeOk
 
-`func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCodeOk() (*int32, bool)`
+`func (o *GetRedirectionHosts200ResponseInner) GetForwardHttpCodeOk() (*int64, bool)`
 
 GetForwardHttpCodeOk returns a tuple with the ForwardHttpCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardHttpCode
 
-`func (o *GetRedirectionHosts200ResponseInner) SetForwardHttpCode(v int32)`
+`func (o *GetRedirectionHosts200ResponseInner) SetForwardHttpCode(v int64)`
 
 SetForwardHttpCode sets ForwardHttpCode field to given value.
 

@@ -135,7 +135,7 @@ func (a *RedirectionHostsAPIService) CreateRedirectionHostExecute(r ApiCreateRed
 type ApiDeleteRedirectionHostRequest struct {
 	ctx context.Context
 	ApiService *RedirectionHostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiDeleteRedirectionHostRequest) Execute() (bool, *http.Response, error) {
@@ -149,7 +149,7 @@ DeleteRedirectionHost Delete a Redirection Host
  @param hostID
  @return ApiDeleteRedirectionHostRequest
 */
-func (a *RedirectionHostsAPIService) DeleteRedirectionHost(ctx context.Context, hostID int32) ApiDeleteRedirectionHostRequest {
+func (a *RedirectionHostsAPIService) DeleteRedirectionHost(ctx context.Context, hostID int64) ApiDeleteRedirectionHostRequest {
 	return ApiDeleteRedirectionHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -239,7 +239,7 @@ func (a *RedirectionHostsAPIService) DeleteRedirectionHostExecute(r ApiDeleteRed
 type ApiDisableRedirectionHostRequest struct {
 	ctx context.Context
 	ApiService *RedirectionHostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiDisableRedirectionHostRequest) Execute() (bool, *http.Response, error) {
@@ -253,7 +253,7 @@ DisableRedirectionHost Disable a Redirection Host
  @param hostID
  @return ApiDisableRedirectionHostRequest
 */
-func (a *RedirectionHostsAPIService) DisableRedirectionHost(ctx context.Context, hostID int32) ApiDisableRedirectionHostRequest {
+func (a *RedirectionHostsAPIService) DisableRedirectionHost(ctx context.Context, hostID int64) ApiDisableRedirectionHostRequest {
 	return ApiDisableRedirectionHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -353,7 +353,7 @@ func (a *RedirectionHostsAPIService) DisableRedirectionHostExecute(r ApiDisableR
 type ApiEnableRedirectionHostRequest struct {
 	ctx context.Context
 	ApiService *RedirectionHostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiEnableRedirectionHostRequest) Execute() (bool, *http.Response, error) {
@@ -367,7 +367,7 @@ EnableRedirectionHost Enable a Redirection Host
  @param hostID
  @return ApiEnableRedirectionHostRequest
 */
-func (a *RedirectionHostsAPIService) EnableRedirectionHost(ctx context.Context, hostID int32) ApiEnableRedirectionHostRequest {
+func (a *RedirectionHostsAPIService) EnableRedirectionHost(ctx context.Context, hostID int64) ApiEnableRedirectionHostRequest {
 	return ApiEnableRedirectionHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -467,7 +467,7 @@ func (a *RedirectionHostsAPIService) EnableRedirectionHostExecute(r ApiEnableRed
 type ApiGetRedirectionHostRequest struct {
 	ctx context.Context
 	ApiService *RedirectionHostsAPIService
-	hostID int32
+	hostID int64
 }
 
 func (r ApiGetRedirectionHostRequest) Execute() (*GetRedirectionHosts200ResponseInner, *http.Response, error) {
@@ -481,7 +481,7 @@ GetRedirectionHost Get a Redirection Host
  @param hostID
  @return ApiGetRedirectionHostRequest
 */
-func (a *RedirectionHostsAPIService) GetRedirectionHost(ctx context.Context, hostID int32) ApiGetRedirectionHostRequest {
+func (a *RedirectionHostsAPIService) GetRedirectionHost(ctx context.Context, hostID int64) ApiGetRedirectionHostRequest {
 	return ApiGetRedirectionHostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -678,7 +678,7 @@ func (a *RedirectionHostsAPIService) GetRedirectionHostsExecute(r ApiGetRedirect
 type ApiUpdateRedirectionHostRequest struct {
 	ctx context.Context
 	ApiService *RedirectionHostsAPIService
-	hostID int32
+	hostID int64
 	updateRedirectionHostRequest *UpdateRedirectionHostRequest
 }
 
@@ -699,7 +699,7 @@ UpdateRedirectionHost Update a Redirection Host
  @param hostID
  @return ApiUpdateRedirectionHostRequest
 */
-func (a *RedirectionHostsAPIService) UpdateRedirectionHost(ctx context.Context, hostID int32) ApiUpdateRedirectionHostRequest {
+func (a *RedirectionHostsAPIService) UpdateRedirectionHost(ctx context.Context, hostID int64) ApiUpdateRedirectionHostRequest {
 	return ApiUpdateRedirectionHostRequest{
 		ApiService: a,
 		ctx: ctx,

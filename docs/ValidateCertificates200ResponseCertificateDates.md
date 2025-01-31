@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**From** | **int32** |  | 
-**To** | **int32** |  | 
+**From** | **int64** |  | 
+**To** | **int64** |  | 
 
 ## Methods
 
 ### NewValidateCertificates200ResponseCertificateDates
 
-`func NewValidateCertificates200ResponseCertificateDates(from int32, to int32, ) *ValidateCertificates200ResponseCertificateDates`
+`func NewValidateCertificates200ResponseCertificateDates(from int64, to int64, ) *ValidateCertificates200ResponseCertificateDates`
 
 NewValidateCertificates200ResponseCertificateDates instantiates a new ValidateCertificates200ResponseCertificateDates object
 This constructor will assign default values to properties that have it defined,
@@ -28,40 +28,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFrom
 
-`func (o *ValidateCertificates200ResponseCertificateDates) GetFrom() int32`
+`func (o *ValidateCertificates200ResponseCertificateDates) GetFrom() int64`
 
 GetFrom returns the From field if non-nil, zero value otherwise.
 
 ### GetFromOk
 
-`func (o *ValidateCertificates200ResponseCertificateDates) GetFromOk() (*int32, bool)`
+`func (o *ValidateCertificates200ResponseCertificateDates) GetFromOk() (*int64, bool)`
 
 GetFromOk returns a tuple with the From field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrom
 
-`func (o *ValidateCertificates200ResponseCertificateDates) SetFrom(v int32)`
+`func (o *ValidateCertificates200ResponseCertificateDates) SetFrom(v int64)`
 
 SetFrom sets From field to given value.
 
 
 ### GetTo
 
-`func (o *ValidateCertificates200ResponseCertificateDates) GetTo() int32`
+`func (o *ValidateCertificates200ResponseCertificateDates) GetTo() int64`
 
 GetTo returns the To field if non-nil, zero value otherwise.
 
 ### GetToOk
 
-`func (o *ValidateCertificates200ResponseCertificateDates) GetToOk() (*int32, bool)`
+`func (o *ValidateCertificates200ResponseCertificateDates) GetToOk() (*int64, bool)`
 
 GetToOk returns a tuple with the To field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTo
 
-`func (o *ValidateCertificates200ResponseCertificateDates) SetTo(v int32)`
+`func (o *ValidateCertificates200ResponseCertificateDates) SetTo(v int64)`
 
 SetTo sets To field to given value.
 

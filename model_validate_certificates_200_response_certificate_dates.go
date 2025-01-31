@@ -20,8 +20,8 @@ var _ MappedNullable = &ValidateCertificates200ResponseCertificateDates{}
 
 // ValidateCertificates200ResponseCertificateDates struct for ValidateCertificates200ResponseCertificateDates
 type ValidateCertificates200ResponseCertificateDates struct {
-	From int32 `json:"from"`
-	To int32 `json:"to"`
+	From int64 `json:"from"`
+	To int64 `json:"to"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _ValidateCertificates200ResponseCertificateDates ValidateCertificates200Res
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewValidateCertificates200ResponseCertificateDates(from int32, to int32) *ValidateCertificates200ResponseCertificateDates {
+func NewValidateCertificates200ResponseCertificateDates(from int64, to int64) *ValidateCertificates200ResponseCertificateDates {
 	this := ValidateCertificates200ResponseCertificateDates{}
 	this.From = from
 	this.To = to
@@ -47,9 +47,9 @@ func NewValidateCertificates200ResponseCertificateDatesWithDefaults() *ValidateC
 }
 
 // GetFrom returns the From field value
-func (o *ValidateCertificates200ResponseCertificateDates) GetFrom() int32 {
+func (o *ValidateCertificates200ResponseCertificateDates) GetFrom() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *ValidateCertificates200ResponseCertificateDates) GetFrom() int32 {
 
 // GetFromOk returns a tuple with the From field value
 // and a boolean to check if the value has been set.
-func (o *ValidateCertificates200ResponseCertificateDates) GetFromOk() (*int32, bool) {
+func (o *ValidateCertificates200ResponseCertificateDates) GetFromOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,14 +66,14 @@ func (o *ValidateCertificates200ResponseCertificateDates) GetFromOk() (*int32, b
 }
 
 // SetFrom sets field value
-func (o *ValidateCertificates200ResponseCertificateDates) SetFrom(v int32) {
+func (o *ValidateCertificates200ResponseCertificateDates) SetFrom(v int64) {
 	o.From = v
 }
 
 // GetTo returns the To field value
-func (o *ValidateCertificates200ResponseCertificateDates) GetTo() int32 {
+func (o *ValidateCertificates200ResponseCertificateDates) GetTo() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -82,7 +82,7 @@ func (o *ValidateCertificates200ResponseCertificateDates) GetTo() int32 {
 
 // GetToOk returns a tuple with the To field value
 // and a boolean to check if the value has been set.
-func (o *ValidateCertificates200ResponseCertificateDates) GetToOk() (*int32, bool) {
+func (o *ValidateCertificates200ResponseCertificateDates) GetToOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *ValidateCertificates200ResponseCertificateDates) GetToOk() (*int32, boo
 }
 
 // SetTo sets field value
-func (o *ValidateCertificates200ResponseCertificateDates) SetTo(v int32) {
+func (o *ValidateCertificates200ResponseCertificateDates) SetTo(v int64) {
 	o.To = v
 }
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DomainNames** | **[]string** | Domain Names separated by a comma | 
-**ForwardHttpCode** | **int32** | Redirect HTTP Status Code | 
+**ForwardHttpCode** | **int64** | Redirect HTTP Status Code | 
 **ForwardScheme** | **string** |  | 
 **ForwardDomainName** | **string** | Domain Name | 
 **PreservePath** | Pointer to **bool** | Should the path be preserved | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewCreateRedirectionHostRequest
 
-`func NewCreateRedirectionHostRequest(domainNames []string, forwardHttpCode int32, forwardScheme string, forwardDomainName string, ) *CreateRedirectionHostRequest`
+`func NewCreateRedirectionHostRequest(domainNames []string, forwardHttpCode int64, forwardScheme string, forwardDomainName string, ) *CreateRedirectionHostRequest`
 
 NewCreateRedirectionHostRequest instantiates a new CreateRedirectionHostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -59,20 +59,20 @@ SetDomainNames sets DomainNames field to given value.
 
 ### GetForwardHttpCode
 
-`func (o *CreateRedirectionHostRequest) GetForwardHttpCode() int32`
+`func (o *CreateRedirectionHostRequest) GetForwardHttpCode() int64`
 
 GetForwardHttpCode returns the ForwardHttpCode field if non-nil, zero value otherwise.
 
 ### GetForwardHttpCodeOk
 
-`func (o *CreateRedirectionHostRequest) GetForwardHttpCodeOk() (*int32, bool)`
+`func (o *CreateRedirectionHostRequest) GetForwardHttpCodeOk() (*int64, bool)`
 
 GetForwardHttpCodeOk returns a tuple with the ForwardHttpCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardHttpCode
 
-`func (o *CreateRedirectionHostRequest) SetForwardHttpCode(v int32)`
+`func (o *CreateRedirectionHostRequest) SetForwardHttpCode(v int64)`
 
 SetForwardHttpCode sets ForwardHttpCode field to given value.
 
