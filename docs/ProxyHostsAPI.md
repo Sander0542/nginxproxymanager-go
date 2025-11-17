@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	createProxyHostRequest := *openapiclient.NewCreateProxyHostRequest([]string{"DomainNames_example"}, "ForwardScheme_example", "ForwardHost_example", int64(123)) // CreateProxyHostRequest | Proxy Host Payload
+	createProxyHostRequest := *openapiclient.NewCreateProxyHostRequest([]string{"DomainNames_example"}, "http", "127.0.0.1", int64(8080)) // CreateProxyHostRequest | Proxy Host Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	hostID := int64(2) // int64 | 
+	hostID := int64(2) // int64 | The ID of the Proxy Host
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int64** |  | 
+**hostID** | **int64** | The ID of the Proxy Host | 
 
 ### Other Parameters
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -165,7 +165,7 @@ import (
 )
 
 func main() {
-	hostID := int64(2) // int64 | 
+	hostID := int64(2) // int64 | The ID of the Proxy Host
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -185,7 +185,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int64** |  | 
+**hostID** | **int64** | The ID of the Proxy Host | 
 
 ### Other Parameters
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -233,7 +233,7 @@ import (
 )
 
 func main() {
-	hostID := int64(2) // int64 | 
+	hostID := int64(2) // int64 | The ID of the Proxy Host
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -253,7 +253,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int64** |  | 
+**hostID** | **int64** | The ID of the Proxy Host | 
 
 ### Other Parameters
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -284,7 +284,7 @@ No authorization required
 
 ## GetProxyHost
 
-> GetProxyHosts200ResponseInner GetProxyHost(ctx, hostID).Expand(expand).Execute()
+> GetProxyHosts200ResponseInner GetProxyHost(ctx, hostID).Execute()
 
 Get a Proxy Host
 
@@ -301,12 +301,11 @@ import (
 )
 
 func main() {
-	hostID := int64(1) // int64 | 
-	expand := "expand_example" // string | Expansions (optional)
+	hostID := int64(1) // int64 | The ID of the Proxy Host
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProxyHostsAPI.GetProxyHost(context.Background(), hostID).Expand(expand).Execute()
+	resp, r, err := apiClient.ProxyHostsAPI.GetProxyHost(context.Background(), hostID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProxyHostsAPI.GetProxyHost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -322,7 +321,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int64** |  | 
+**hostID** | **int64** | The ID of the Proxy Host | 
 
 ### Other Parameters
 
@@ -332,7 +331,6 @@ Other parameters are passed through a pointer to a apiGetProxyHostRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **expand** | **string** | Expansions | 
 
 ### Return type
 
@@ -340,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -404,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -435,7 +433,7 @@ import (
 )
 
 func main() {
-	hostID := int64(2) // int64 | 
+	hostID := int64(2) // int64 | The ID of the Proxy Host
 	updateProxyHostRequest := *openapiclient.NewUpdateProxyHostRequest() // UpdateProxyHostRequest | Proxy Host Payload
 
 	configuration := openapiclient.NewConfiguration()
@@ -456,7 +454,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**hostID** | **int64** |  | 
+**hostID** | **int64** | The ID of the Proxy Host | 
 
 ### Other Parameters
 
@@ -474,7 +472,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

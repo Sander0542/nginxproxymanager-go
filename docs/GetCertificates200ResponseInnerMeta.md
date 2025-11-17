@@ -7,11 +7,9 @@ Name | Type | Description | Notes
 **Certificate** | Pointer to **string** |  | [optional] 
 **CertificateKey** | Pointer to **string** |  | [optional] 
 **DnsChallenge** | Pointer to **bool** |  | [optional] 
-**DnsProvider** | Pointer to **string** |  | [optional] 
 **DnsProviderCredentials** | Pointer to **string** |  | [optional] 
-**LetsencryptAgree** | Pointer to **bool** |  | [optional] 
+**DnsProvider** | Pointer to **string** |  | [optional] 
 **LetsencryptCertificate** | Pointer to **map[string]interface{}** |  | [optional] 
-**LetsencryptEmail** | Pointer to **string** |  | [optional] 
 **PropagationSeconds** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -108,31 +106,6 @@ SetDnsChallenge sets DnsChallenge field to given value.
 
 HasDnsChallenge returns a boolean if a field has been set.
 
-### GetDnsProvider
-
-`func (o *GetCertificates200ResponseInnerMeta) GetDnsProvider() string`
-
-GetDnsProvider returns the DnsProvider field if non-nil, zero value otherwise.
-
-### GetDnsProviderOk
-
-`func (o *GetCertificates200ResponseInnerMeta) GetDnsProviderOk() (*string, bool)`
-
-GetDnsProviderOk returns a tuple with the DnsProvider field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDnsProvider
-
-`func (o *GetCertificates200ResponseInnerMeta) SetDnsProvider(v string)`
-
-SetDnsProvider sets DnsProvider field to given value.
-
-### HasDnsProvider
-
-`func (o *GetCertificates200ResponseInnerMeta) HasDnsProvider() bool`
-
-HasDnsProvider returns a boolean if a field has been set.
-
 ### GetDnsProviderCredentials
 
 `func (o *GetCertificates200ResponseInnerMeta) GetDnsProviderCredentials() string`
@@ -158,30 +131,30 @@ SetDnsProviderCredentials sets DnsProviderCredentials field to given value.
 
 HasDnsProviderCredentials returns a boolean if a field has been set.
 
-### GetLetsencryptAgree
+### GetDnsProvider
 
-`func (o *GetCertificates200ResponseInnerMeta) GetLetsencryptAgree() bool`
+`func (o *GetCertificates200ResponseInnerMeta) GetDnsProvider() string`
 
-GetLetsencryptAgree returns the LetsencryptAgree field if non-nil, zero value otherwise.
+GetDnsProvider returns the DnsProvider field if non-nil, zero value otherwise.
 
-### GetLetsencryptAgreeOk
+### GetDnsProviderOk
 
-`func (o *GetCertificates200ResponseInnerMeta) GetLetsencryptAgreeOk() (*bool, bool)`
+`func (o *GetCertificates200ResponseInnerMeta) GetDnsProviderOk() (*string, bool)`
 
-GetLetsencryptAgreeOk returns a tuple with the LetsencryptAgree field if it's non-nil, zero value otherwise
+GetDnsProviderOk returns a tuple with the DnsProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLetsencryptAgree
+### SetDnsProvider
 
-`func (o *GetCertificates200ResponseInnerMeta) SetLetsencryptAgree(v bool)`
+`func (o *GetCertificates200ResponseInnerMeta) SetDnsProvider(v string)`
 
-SetLetsencryptAgree sets LetsencryptAgree field to given value.
+SetDnsProvider sets DnsProvider field to given value.
 
-### HasLetsencryptAgree
+### HasDnsProvider
 
-`func (o *GetCertificates200ResponseInnerMeta) HasLetsencryptAgree() bool`
+`func (o *GetCertificates200ResponseInnerMeta) HasDnsProvider() bool`
 
-HasLetsencryptAgree returns a boolean if a field has been set.
+HasDnsProvider returns a boolean if a field has been set.
 
 ### GetLetsencryptCertificate
 
@@ -207,31 +180,6 @@ SetLetsencryptCertificate sets LetsencryptCertificate field to given value.
 `func (o *GetCertificates200ResponseInnerMeta) HasLetsencryptCertificate() bool`
 
 HasLetsencryptCertificate returns a boolean if a field has been set.
-
-### GetLetsencryptEmail
-
-`func (o *GetCertificates200ResponseInnerMeta) GetLetsencryptEmail() string`
-
-GetLetsencryptEmail returns the LetsencryptEmail field if non-nil, zero value otherwise.
-
-### GetLetsencryptEmailOk
-
-`func (o *GetCertificates200ResponseInnerMeta) GetLetsencryptEmailOk() (*string, bool)`
-
-GetLetsencryptEmailOk returns a tuple with the LetsencryptEmail field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLetsencryptEmail
-
-`func (o *GetCertificates200ResponseInnerMeta) SetLetsencryptEmail(v string)`
-
-SetLetsencryptEmail sets LetsencryptEmail field to given value.
-
-### HasLetsencryptEmail
-
-`func (o *GetCertificates200ResponseInnerMeta) HasLetsencryptEmail() bool`
-
-HasLetsencryptEmail returns a boolean if a field has been set.
 
 ### GetPropagationSeconds
 

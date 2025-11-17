@@ -1,4 +1,4 @@
-# GetAccessLists200ResponseAddress
+# CreateAccessListRequestClientsInnerAddress
 
 ## Properties
 
@@ -7,20 +7,20 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGetAccessLists200ResponseAddress
+### NewCreateAccessListRequestClientsInnerAddress
 
-`func NewGetAccessLists200ResponseAddress() *GetAccessLists200ResponseAddress`
+`func NewCreateAccessListRequestClientsInnerAddress() *CreateAccessListRequestClientsInnerAddress`
 
-NewGetAccessLists200ResponseAddress instantiates a new GetAccessLists200ResponseAddress object
+NewCreateAccessListRequestClientsInnerAddress instantiates a new CreateAccessListRequestClientsInnerAddress object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGetAccessLists200ResponseAddressWithDefaults
+### NewCreateAccessListRequestClientsInnerAddressWithDefaults
 
-`func NewGetAccessLists200ResponseAddressWithDefaults() *GetAccessLists200ResponseAddress`
+`func NewCreateAccessListRequestClientsInnerAddressWithDefaults() *CreateAccessListRequestClientsInnerAddress`
 
-NewGetAccessLists200ResponseAddressWithDefaults instantiates a new GetAccessLists200ResponseAddress object
+NewCreateAccessListRequestClientsInnerAddressWithDefaults instantiates a new CreateAccessListRequestClientsInnerAddress object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 

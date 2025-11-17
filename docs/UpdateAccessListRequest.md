@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **SatisfyAny** | Pointer to **bool** |  | [optional] 
 **PassAuth** | Pointer to **bool** |  | [optional] 
-**Items** | Pointer to [**[]CreateAccessListRequestItemsInner**](CreateAccessListRequestItemsInner.md) |  | [optional] 
+**Items** | Pointer to [**[]UpdateAccessListRequestItemsInner**](UpdateAccessListRequestItemsInner.md) |  | [optional] 
 **Clients** | Pointer to [**[]CreateAccessListRequestClientsInner**](CreateAccessListRequestClientsInner.md) |  | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasPassAuth returns a boolean if a field has been set.
 
 ### GetItems
 
-`func (o *UpdateAccessListRequest) GetItems() []CreateAccessListRequestItemsInner`
+`func (o *UpdateAccessListRequest) GetItems() []UpdateAccessListRequestItemsInner`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *UpdateAccessListRequest) GetItemsOk() (*[]CreateAccessListRequestItemsInner, bool)`
+`func (o *UpdateAccessListRequest) GetItemsOk() (*[]UpdateAccessListRequestItemsInner, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *UpdateAccessListRequest) SetItems(v []CreateAccessListRequestItemsInner)`
+`func (o *UpdateAccessListRequest) SetItems(v []UpdateAccessListRequestItemsInner)`
 
 SetItems sets Items field to given value.
 

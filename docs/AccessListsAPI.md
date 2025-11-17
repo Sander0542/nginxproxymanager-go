@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateAccessList
 
-> CreateAccessList201Response CreateAccessList(ctx).CreateAccessListRequest(createAccessListRequest).Execute()
+> GetAccessLists200Response CreateAccessList(ctx).CreateAccessListRequest(createAccessListRequest).Execute()
 
 Create a Access List
 
@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	createAccessListRequest := *openapiclient.NewCreateAccessListRequest("Name_example") // CreateAccessListRequest | Access List Payload
+	createAccessListRequest := *openapiclient.NewCreateAccessListRequest("My Access List") // CreateAccessListRequest | Access List Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -40,7 +40,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessListsAPI.CreateAccessList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateAccessList`: CreateAccessList201Response
+	// response from `CreateAccessList`: GetAccessLists200Response
 	fmt.Fprintf(os.Stdout, "Response from `AccessListsAPI.CreateAccessList`: %v\n", resp)
 }
 ```
@@ -60,11 +60,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAccessList201Response**](CreateAccessList201Response.md)
+[**GetAccessLists200Response**](GetAccessLists200Response.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -95,7 +95,7 @@ import (
 )
 
 func main() {
-	listID := int64(2) // int64 | 
+	listID := int64(2) // int64 | Access List ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -115,7 +115,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**listID** | **int64** |  | 
+**listID** | **int64** | Access List ID | 
 
 ### Other Parameters
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -146,7 +146,7 @@ No authorization required
 
 ## GetAccessList
 
-> CreateAccessList201Response GetAccessList(ctx, listID).Expand(expand).Execute()
+> GetAccessLists200Response GetAccessList(ctx, listID).Execute()
 
 Get a access List
 
@@ -163,17 +163,16 @@ import (
 )
 
 func main() {
-	listID := int64(1) // int64 | 
-	expand := "expand_example" // string | Expansions (optional)
+	listID := int64(1) // int64 | Access List ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessListsAPI.GetAccessList(context.Background(), listID).Expand(expand).Execute()
+	resp, r, err := apiClient.AccessListsAPI.GetAccessList(context.Background(), listID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessListsAPI.GetAccessList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetAccessList`: CreateAccessList201Response
+	// response from `GetAccessList`: GetAccessLists200Response
 	fmt.Fprintf(os.Stdout, "Response from `AccessListsAPI.GetAccessList`: %v\n", resp)
 }
 ```
@@ -184,7 +183,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**listID** | **int64** |  | 
+**listID** | **int64** | Access List ID | 
 
 ### Other Parameters
 
@@ -194,15 +193,14 @@ Other parameters are passed through a pointer to a apiGetAccessListRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **expand** | **string** | Expansions | 
 
 ### Return type
 
-[**CreateAccessList201Response**](CreateAccessList201Response.md)
+[**GetAccessLists200Response**](GetAccessLists200Response.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -216,7 +214,7 @@ No authorization required
 
 ## GetAccessLists
 
-> []GetAccessLists200ResponseInner GetAccessLists(ctx).Expand(expand).Execute()
+> GetAccessLists200Response GetAccessLists(ctx).Expand(expand).Execute()
 
 Get all access lists
 
@@ -242,7 +240,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessListsAPI.GetAccessLists``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetAccessLists`: []GetAccessLists200ResponseInner
+	// response from `GetAccessLists`: GetAccessLists200Response
 	fmt.Fprintf(os.Stdout, "Response from `AccessListsAPI.GetAccessLists`: %v\n", resp)
 }
 ```
@@ -262,11 +260,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]GetAccessLists200ResponseInner**](GetAccessLists200ResponseInner.md)
+[**GetAccessLists200Response**](GetAccessLists200Response.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -280,7 +278,7 @@ No authorization required
 
 ## UpdateAccessList
 
-> CreateAccessList201Response UpdateAccessList(ctx, listID).UpdateAccessListRequest(updateAccessListRequest).Execute()
+> GetAccessLists200Response UpdateAccessList(ctx, listID).UpdateAccessListRequest(updateAccessListRequest).Execute()
 
 Update a Access List
 
@@ -297,7 +295,7 @@ import (
 )
 
 func main() {
-	listID := int64(2) // int64 | 
+	listID := int64(2) // int64 | Access List ID
 	updateAccessListRequest := *openapiclient.NewUpdateAccessListRequest() // UpdateAccessListRequest | Access List Payload
 
 	configuration := openapiclient.NewConfiguration()
@@ -307,7 +305,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessListsAPI.UpdateAccessList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateAccessList`: CreateAccessList201Response
+	// response from `UpdateAccessList`: GetAccessLists200Response
 	fmt.Fprintf(os.Stdout, "Response from `AccessListsAPI.UpdateAccessList`: %v\n", resp)
 }
 ```
@@ -318,7 +316,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**listID** | **int64** |  | 
+**listID** | **int64** | Access List ID | 
 
 ### Other Parameters
 
@@ -332,11 +330,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateAccessList201Response**](CreateAccessList201Response.md)
+[**GetAccessLists200Response**](GetAccessLists200Response.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

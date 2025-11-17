@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateUser
 
-> GetAccessLists200ResponseInnerOwner CreateUser(ctx).CreateUserRequest(createUserRequest).Execute()
+> GetAuditLogs200ResponseInnerUser CreateUser(ctx).CreateUserRequest(createUserRequest).Execute()
 
 Create a User
 
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.CreateUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateUser`: GetAccessLists200ResponseInnerOwner
+	// response from `CreateUser`: GetAuditLogs200ResponseInnerUser
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.CreateUser`: %v\n", resp)
 }
 ```
@@ -63,11 +63,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md)
+[**GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -149,7 +149,7 @@ No authorization required
 
 ## GetUser
 
-> GetAccessLists200ResponseInnerOwner GetUser(ctx, userID).Expand(expand).Execute()
+> GetAuditLogs200ResponseInnerUser GetUser(ctx, userID).Execute()
 
 Get a user
 
@@ -167,16 +167,15 @@ import (
 
 func main() {
 	userID := openapiclient.getUser_userID_parameter{Int64: new(int64)} // GetUserUserIDParameter | User ID or 'me' for yourself
-	expand := "expand_example" // string | Expansions (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UsersAPI.GetUser(context.Background(), userID).Expand(expand).Execute()
+	resp, r, err := apiClient.UsersAPI.GetUser(context.Background(), userID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetUser`: GetAccessLists200ResponseInnerOwner
+	// response from `GetUser`: GetAuditLogs200ResponseInnerUser
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.GetUser`: %v\n", resp)
 }
 ```
@@ -197,15 +196,14 @@ Other parameters are passed through a pointer to a apiGetUserRequest struct via 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **expand** | **string** | Expansions | 
 
 ### Return type
 
-[**GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md)
+[**GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -219,7 +217,7 @@ No authorization required
 
 ## GetUsers
 
-> []GetAccessLists200ResponseInnerOwner GetUsers(ctx).Expand(expand).Execute()
+> []GetAuditLogs200ResponseInnerUser GetUsers(ctx).Expand(expand).Execute()
 
 Get all users
 
@@ -245,7 +243,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUsers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetUsers`: []GetAccessLists200ResponseInnerOwner
+	// response from `GetUsers`: []GetAuditLogs200ResponseInnerUser
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.GetUsers`: %v\n", resp)
 }
 ```
@@ -265,11 +263,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md)
+[**[]GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -337,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -351,7 +349,7 @@ No authorization required
 
 ## UpdateUser
 
-> GetAccessLists200ResponseInnerOwner UpdateUser(ctx, userID).UpdateUserRequest(updateUserRequest).Execute()
+> GetAuditLogs200ResponseInnerUser UpdateUser(ctx, userID).UpdateUserRequest(updateUserRequest).Execute()
 
 Update a User
 
@@ -378,7 +376,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.UpdateUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateUser`: GetAccessLists200ResponseInnerOwner
+	// response from `UpdateUser`: GetAuditLogs200ResponseInnerUser
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.UpdateUser`: %v\n", resp)
 }
 ```
@@ -403,11 +401,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md)
+[**GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -477,7 +475,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -491,7 +489,7 @@ No authorization required
 
 ## UpdateUserPermissions
 
-> bool UpdateUserPermissions(ctx, userID).GetAccessLists200ResponseInnerOwnerPermissions(getAccessLists200ResponseInnerOwnerPermissions).Execute()
+> bool UpdateUserPermissions(ctx, userID).UpdateUserPermissionsRequest(updateUserPermissionsRequest).Execute()
 
 Update a User's Permissions
 
@@ -509,11 +507,11 @@ import (
 
 func main() {
 	userID := int64(2) // int64 | User ID
-	getAccessLists200ResponseInnerOwnerPermissions := *openapiclient.NewGetAccessLists200ResponseInnerOwnerPermissions("Visibility_example", "AccessLists_example", "DeadHosts_example", "ProxyHosts_example", "RedirectionHosts_example", "Streams_example", "Certificates_example") // GetAccessLists200ResponseInnerOwnerPermissions | Permissions Payload
+	updateUserPermissionsRequest := *openapiclient.NewUpdateUserPermissionsRequest() // UpdateUserPermissionsRequest | Permissions Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UsersAPI.UpdateUserPermissions(context.Background(), userID).GetAccessLists200ResponseInnerOwnerPermissions(getAccessLists200ResponseInnerOwnerPermissions).Execute()
+	resp, r, err := apiClient.UsersAPI.UpdateUserPermissions(context.Background(), userID).UpdateUserPermissionsRequest(updateUserPermissionsRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.UpdateUserPermissions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -539,7 +537,7 @@ Other parameters are passed through a pointer to a apiUpdateUserPermissionsReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **getAccessLists200ResponseInnerOwnerPermissions** | [**GetAccessLists200ResponseInnerOwnerPermissions**](GetAccessLists200ResponseInnerOwnerPermissions.md) | Permissions Payload | 
+ **updateUserPermissionsRequest** | [**UpdateUserPermissionsRequest**](UpdateUserPermissionsRequest.md) | Permissions Payload | 
 
 ### Return type
 
@@ -547,7 +545,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

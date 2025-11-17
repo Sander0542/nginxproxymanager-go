@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **UdpForwarding** | Pointer to **bool** |  | [optional] 
 **CertificateId** | Pointer to [**GetProxyHosts200ResponseInnerCertificateId**](GetProxyHosts200ResponseInnerCertificateId.md) |  | [optional] 
 **Meta** | Pointer to **map[string]interface{}** |  | [optional] 
+**DomainNames** | Pointer to **[]string** | Domain Names separated by a comma | [optional] 
 
 ## Methods
 
@@ -190,6 +191,31 @@ SetMeta sets Meta field to given value.
 `func (o *CreateStreamRequest) HasMeta() bool`
 
 HasMeta returns a boolean if a field has been set.
+
+### GetDomainNames
+
+`func (o *CreateStreamRequest) GetDomainNames() []string`
+
+GetDomainNames returns the DomainNames field if non-nil, zero value otherwise.
+
+### GetDomainNamesOk
+
+`func (o *CreateStreamRequest) GetDomainNamesOk() (*[]string, bool)`
+
+GetDomainNamesOk returns a tuple with the DomainNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainNames
+
+`func (o *CreateStreamRequest) SetDomainNames(v []string)`
+
+SetDomainNames sets DomainNames field to given value.
+
+### HasDomainNames
+
+`func (o *CreateStreamRequest) HasDomainNames() bool`
+
+HasDomainNames returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -9,8 +9,9 @@ Method | HTTP request | Description
 [**DownloadCertificate**](CertificatesAPI.md#DownloadCertificate) | **Get** /nginx/certificates/{certID}/download | Downloads a Certificate
 [**GetCertificate**](CertificatesAPI.md#GetCertificate) | **Get** /nginx/certificates/{certID} | Get a Certificate
 [**GetCertificates**](CertificatesAPI.md#GetCertificates) | **Get** /nginx/certificates | Get all certificates
+[**GetDNSProviders**](CertificatesAPI.md#GetDNSProviders) | **Get** /nginx/certificates/dns-providers | Get DNS Providers for Certificates
 [**RenewCertificate**](CertificatesAPI.md#RenewCertificate) | **Post** /nginx/certificates/{certID}/renew | Renews a Certificate
-[**TestHttpReach**](CertificatesAPI.md#TestHttpReach) | **Get** /nginx/certificates/test-http | Test HTTP Reachability
+[**TestHttpReach**](CertificatesAPI.md#TestHttpReach) | **Post** /nginx/certificates/test-http | Test HTTP Reachability
 [**UploadCertificate**](CertificatesAPI.md#UploadCertificate) | **Post** /nginx/certificates/{certID}/upload | Uploads a custom Certificate
 [**ValidateCertificates**](CertificatesAPI.md#ValidateCertificates) | **Post** /nginx/certificates/validate | Validates given Custom Certificates
 
@@ -35,7 +36,7 @@ import (
 )
 
 func main() {
-	createCertificateRequest := *openapiclient.NewCreateCertificateRequest("Provider_example") // CreateCertificateRequest | Certificate Payload
+	createCertificateRequest := *openapiclient.NewCreateCertificateRequest("letsencrypt") // CreateCertificateRequest | Certificate Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -68,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -99,7 +100,7 @@ import (
 )
 
 func main() {
-	certID := int64(2) // int64 | 
+	certID := int64(2) // int64 | Certificate ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -119,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int64** |  | 
+**certID** | **int64** | Certificate ID | 
 
 ### Other Parameters
 
@@ -136,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -167,7 +168,7 @@ import (
 )
 
 func main() {
-	certID := int64(1) // int64 | 
+	certID := int64(1) // int64 | Certificate ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -187,7 +188,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int64** |  | 
+**certID** | **int64** | Certificate ID | 
 
 ### Other Parameters
 
@@ -204,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -218,7 +219,7 @@ No authorization required
 
 ## GetCertificate
 
-> GetCertificates200ResponseInner GetCertificate(ctx, certID).Expand(expand).Execute()
+> GetCertificates200ResponseInner GetCertificate(ctx, certID).Execute()
 
 Get a Certificate
 
@@ -235,12 +236,11 @@ import (
 )
 
 func main() {
-	certID := int64(1) // int64 | 
-	expand := "expand_example" // string | Expansions (optional)
+	certID := int64(1) // int64 | Certificate ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CertificatesAPI.GetCertificate(context.Background(), certID).Expand(expand).Execute()
+	resp, r, err := apiClient.CertificatesAPI.GetCertificate(context.Background(), certID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificatesAPI.GetCertificate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -256,7 +256,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int64** |  | 
+**certID** | **int64** | Certificate ID | 
 
 ### Other Parameters
 
@@ -266,7 +266,6 @@ Other parameters are passed through a pointer to a apiGetCertificateRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **expand** | **string** | Expansions | 
 
 ### Return type
 
@@ -274,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -338,7 +337,66 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDNSProviders
+
+> []GetDNSProviders200ResponseInner GetDNSProviders(ctx).Execute()
+
+Get DNS Providers for Certificates
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/sander0542/nginxproxymanager-go"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificatesAPI.GetDNSProviders(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificatesAPI.GetDNSProviders``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDNSProviders`: []GetDNSProviders200ResponseInner
+	fmt.Fprintf(os.Stdout, "Response from `CertificatesAPI.GetDNSProviders`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDNSProvidersRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]GetDNSProviders200ResponseInner**](GetDNSProviders200ResponseInner.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -369,7 +427,7 @@ import (
 )
 
 func main() {
-	certID := int64(1) // int64 | 
+	certID := int64(1) // int64 | Certificate ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -389,7 +447,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int64** |  | 
+**certID** | **int64** | Certificate ID | 
 
 ### Other Parameters
 
@@ -406,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -420,7 +478,7 @@ No authorization required
 
 ## TestHttpReach
 
-> TestHttpReach(ctx).Domains(domains).Execute()
+> TestHttpReach(ctx).TestHttpReachRequest(testHttpReachRequest).Execute()
 
 Test HTTP Reachability
 
@@ -437,11 +495,11 @@ import (
 )
 
 func main() {
-	domains := "["test.example.ord","test.example.com","nonexistent.example.com"]" // string | Expansions
+	testHttpReachRequest := *openapiclient.NewTestHttpReachRequest([]string{"Domains_example"}) // TestHttpReachRequest | Test Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.CertificatesAPI.TestHttpReach(context.Background()).Domains(domains).Execute()
+	r, err := apiClient.CertificatesAPI.TestHttpReach(context.Background()).TestHttpReachRequest(testHttpReachRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CertificatesAPI.TestHttpReach``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -460,7 +518,7 @@ Other parameters are passed through a pointer to a apiTestHttpReachRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domains** | **string** | Expansions | 
+ **testHttpReachRequest** | [**TestHttpReachRequest**](TestHttpReachRequest.md) | Test Payload | 
 
 ### Return type
 
@@ -468,11 +526,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -499,10 +557,10 @@ import (
 )
 
 func main() {
-	certID := int64(1) // int64 | 
-	certificate := os.NewFile(1234, "some_file") // *os.File | 
-	certificateKey := os.NewFile(1234, "some_file") // *os.File | 
-	intermediateCertificate := os.NewFile(1234, "some_file") // *os.File |  (optional)
+	certID := int64(1) // int64 | Certificate ID
+	certificate := "certificate_example" // string | 
+	certificateKey := "certificateKey_example" // string | 
+	intermediateCertificate := "intermediateCertificate_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -522,7 +580,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certID** | **int64** |  | 
+**certID** | **int64** | Certificate ID | 
 
 ### Other Parameters
 
@@ -532,9 +590,9 @@ Other parameters are passed through a pointer to a apiUploadCertificateRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **certificate** | ***os.File** |  | 
- **certificateKey** | ***os.File** |  | 
- **intermediateCertificate** | ***os.File** |  | 
+ **certificate** | **string** |  | 
+ **certificateKey** | **string** |  | 
+ **intermediateCertificate** | **string** |  | 
 
 ### Return type
 
@@ -542,7 +600,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -573,9 +631,9 @@ import (
 )
 
 func main() {
-	certificate := os.NewFile(1234, "some_file") // *os.File | 
-	certificateKey := os.NewFile(1234, "some_file") // *os.File | 
-	intermediateCertificate := os.NewFile(1234, "some_file") // *os.File |  (optional)
+	certificate := "certificate_example" // string | 
+	certificateKey := "certificateKey_example" // string | 
+	intermediateCertificate := "intermediateCertificate_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -600,9 +658,9 @@ Other parameters are passed through a pointer to a apiValidateCertificatesReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **certificate** | ***os.File** |  | 
- **certificateKey** | ***os.File** |  | 
- **intermediateCertificate** | ***os.File** |  | 
+ **certificate** | **string** |  | 
+ **certificateKey** | **string** |  | 
+ **intermediateCertificate** | **string** |  | 
 
 ### Return type
 
@@ -610,7 +668,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | **string** | Healthy | 
+**Setup** | Pointer to **bool** | Whether the initial setup has been completed | [optional] 
 **Version** | [**Health200ResponseVersion**](Health200ResponseVersion.md) |  | 
 
 ## Methods
@@ -45,6 +46,31 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+
+### GetSetup
+
+`func (o *Health200Response) GetSetup() bool`
+
+GetSetup returns the Setup field if non-nil, zero value otherwise.
+
+### GetSetupOk
+
+`func (o *Health200Response) GetSetupOk() (*bool, bool)`
+
+GetSetupOk returns a tuple with the Setup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSetup
+
+`func (o *Health200Response) SetSetup(v bool)`
+
+SetSetup sets Setup field to given value.
+
+### HasSetup
+
+`func (o *Health200Response) HasSetup() bool`
+
+HasSetup returns a boolean if a field has been set.
 
 ### GetVersion
 

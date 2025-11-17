@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **NiceName** | **string** | Nice Name for the custom certificate | 
 **DomainNames** | **[]string** | Domain Names separated by a comma | 
 **ExpiresOn** | **string** | Date and time of expiration | [readonly] 
-**Owner** | Pointer to [**GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md) |  | [optional] 
+**Owner** | Pointer to [**GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md) |  | [optional] 
 **Meta** | [**GetCertificates200ResponseInnerMeta**](GetCertificates200ResponseInnerMeta.md) |  | 
 
 ## Methods
@@ -196,20 +196,20 @@ SetExpiresOn sets ExpiresOn field to given value.
 
 ### GetOwner
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) GetOwner() GetAccessLists200ResponseInnerOwner`
+`func (o *GetProxyHosts200ResponseInnerCertificate) GetOwner() GetAuditLogs200ResponseInnerUser`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) GetOwnerOk() (*GetAccessLists200ResponseInnerOwner, bool)`
+`func (o *GetProxyHosts200ResponseInnerCertificate) GetOwnerOk() (*GetAuditLogs200ResponseInnerUser, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *GetProxyHosts200ResponseInnerCertificate) SetOwner(v GetAccessLists200ResponseInnerOwner)`
+`func (o *GetProxyHosts200ResponseInnerCertificate) SetOwner(v GetAuditLogs200ResponseInnerUser)`
 
 SetOwner sets Owner field to given value.
 

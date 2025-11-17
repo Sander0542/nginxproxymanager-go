@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to [**GetAccessLists200ResponseInnerClientsInnerAddress**](GetAccessLists200ResponseInnerClientsInnerAddress.md) |  | [optional] 
+**Address** | Pointer to [**CreateAccessListRequestClientsInnerAddress**](CreateAccessListRequestClientsInnerAddress.md) |  | [optional] 
 **Directive** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAddress
 
-`func (o *CreateAccessListRequestClientsInner) GetAddress() GetAccessLists200ResponseInnerClientsInnerAddress`
+`func (o *CreateAccessListRequestClientsInner) GetAddress() CreateAccessListRequestClientsInnerAddress`
 
 GetAddress returns the Address field if non-nil, zero value otherwise.
 
 ### GetAddressOk
 
-`func (o *CreateAccessListRequestClientsInner) GetAddressOk() (*GetAccessLists200ResponseInnerClientsInnerAddress, bool)`
+`func (o *CreateAccessListRequestClientsInner) GetAddressOk() (*CreateAccessListRequestClientsInnerAddress, bool)`
 
 GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddress
 
-`func (o *CreateAccessListRequestClientsInner) SetAddress(v GetAccessLists200ResponseInnerClientsInnerAddress)`
+`func (o *CreateAccessListRequestClientsInner) SetAddress(v CreateAccessListRequestClientsInnerAddress)`
 
 SetAddress sets Address field to given value.
 

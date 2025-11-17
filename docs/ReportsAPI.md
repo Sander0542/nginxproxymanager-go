@@ -55,7 +55,7 @@ Other parameters are passed through a pointer to a apiReportsHostsRequest struct
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

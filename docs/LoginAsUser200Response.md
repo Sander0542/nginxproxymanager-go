@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Expires** | **float32** | Token Expiry Unix Time | 
 **Token** | **string** | JWT Token | 
-**User** | [**GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md) |  | 
+**Expires** | **string** | Token Expiry Timestamp | 
+**User** | [**GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md) |  | 
 
 ## Methods
 
 ### NewLoginAsUser200Response
 
-`func NewLoginAsUser200Response(expires float32, token string, user GetAccessLists200ResponseInnerOwner, ) *LoginAsUser200Response`
+`func NewLoginAsUser200Response(token string, expires string, user GetAuditLogs200ResponseInnerUser, ) *LoginAsUser200Response`
 
 NewLoginAsUser200Response instantiates a new LoginAsUser200Response object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewLoginAsUser200ResponseWithDefaults instantiates a new LoginAsUser200Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetExpires
-
-`func (o *LoginAsUser200Response) GetExpires() float32`
-
-GetExpires returns the Expires field if non-nil, zero value otherwise.
-
-### GetExpiresOk
-
-`func (o *LoginAsUser200Response) GetExpiresOk() (*float32, bool)`
-
-GetExpiresOk returns a tuple with the Expires field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExpires
-
-`func (o *LoginAsUser200Response) SetExpires(v float32)`
-
-SetExpires sets Expires field to given value.
-
 
 ### GetToken
 
@@ -67,22 +47,42 @@ and a boolean to check if the value has been set.
 SetToken sets Token field to given value.
 
 
+### GetExpires
+
+`func (o *LoginAsUser200Response) GetExpires() string`
+
+GetExpires returns the Expires field if non-nil, zero value otherwise.
+
+### GetExpiresOk
+
+`func (o *LoginAsUser200Response) GetExpiresOk() (*string, bool)`
+
+GetExpiresOk returns a tuple with the Expires field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpires
+
+`func (o *LoginAsUser200Response) SetExpires(v string)`
+
+SetExpires sets Expires field to given value.
+
+
 ### GetUser
 
-`func (o *LoginAsUser200Response) GetUser() GetAccessLists200ResponseInnerOwner`
+`func (o *LoginAsUser200Response) GetUser() GetAuditLogs200ResponseInnerUser`
 
 GetUser returns the User field if non-nil, zero value otherwise.
 
 ### GetUserOk
 
-`func (o *LoginAsUser200Response) GetUserOk() (*GetAccessLists200ResponseInnerOwner, bool)`
+`func (o *LoginAsUser200Response) GetUserOk() (*GetAuditLogs200ResponseInnerUser, bool)`
 
 GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUser
 
-`func (o *LoginAsUser200Response) SetUser(v GetAccessLists200ResponseInnerOwner)`
+`func (o *LoginAsUser200Response) SetUser(v GetAuditLogs200ResponseInnerUser)`
 
 SetUser sets User field to given value.
 

@@ -9,18 +9,16 @@ Name | Type | Description | Notes
 **ModifiedOn** | **string** | Date and time of last update | [readonly] 
 **OwnerUserId** | **int64** | User ID | 
 **Name** | **string** |  | 
+**Meta** | **map[string]interface{}** |  | 
 **SatisfyAny** | **bool** |  | 
 **PassAuth** | **bool** |  | 
-**Meta** | **map[string]interface{}** |  | 
-**Owner** | Pointer to [**GetAccessLists200ResponseOwner**](GetAccessLists200ResponseOwner.md) |  | [optional] 
-**Items** | Pointer to [**[]GetAccessLists200ResponseItemsInner**](GetAccessLists200ResponseItemsInner.md) |  | [optional] 
-**Clients** | Pointer to [**[]GetAccessLists200ResponseClientsInner**](GetAccessLists200ResponseClientsInner.md) |  | [optional] 
+**ProxyHostCount** | **int64** |  | 
 
 ## Methods
 
 ### NewGetAccessLists200Response
 
-`func NewGetAccessLists200Response(id int64, createdOn string, modifiedOn string, ownerUserId int64, name string, satisfyAny bool, passAuth bool, meta map[string]interface{}, ) *GetAccessLists200Response`
+`func NewGetAccessLists200Response(id int64, createdOn string, modifiedOn string, ownerUserId int64, name string, meta map[string]interface{}, satisfyAny bool, passAuth bool, proxyHostCount int64, ) *GetAccessLists200Response`
 
 NewGetAccessLists200Response instantiates a new GetAccessLists200Response object
 This constructor will assign default values to properties that have it defined,
@@ -135,6 +133,26 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetMeta
+
+`func (o *GetAccessLists200Response) GetMeta() map[string]interface{}`
+
+GetMeta returns the Meta field if non-nil, zero value otherwise.
+
+### GetMetaOk
+
+`func (o *GetAccessLists200Response) GetMetaOk() (*map[string]interface{}, bool)`
+
+GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeta
+
+`func (o *GetAccessLists200Response) SetMeta(v map[string]interface{})`
+
+SetMeta sets Meta field to given value.
+
+
 ### GetSatisfyAny
 
 `func (o *GetAccessLists200Response) GetSatisfyAny() bool`
@@ -175,100 +193,25 @@ and a boolean to check if the value has been set.
 SetPassAuth sets PassAuth field to given value.
 
 
-### GetMeta
+### GetProxyHostCount
 
-`func (o *GetAccessLists200Response) GetMeta() map[string]interface{}`
+`func (o *GetAccessLists200Response) GetProxyHostCount() int64`
 
-GetMeta returns the Meta field if non-nil, zero value otherwise.
+GetProxyHostCount returns the ProxyHostCount field if non-nil, zero value otherwise.
 
-### GetMetaOk
+### GetProxyHostCountOk
 
-`func (o *GetAccessLists200Response) GetMetaOk() (*map[string]interface{}, bool)`
+`func (o *GetAccessLists200Response) GetProxyHostCountOk() (*int64, bool)`
 
-GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
+GetProxyHostCountOk returns a tuple with the ProxyHostCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMeta
+### SetProxyHostCount
 
-`func (o *GetAccessLists200Response) SetMeta(v map[string]interface{})`
+`func (o *GetAccessLists200Response) SetProxyHostCount(v int64)`
 
-SetMeta sets Meta field to given value.
+SetProxyHostCount sets ProxyHostCount field to given value.
 
-
-### GetOwner
-
-`func (o *GetAccessLists200Response) GetOwner() GetAccessLists200ResponseOwner`
-
-GetOwner returns the Owner field if non-nil, zero value otherwise.
-
-### GetOwnerOk
-
-`func (o *GetAccessLists200Response) GetOwnerOk() (*GetAccessLists200ResponseOwner, bool)`
-
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwner
-
-`func (o *GetAccessLists200Response) SetOwner(v GetAccessLists200ResponseOwner)`
-
-SetOwner sets Owner field to given value.
-
-### HasOwner
-
-`func (o *GetAccessLists200Response) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
-
-### GetItems
-
-`func (o *GetAccessLists200Response) GetItems() []GetAccessLists200ResponseItemsInner`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *GetAccessLists200Response) GetItemsOk() (*[]GetAccessLists200ResponseItemsInner, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *GetAccessLists200Response) SetItems(v []GetAccessLists200ResponseItemsInner)`
-
-SetItems sets Items field to given value.
-
-### HasItems
-
-`func (o *GetAccessLists200Response) HasItems() bool`
-
-HasItems returns a boolean if a field has been set.
-
-### GetClients
-
-`func (o *GetAccessLists200Response) GetClients() []GetAccessLists200ResponseClientsInner`
-
-GetClients returns the Clients field if non-nil, zero value otherwise.
-
-### GetClientsOk
-
-`func (o *GetAccessLists200Response) GetClientsOk() (*[]GetAccessLists200ResponseClientsInner, bool)`
-
-GetClientsOk returns a tuple with the Clients field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClients
-
-`func (o *GetAccessLists200Response) SetClients(v []GetAccessLists200ResponseClientsInner)`
-
-SetClients sets Clients field to given value.
-
-### HasClients
-
-`func (o *GetAccessLists200Response) HasClients() bool`
-
-HasClients returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

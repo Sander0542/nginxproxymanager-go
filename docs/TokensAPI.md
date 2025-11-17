@@ -56,7 +56,7 @@ Other parameters are passed through a pointer to a apiRefreshTokenRequest struct
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -87,7 +87,7 @@ import (
 )
 
 func main() {
-	requestTokenRequest := *openapiclient.NewRequestTokenRequest("Identity_example", "Secret_example") // RequestTokenRequest | Credentials Payload
+	requestTokenRequest := *openapiclient.NewRequestTokenRequest("me@example.com", "bigredhorsebanana") // RequestTokenRequest | Credentials Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

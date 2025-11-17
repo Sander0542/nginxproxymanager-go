@@ -25,9 +25,9 @@ Name | Type | Description | Notes
 **Locations** | [**[]GetProxyHosts200ResponseInnerLocationsInner**](GetProxyHosts200ResponseInnerLocationsInner.md) |  | 
 **HstsEnabled** | **bool** | Is HSTS Enabled | 
 **HstsSubdomains** | **bool** | Is HSTS applicable to all subdomains | 
-**Certificate** | Pointer to [**GetProxyHosts200ResponseInnerCertificate**](GetProxyHosts200ResponseInnerCertificate.md) |  | [optional] 
-**Owner** | Pointer to [**GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md) |  | [optional] 
-**AccessList** | Pointer to [**GetProxyHosts200ResponseInnerAccessList**](GetProxyHosts200ResponseInnerAccessList.md) |  | [optional] 
+**Certificate** | Pointer to [**NullableGetProxyHosts200ResponseInnerCertificate**](GetProxyHosts200ResponseInnerCertificate.md) |  | [optional] 
+**Owner** | Pointer to [**GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md) |  | [optional] 
+**AccessList** | Pointer to [**NullableGetProxyHosts200ResponseInnerAccessList**](GetProxyHosts200ResponseInnerAccessList.md) |  | [optional] 
 
 ## Methods
 
@@ -493,22 +493,32 @@ SetCertificate sets Certificate field to given value.
 
 HasCertificate returns a boolean if a field has been set.
 
+### SetCertificateNil
+
+`func (o *GetProxyHosts200ResponseInner) SetCertificateNil(b bool)`
+
+ SetCertificateNil sets the value for Certificate to be an explicit nil
+
+### UnsetCertificate
+`func (o *GetProxyHosts200ResponseInner) UnsetCertificate()`
+
+UnsetCertificate ensures that no value is present for Certificate, not even an explicit nil
 ### GetOwner
 
-`func (o *GetProxyHosts200ResponseInner) GetOwner() GetAccessLists200ResponseInnerOwner`
+`func (o *GetProxyHosts200ResponseInner) GetOwner() GetAuditLogs200ResponseInnerUser`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *GetProxyHosts200ResponseInner) GetOwnerOk() (*GetAccessLists200ResponseInnerOwner, bool)`
+`func (o *GetProxyHosts200ResponseInner) GetOwnerOk() (*GetAuditLogs200ResponseInnerUser, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *GetProxyHosts200ResponseInner) SetOwner(v GetAccessLists200ResponseInnerOwner)`
+`func (o *GetProxyHosts200ResponseInner) SetOwner(v GetAuditLogs200ResponseInnerUser)`
 
 SetOwner sets Owner field to given value.
 
@@ -543,6 +553,16 @@ SetAccessList sets AccessList field to given value.
 
 HasAccessList returns a boolean if a field has been set.
 
+### SetAccessListNil
+
+`func (o *GetProxyHosts200ResponseInner) SetAccessListNil(b bool)`
+
+ SetAccessListNil sets the value for AccessList to be an explicit nil
+
+### UnsetAccessList
+`func (o *GetProxyHosts200ResponseInner) UnsetAccessList()`
+
+UnsetAccessList ensures that no value is present for AccessList, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

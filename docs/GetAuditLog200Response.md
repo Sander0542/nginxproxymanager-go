@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ObjectId** | **int64** | Unique identifier | [readonly] 
 **Action** | **string** |  | 
 **Meta** | **map[string]interface{}** |  | 
+**User** | Pointer to [**GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md) |  | [optional] 
 
 ## Methods
 
@@ -191,6 +192,31 @@ and a boolean to check if the value has been set.
 
 SetMeta sets Meta field to given value.
 
+
+### GetUser
+
+`func (o *GetAuditLog200Response) GetUser() GetAuditLogs200ResponseInnerUser`
+
+GetUser returns the User field if non-nil, zero value otherwise.
+
+### GetUserOk
+
+`func (o *GetAuditLog200Response) GetUserOk() (*GetAuditLogs200ResponseInnerUser, bool)`
+
+GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUser
+
+`func (o *GetAuditLog200Response) SetUser(v GetAuditLogs200ResponseInnerUser)`
+
+SetUser sets User field to given value.
+
+### HasUser
+
+`func (o *GetAuditLog200Response) HasUser() bool`
+
+HasUser returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

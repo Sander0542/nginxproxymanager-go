@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	createStreamRequest := *openapiclient.NewCreateStreamRequest(int64(123), *openapiclient.NewGetStreams200ResponseInnerForwardingHost(), int64(123)) // CreateStreamRequest | Stream Payload
+	createStreamRequest := *openapiclient.NewCreateStreamRequest(int64(9090), *openapiclient.NewGetStreams200ResponseInnerForwardingHost(), int64(80)) // CreateStreamRequest | Stream Payload
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	streamID := int64(2) // int64 | 
+	streamID := int64(2) // int64 | The ID of the Stream
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int64** |  | 
+**streamID** | **int64** | The ID of the Stream | 
 
 ### Other Parameters
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -165,7 +165,7 @@ import (
 )
 
 func main() {
-	streamID := int64(2) // int64 | 
+	streamID := int64(2) // int64 | The ID of the Stream
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -185,7 +185,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int64** |  | 
+**streamID** | **int64** | The ID of the Stream | 
 
 ### Other Parameters
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -233,7 +233,7 @@ import (
 )
 
 func main() {
-	streamID := int64(2) // int64 | 
+	streamID := int64(2) // int64 | The ID of the Stream
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -253,7 +253,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int64** |  | 
+**streamID** | **int64** | The ID of the Stream | 
 
 ### Other Parameters
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -284,7 +284,7 @@ No authorization required
 
 ## GetStream
 
-> GetStreams200ResponseInner GetStream(ctx, streamID).Expand(expand).Execute()
+> GetStreams200ResponseInner GetStream(ctx, streamID).Execute()
 
 Get a Stream
 
@@ -301,12 +301,11 @@ import (
 )
 
 func main() {
-	streamID := int64(2) // int64 | 
-	expand := "expand_example" // string | Expansions (optional)
+	streamID := int64(2) // int64 | The ID of the Stream
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StreamsAPI.GetStream(context.Background(), streamID).Expand(expand).Execute()
+	resp, r, err := apiClient.StreamsAPI.GetStream(context.Background(), streamID).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetStream``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -322,7 +321,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int64** |  | 
+**streamID** | **int64** | The ID of the Stream | 
 
 ### Other Parameters
 
@@ -332,7 +331,6 @@ Other parameters are passed through a pointer to a apiGetStreamRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **expand** | **string** | Expansions | 
 
 ### Return type
 
@@ -340,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -404,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -435,7 +433,7 @@ import (
 )
 
 func main() {
-	streamID := int64(2) // int64 | 
+	streamID := int64(2) // int64 | The ID of the Stream
 	updateStreamRequest := *openapiclient.NewUpdateStreamRequest() // UpdateStreamRequest | Stream Payload
 
 	configuration := openapiclient.NewConfiguration()
@@ -456,7 +454,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**streamID** | **int64** |  | 
+**streamID** | **int64** | The ID of the Stream | 
 
 ### Other Parameters
 
@@ -474,7 +472,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

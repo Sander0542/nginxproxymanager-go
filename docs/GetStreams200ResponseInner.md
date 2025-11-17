@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | Is Enabled | 
 **CertificateId** | Pointer to [**GetProxyHosts200ResponseInnerCertificateId**](GetProxyHosts200ResponseInnerCertificateId.md) |  | [optional] 
 **Meta** | **map[string]interface{}** |  | 
-**Owner** | Pointer to [**GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md) |  | [optional] 
-**Certificate** | Pointer to [**GetProxyHosts200ResponseInnerCertificate**](GetProxyHosts200ResponseInnerCertificate.md) |  | [optional] 
+**Certificate** | Pointer to [**GetRedirectionHosts200ResponseInnerCertificate**](GetRedirectionHosts200ResponseInnerCertificate.md) |  | [optional] 
+**Owner** | Pointer to [**GetAuditLogs200ResponseInnerUser**](GetAuditLogs200ResponseInnerUser.md) |  | [optional] 
 
 ## Methods
 
@@ -283,47 +283,22 @@ and a boolean to check if the value has been set.
 SetMeta sets Meta field to given value.
 
 
-### GetOwner
-
-`func (o *GetStreams200ResponseInner) GetOwner() GetAccessLists200ResponseInnerOwner`
-
-GetOwner returns the Owner field if non-nil, zero value otherwise.
-
-### GetOwnerOk
-
-`func (o *GetStreams200ResponseInner) GetOwnerOk() (*GetAccessLists200ResponseInnerOwner, bool)`
-
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwner
-
-`func (o *GetStreams200ResponseInner) SetOwner(v GetAccessLists200ResponseInnerOwner)`
-
-SetOwner sets Owner field to given value.
-
-### HasOwner
-
-`func (o *GetStreams200ResponseInner) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
-
 ### GetCertificate
 
-`func (o *GetStreams200ResponseInner) GetCertificate() GetProxyHosts200ResponseInnerCertificate`
+`func (o *GetStreams200ResponseInner) GetCertificate() GetRedirectionHosts200ResponseInnerCertificate`
 
 GetCertificate returns the Certificate field if non-nil, zero value otherwise.
 
 ### GetCertificateOk
 
-`func (o *GetStreams200ResponseInner) GetCertificateOk() (*GetProxyHosts200ResponseInnerCertificate, bool)`
+`func (o *GetStreams200ResponseInner) GetCertificateOk() (*GetRedirectionHosts200ResponseInnerCertificate, bool)`
 
 GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertificate
 
-`func (o *GetStreams200ResponseInner) SetCertificate(v GetProxyHosts200ResponseInnerCertificate)`
+`func (o *GetStreams200ResponseInner) SetCertificate(v GetRedirectionHosts200ResponseInnerCertificate)`
 
 SetCertificate sets Certificate field to given value.
 
@@ -332,6 +307,31 @@ SetCertificate sets Certificate field to given value.
 `func (o *GetStreams200ResponseInner) HasCertificate() bool`
 
 HasCertificate returns a boolean if a field has been set.
+
+### GetOwner
+
+`func (o *GetStreams200ResponseInner) GetOwner() GetAuditLogs200ResponseInnerUser`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *GetStreams200ResponseInner) GetOwnerOk() (*GetAuditLogs200ResponseInnerUser, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *GetStreams200ResponseInner) SetOwner(v GetAuditLogs200ResponseInnerUser)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *GetStreams200ResponseInner) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

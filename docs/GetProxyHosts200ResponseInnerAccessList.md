@@ -9,18 +9,16 @@ Name | Type | Description | Notes
 **ModifiedOn** | **string** | Date and time of last update | [readonly] 
 **OwnerUserId** | **int64** | User ID | 
 **Name** | **string** |  | 
+**Meta** | **map[string]interface{}** |  | 
 **SatisfyAny** | **bool** |  | 
 **PassAuth** | **bool** |  | 
-**Meta** | **map[string]interface{}** |  | 
-**Owner** | Pointer to [**GetAccessLists200ResponseInnerOwner**](GetAccessLists200ResponseInnerOwner.md) |  | [optional] 
-**Items** | Pointer to [**[]GetAccessLists200ResponseInnerItemsInner**](GetAccessLists200ResponseInnerItemsInner.md) |  | [optional] 
-**Clients** | Pointer to [**[]GetAccessLists200ResponseInnerClientsInner**](GetAccessLists200ResponseInnerClientsInner.md) |  | [optional] 
+**ProxyHostCount** | **int64** |  | 
 
 ## Methods
 
 ### NewGetProxyHosts200ResponseInnerAccessList
 
-`func NewGetProxyHosts200ResponseInnerAccessList(id int64, createdOn string, modifiedOn string, ownerUserId int64, name string, satisfyAny bool, passAuth bool, meta map[string]interface{}, ) *GetProxyHosts200ResponseInnerAccessList`
+`func NewGetProxyHosts200ResponseInnerAccessList(id int64, createdOn string, modifiedOn string, ownerUserId int64, name string, meta map[string]interface{}, satisfyAny bool, passAuth bool, proxyHostCount int64, ) *GetProxyHosts200ResponseInnerAccessList`
 
 NewGetProxyHosts200ResponseInnerAccessList instantiates a new GetProxyHosts200ResponseInnerAccessList object
 This constructor will assign default values to properties that have it defined,
@@ -135,6 +133,26 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetMeta
+
+`func (o *GetProxyHosts200ResponseInnerAccessList) GetMeta() map[string]interface{}`
+
+GetMeta returns the Meta field if non-nil, zero value otherwise.
+
+### GetMetaOk
+
+`func (o *GetProxyHosts200ResponseInnerAccessList) GetMetaOk() (*map[string]interface{}, bool)`
+
+GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeta
+
+`func (o *GetProxyHosts200ResponseInnerAccessList) SetMeta(v map[string]interface{})`
+
+SetMeta sets Meta field to given value.
+
+
 ### GetSatisfyAny
 
 `func (o *GetProxyHosts200ResponseInnerAccessList) GetSatisfyAny() bool`
@@ -175,100 +193,25 @@ and a boolean to check if the value has been set.
 SetPassAuth sets PassAuth field to given value.
 
 
-### GetMeta
+### GetProxyHostCount
 
-`func (o *GetProxyHosts200ResponseInnerAccessList) GetMeta() map[string]interface{}`
+`func (o *GetProxyHosts200ResponseInnerAccessList) GetProxyHostCount() int64`
 
-GetMeta returns the Meta field if non-nil, zero value otherwise.
+GetProxyHostCount returns the ProxyHostCount field if non-nil, zero value otherwise.
 
-### GetMetaOk
+### GetProxyHostCountOk
 
-`func (o *GetProxyHosts200ResponseInnerAccessList) GetMetaOk() (*map[string]interface{}, bool)`
+`func (o *GetProxyHosts200ResponseInnerAccessList) GetProxyHostCountOk() (*int64, bool)`
 
-GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
+GetProxyHostCountOk returns a tuple with the ProxyHostCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMeta
+### SetProxyHostCount
 
-`func (o *GetProxyHosts200ResponseInnerAccessList) SetMeta(v map[string]interface{})`
+`func (o *GetProxyHosts200ResponseInnerAccessList) SetProxyHostCount(v int64)`
 
-SetMeta sets Meta field to given value.
+SetProxyHostCount sets ProxyHostCount field to given value.
 
-
-### GetOwner
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) GetOwner() GetAccessLists200ResponseInnerOwner`
-
-GetOwner returns the Owner field if non-nil, zero value otherwise.
-
-### GetOwnerOk
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) GetOwnerOk() (*GetAccessLists200ResponseInnerOwner, bool)`
-
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwner
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) SetOwner(v GetAccessLists200ResponseInnerOwner)`
-
-SetOwner sets Owner field to given value.
-
-### HasOwner
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
-
-### GetItems
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) GetItems() []GetAccessLists200ResponseInnerItemsInner`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) GetItemsOk() (*[]GetAccessLists200ResponseInnerItemsInner, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) SetItems(v []GetAccessLists200ResponseInnerItemsInner)`
-
-SetItems sets Items field to given value.
-
-### HasItems
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) HasItems() bool`
-
-HasItems returns a boolean if a field has been set.
-
-### GetClients
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) GetClients() []GetAccessLists200ResponseInnerClientsInner`
-
-GetClients returns the Clients field if non-nil, zero value otherwise.
-
-### GetClientsOk
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) GetClientsOk() (*[]GetAccessLists200ResponseInnerClientsInner, bool)`
-
-GetClientsOk returns a tuple with the Clients field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClients
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) SetClients(v []GetAccessLists200ResponseInnerClientsInner)`
-
-SetClients sets Clients field to given value.
-
-### HasClients
-
-`func (o *GetProxyHosts200ResponseInnerAccessList) HasClients() bool`
-
-HasClients returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
