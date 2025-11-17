@@ -53,7 +53,7 @@ paths:
                       minor: 1
                       revision: 0
               schema:
-                $ref: '#/components/schemas/health_200_response'
+                $ref: "#/components/schemas/health_200_response"
           description: 200 response
       summary: Returns the API health status
       tags:
@@ -92,7 +92,7 @@ paths:
               schema:
                 description: Audit Log list
                 items:
-                  $ref: '#/components/schemas/getAuditLogs_200_response_inner'
+                  $ref: "#/components/schemas/getAuditLogs_200_response_inner"
                 type: array
           description: 200 response
       security:
@@ -149,7 +149,7 @@ paths:
                         access_lists: manage
                         certificates: manage
               schema:
-                $ref: '#/components/schemas/getAuditLog_200_response'
+                $ref: "#/components/schemas/getAuditLog_200_response"
           description: 200 response
       security:
       - bearerAuth:
@@ -189,7 +189,7 @@ paths:
                 pass_auth: false
                 proxy_host_count: 0
               schema:
-                $ref: '#/components/schemas/getAccessLists_200_response'
+                $ref: "#/components/schemas/getAccessLists_200_response"
           description: 200 response
       security:
       - bearerAuth:
@@ -213,7 +213,7 @@ paths:
               - directive: allow
                 address: 192.168.0.0/24
             schema:
-              $ref: '#/components/schemas/createAccessList_request'
+              $ref: "#/components/schemas/createAccessList_request"
         description: Access List Payload
         required: true
       responses:
@@ -270,7 +270,7 @@ paths:
                       directive: allow
                       meta: {}
               schema:
-                $ref: '#/components/schemas/getAccessLists_200_response'
+                $ref: "#/components/schemas/getAccessLists_200_response"
           description: 201 response
       security:
       - bearerAuth:
@@ -338,7 +338,7 @@ paths:
                     pass_auth: false
                     proxy_host_count: 1
               schema:
-                $ref: '#/components/schemas/getAccessLists_200_response'
+                $ref: "#/components/schemas/getAccessLists_200_response"
           description: 200 response
       security:
       - bearerAuth:
@@ -373,7 +373,7 @@ paths:
               - directive: allow
                 address: 192.168.0.0/24
             schema:
-              $ref: '#/components/schemas/updateAccessList_request'
+              $ref: "#/components/schemas/updateAccessList_request"
         description: Access List Payload
         required: true
       responses:
@@ -430,7 +430,7 @@ paths:
                       meta: {}
                     proxy_hosts: []
               schema:
-                $ref: '#/components/schemas/getAccessLists_200_response'
+                $ref: "#/components/schemas/getAccessLists_200_response"
           description: 200 response
       security:
       - bearerAuth:
@@ -473,7 +473,7 @@ paths:
               schema:
                 description: Certificates list
                 items:
-                  $ref: '#/components/schemas/getCertificates_200_response_inner'
+                  $ref: "#/components/schemas/getCertificates_200_response_inner"
                 type: array
           description: 200 response
       security:
@@ -494,7 +494,7 @@ paths:
               meta:
                 dns_challenge: false
             schema:
-              $ref: '#/components/schemas/createCertificate_request'
+              $ref: "#/components/schemas/createCertificate_request"
         description: Certificate Payload
         required: true
       responses:
@@ -522,7 +522,7 @@ paths:
                           from: 1728448218
                           to: 1736224217
               schema:
-                $ref: '#/components/schemas/getCertificates_200_response_inner'
+                $ref: "#/components/schemas/getCertificates_200_response_inner"
           description: 201 response
         "400":
           content:
@@ -534,7 +534,7 @@ paths:
                       code: 400
                       message: Domains are invalid
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -573,7 +573,7 @@ paths:
               schema:
                 description: DNS Providers list
                 items:
-                  $ref: '#/components/schemas/getDNSProviders_200_response_inner'
+                  $ref: "#/components/schemas/getDNSProviders_200_response_inner"
                 type: array
           description: 200 response
       security:
@@ -596,7 +596,7 @@ paths:
                 -----BEGIN PRIVATE
                 MIID...-----END CERTIFICATE-----
             schema:
-              $ref: '#/components/schemas/validateCertificates_request'
+              $ref: "#/components/schemas/validateCertificates_request"
         description: Certificate Files
       responses:
         "200":
@@ -614,7 +614,7 @@ paths:
                         to: 1799479337
                     certificate_key: true
               schema:
-                $ref: '#/components/schemas/validateCertificates_200_response'
+                $ref: "#/components/schemas/validateCertificates_200_response"
           description: 200 response
         "400":
           content:
@@ -626,7 +626,7 @@ paths:
                       code: 400
                       message: Certificate is not valid
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -641,7 +641,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/testHttpReach_request'
+              $ref: "#/components/schemas/testHttpReach_request"
         description: Test Payload
         required: true
       responses:
@@ -723,7 +723,7 @@ paths:
                     meta:
                       dns_challenge: false
               schema:
-                $ref: '#/components/schemas/getCertificates_200_response_inner'
+                $ref: "#/components/schemas/getCertificates_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -792,7 +792,7 @@ paths:
                     meta:
                       dns_challenge: false
               schema:
-                $ref: '#/components/schemas/getCertificates_200_response_inner'
+                $ref: "#/components/schemas/getCertificates_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -825,7 +825,7 @@ paths:
                 -----BEGIN PRIVATE
                 MIID...-----END CERTIFICATE-----
             schema:
-              $ref: '#/components/schemas/validateCertificates_request'
+              $ref: "#/components/schemas/validateCertificates_request"
         description: Certificate Files
       responses:
         "200":
@@ -891,7 +891,7 @@ paths:
                       RrKmPK/msHKK/sVHiL+NFqo=
                       -----END PRIVATE KEY-----
               schema:
-                $ref: '#/components/schemas/uploadCertificate_200_response'
+                $ref: "#/components/schemas/uploadCertificate_200_response"
           description: 200 response
       security:
       - bearerAuth:
@@ -949,7 +949,7 @@ paths:
               schema:
                 description: Proxy Hosts list
                 items:
-                  $ref: '#/components/schemas/getProxyHosts_200_response_inner'
+                  $ref: "#/components/schemas/getProxyHosts_200_response_inner"
                 type: array
           description: 200 response
       security:
@@ -970,7 +970,7 @@ paths:
               forward_host: 127.0.0.1
               forward_port: 8080
             schema:
-              $ref: '#/components/schemas/createProxyHost_request'
+              $ref: "#/components/schemas/createProxyHost_request"
         description: Proxy Host Payload
         required: true
       responses:
@@ -1016,7 +1016,7 @@ paths:
                       - admin
                     access_list: null
               schema:
-                $ref: '#/components/schemas/getProxyHosts_200_response_inner'
+                $ref: "#/components/schemas/getProxyHosts_200_response_inner"
           description: 201 response
       security:
       - bearerAuth:
@@ -1110,7 +1110,7 @@ paths:
                       roles:
                       - admin
               schema:
-                $ref: '#/components/schemas/getProxyHosts_200_response_inner'
+                $ref: "#/components/schemas/getProxyHosts_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -1135,7 +1135,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateProxyHost_request'
+              $ref: "#/components/schemas/updateProxyHost_request"
         description: Proxy Host Payload
         required: true
       responses:
@@ -1183,7 +1183,7 @@ paths:
                     certificate: null
                     access_list: null
               schema:
-                $ref: '#/components/schemas/getProxyHosts_200_response_inner'
+                $ref: "#/components/schemas/getProxyHosts_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -1225,7 +1225,7 @@ paths:
                       code: 400
                       message: Host is already enabled
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -1267,7 +1267,7 @@ paths:
                       code: 400
                       message: Host is already disabled
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -1321,7 +1321,7 @@ paths:
               schema:
                 description: Redirection Hosts list
                 items:
-                  $ref: '#/components/schemas/getRedirectionHosts_200_response_inner'
+                  $ref: "#/components/schemas/getRedirectionHosts_200_response_inner"
                 type: array
           description: 200 response
       security:
@@ -1351,7 +1351,7 @@ paths:
               advanced_config: ""
               meta: {}
             schema:
-              $ref: '#/components/schemas/createRedirectionHost_request'
+              $ref: "#/components/schemas/createRedirectionHost_request"
         description: Redirection Host Payload
         required: true
       responses:
@@ -1393,7 +1393,7 @@ paths:
                       roles:
                       - admin
               schema:
-                $ref: '#/components/schemas/getRedirectionHosts_200_response_inner'
+                $ref: "#/components/schemas/getRedirectionHosts_200_response_inner"
           description: 201 response
       security:
       - bearerAuth:
@@ -1473,7 +1473,7 @@ paths:
                     forward_scheme: http
                     forward_http_code: 301
               schema:
-                $ref: '#/components/schemas/getRedirectionHosts_200_response_inner'
+                $ref: "#/components/schemas/getRedirectionHosts_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -1498,7 +1498,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateRedirectionHost_request'
+              $ref: "#/components/schemas/updateRedirectionHost_request"
         description: Redirection Host       Payload
         required: true
       responses:
@@ -1542,7 +1542,7 @@ paths:
                       - admin
                     certificate: null
               schema:
-                $ref: '#/components/schemas/getRedirectionHosts_200_response_inner'
+                $ref: "#/components/schemas/getRedirectionHosts_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -1584,7 +1584,7 @@ paths:
                       code: 400
                       message: Host is already enabled
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -1626,7 +1626,7 @@ paths:
                       code: 400
                       message: Host is already disabled
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -1675,7 +1675,7 @@ paths:
               schema:
                 description: 404 Hosts list
                 items:
-                  $ref: '#/components/schemas/getDeadHosts_200_response_inner'
+                  $ref: "#/components/schemas/getDeadHosts_200_response_inner"
                 type: array
           description: 200 response
       security:
@@ -1700,7 +1700,7 @@ paths:
               hsts_subdomains: false
               meta: {}
             schema:
-              $ref: '#/components/schemas/create404Host_request'
+              $ref: "#/components/schemas/create404Host_request"
         description: 404 Host Payload
         required: true
       responses:
@@ -1737,7 +1737,7 @@ paths:
                       roles:
                       - admin
               schema:
-                $ref: '#/components/schemas/getDeadHosts_200_response_inner'
+                $ref: "#/components/schemas/getDeadHosts_200_response_inner"
           description: 201 response
       security:
       - bearerAuth:
@@ -1812,7 +1812,7 @@ paths:
                     hsts_enabled: false
                     hsts_subdomains: false
               schema:
-                $ref: '#/components/schemas/getDeadHosts_200_response_inner'
+                $ref: "#/components/schemas/getDeadHosts_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -1837,7 +1837,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateDeadHost_request'
+              $ref: "#/components/schemas/updateDeadHost_request"
         description: 404 Host Payload
         required: true
       responses:
@@ -1876,7 +1876,7 @@ paths:
                       - admin
                     certificate: null
               schema:
-                $ref: '#/components/schemas/getDeadHosts_200_response_inner'
+                $ref: "#/components/schemas/getDeadHosts_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -1918,7 +1918,7 @@ paths:
                       code: 400
                       message: Host is already enabled
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -1960,7 +1960,7 @@ paths:
                       code: 400
                       message: Host is already disabled
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -2007,7 +2007,7 @@ paths:
               schema:
                 description: Streams list
                 items:
-                  $ref: '#/components/schemas/getStreams_200_response_inner'
+                  $ref: "#/components/schemas/getStreams_200_response_inner"
                 type: array
           description: 200 response
       security:
@@ -2030,7 +2030,7 @@ paths:
               certificate_id: 0
               meta: {}
             schema:
-              $ref: '#/components/schemas/createStream_request'
+              $ref: "#/components/schemas/createStream_request"
         description: Stream Payload
         required: true
       responses:
@@ -2066,7 +2066,7 @@ paths:
                       - admin
                     certificate_id: 0
               schema:
-                $ref: '#/components/schemas/getStreams_200_response_inner'
+                $ref: "#/components/schemas/getStreams_200_response_inner"
           description: 201 response
       security:
       - bearerAuth:
@@ -2139,7 +2139,7 @@ paths:
                     enabled: true
                     certificate_id: 0
               schema:
-                $ref: '#/components/schemas/getStreams_200_response_inner'
+                $ref: "#/components/schemas/getStreams_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -2164,7 +2164,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateStream_request'
+              $ref: "#/components/schemas/updateStream_request"
         description: Stream Payload
         required: true
       responses:
@@ -2200,7 +2200,7 @@ paths:
                       - admin
                     certificate_id: 0
               schema:
-                $ref: '#/components/schemas/getStreams_200_response_inner'
+                $ref: "#/components/schemas/getStreams_200_response_inner"
           description: 200 response
       security:
       - bearerAuth:
@@ -2242,7 +2242,7 @@ paths:
                       code: 400
                       message: Host is already enabled
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -2284,7 +2284,7 @@ paths:
                       code: 400
                       message: Host is already disabled
               schema:
-                $ref: '#/components/schemas/createCertificate_400_response'
+                $ref: "#/components/schemas/createCertificate_400_response"
           description: 400 response
       security:
       - bearerAuth:
@@ -2307,7 +2307,7 @@ paths:
                     stream: 0
                     dead: 1
               schema:
-                $ref: '#/components/schemas/reportsHosts_200_response'
+                $ref: "#/components/schemas/reportsHosts_200_response"
           description: 200 response
       security:
       - bearerAuth: []
@@ -2341,7 +2341,7 @@ paths:
               schema:
                 description: Setting list
                 items:
-                  $ref: '#/components/schemas/getSettings_200_response_inner'
+                  $ref: "#/components/schemas/getSettings_200_response_inner"
                 type: array
           description: 200 response
       security:
@@ -2377,7 +2377,7 @@ paths:
                     value: congratulations
                     meta: {}
               schema:
-                $ref: '#/components/schemas/getSetting_200_response'
+                $ref: "#/components/schemas/getSetting_200_response"
           description: 200 response
       security:
       - bearerAuth:
@@ -2407,7 +2407,7 @@ paths:
               value: congratulations
               meta: {}
             schema:
-              $ref: '#/components/schemas/updateSetting_request'
+              $ref: "#/components/schemas/updateSetting_request"
         description: Setting Payload
         required: true
       responses:
@@ -2423,7 +2423,7 @@ paths:
                     value: congratulations
                     meta: {}
               schema:
-                $ref: '#/components/schemas/getSetting_200_response'
+                $ref: "#/components/schemas/getSetting_200_response"
           description: 200 response
       security:
       - bearerAuth:
@@ -2444,7 +2444,7 @@ paths:
                     expires: 2025-02-04T20:40:46.340Z
                     token: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.ey...xaHKYr3Kk6MvkUjcC4
               schema:
-                $ref: '#/components/schemas/refreshToken_200_response'
+                $ref: "#/components/schemas/refreshToken_200_response"
           description: 200 response
       security:
       - bearerAuth: []
@@ -2460,7 +2460,7 @@ paths:
               identity: me@example.com
               secret: bigredhorsebanana
             schema:
-              $ref: '#/components/schemas/requestToken_request'
+              $ref: "#/components/schemas/requestToken_request"
         description: Credentials Payload
         required: true
       responses:
@@ -2473,7 +2473,7 @@ paths:
                     expires: 2025-02-04T20:40:46.340Z
                     token: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.ey...xaHKYr3Kk6MvkUjcC4
               schema:
-                $ref: '#/components/schemas/refreshToken_200_response'
+                $ref: "#/components/schemas/refreshToken_200_response"
           description: 200 response
       summary: Request a new access token from credentials
       tags:
@@ -2532,7 +2532,7 @@ paths:
               schema:
                 description: User list
                 items:
-                  $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+                  $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
                 type: array
           description: 200 response
       security:
@@ -2547,7 +2547,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createUser_request'
+              $ref: "#/components/schemas/createUser_request"
         description: User Payload
         required: true
       responses:
@@ -2580,7 +2580,7 @@ paths:
                       access_lists: manage
                       certificates: manage
               schema:
-                $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+                $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
           description: 201 response
       security:
       - bearerAuth:
@@ -2628,7 +2628,7 @@ paths:
         name: userID
         required: true
         schema:
-          $ref: '#/components/schemas/getUser_userID_parameter'
+          $ref: "#/components/schemas/getUser_userID_parameter"
         style: simple
       responses:
         "200":
@@ -2648,7 +2648,7 @@ paths:
                     roles:
                     - admin
               schema:
-                $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+                $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
           description: 200 response
       security:
       - bearerAuth:
@@ -2666,13 +2666,13 @@ paths:
         name: userID
         required: true
         schema:
-          $ref: '#/components/schemas/getUser_userID_parameter'
+          $ref: "#/components/schemas/getUser_userID_parameter"
         style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateUser_request'
+              $ref: "#/components/schemas/updateUser_request"
         description: User Payload
         required: true
       responses:
@@ -2693,7 +2693,7 @@ paths:
                     roles:
                     - admin
               schema:
-                $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+                $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
           description: 200 response
       security:
       - bearerAuth:
@@ -2712,13 +2712,13 @@ paths:
         name: userID
         required: true
         schema:
-          $ref: '#/components/schemas/getUser_userID_parameter'
+          $ref: "#/components/schemas/getUser_userID_parameter"
         style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateUserAuth_request'
+              $ref: "#/components/schemas/updateUserAuth_request"
         description: Auth Payload
         required: true
       responses:
@@ -2763,7 +2763,7 @@ paths:
               redirection_hosts: hidden
               streams: hidden
             schema:
-              $ref: '#/components/schemas/updateUserPermissions_request'
+              $ref: "#/components/schemas/updateUserPermissions_request"
         description: Permissions Payload
         required: true
       responses:
@@ -2816,7 +2816,7 @@ paths:
                       avatar: //www.gravatar.com/avatar/3c8d73f45fd8763f827b964c76e6032a?default=mm
                       roles: []
               schema:
-                $ref: '#/components/schemas/loginAsUser_200_response'
+                $ref: "#/components/schemas/loginAsUser_200_response"
           description: 200 response
       security:
       - bearerAuth:
@@ -2898,7 +2898,7 @@ components:
           example: What to show when Nginx is hit with an unknown Host
           minLength: 1
         value:
-          $ref: '#/components/schemas/getSetting_200_response_value'
+          $ref: "#/components/schemas/getSetting_200_response_value"
         meta:
           description: Extra metadata
           example:
@@ -2943,7 +2943,7 @@ components:
           description: Token Expiry Timestamp
           example: 2020-01-30T10:43:44.000Z
         user:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
       required:
       - expires
       - token
@@ -2967,7 +2967,7 @@ components:
           maxItems: 100
           uniqueItems: true
         meta:
-          $ref: '#/components/schemas/getCertificates_200_response_inner_meta'
+          $ref: "#/components/schemas/getCertificates_200_response_inner_meta"
       required:
       - provider
     getAuditLogs_200_response_inner_user:
@@ -3026,7 +3026,7 @@ components:
           - admin
           items: {}
         permissions:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user_permissions'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user_permissions"
       required:
       - avatar
       - created_on
@@ -3051,7 +3051,7 @@ components:
         issuer:
           example: "C = US, O = Let's Encrypt, CN = E5"
         dates:
-          $ref: '#/components/schemas/validateCertificates_200_response_certificate_dates'
+          $ref: "#/components/schemas/validateCertificates_200_response_certificate_dates"
       required:
       - cn
       - dates
@@ -3059,7 +3059,7 @@ components:
     getRedirectionHosts_200_response_inner_certificate:
       oneOf:
       - example: null
-      - $ref: '#/components/schemas/getCertificates_200_response_inner'
+      - $ref: "#/components/schemas/getCertificates_200_response_inner"
       example: null
     getSetting_200_response_value:
       anyOf:
@@ -3089,7 +3089,7 @@ components:
           maximum: 65535
           minimum: 1
         forwarding_host:
-          $ref: '#/components/schemas/getStreams_200_response_inner_forwarding_host'
+          $ref: "#/components/schemas/getStreams_200_response_inner_forwarding_host"
         forwarding_port:
           example: 80
           maximum: 65535
@@ -3101,7 +3101,7 @@ components:
           example: false
           type: boolean
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         meta:
           example: {}
           type: object
@@ -3117,7 +3117,7 @@ components:
           issuer: "C = US, O = Let's Encrypt, CN = E5"
       properties:
         certificate:
-          $ref: '#/components/schemas/validateCertificates_200_response_certificate'
+          $ref: "#/components/schemas/validateCertificates_200_response_certificate"
         certificate_key:
           example: true
           type: boolean
@@ -3151,7 +3151,7 @@ components:
           maximum: 65535
           minimum: 1
         forwarding_host:
-          $ref: '#/components/schemas/getStreams_200_response_inner_forwarding_host'
+          $ref: "#/components/schemas/getStreams_200_response_inner_forwarding_host"
         forwarding_port:
           example: 80
           maximum: 65535
@@ -3163,7 +3163,7 @@ components:
           example: false
           type: boolean
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         meta:
           example: {}
           type: object
@@ -3198,7 +3198,7 @@ components:
           minItems: 1
           uniqueItems: true
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -3317,9 +3317,9 @@ components:
           example: 2025-10-28T04:17:54.000Z
           readOnly: true
         owner:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
         meta:
-          $ref: '#/components/schemas/getCertificates_200_response_inner_meta'
+          $ref: "#/components/schemas/getCertificates_200_response_inner_meta"
       required:
       - created_on
       - domain_names
@@ -3355,13 +3355,13 @@ components:
           - username: admin
             password: pass
           items:
-            $ref: '#/components/schemas/createAccessList_request_items_inner'
+            $ref: "#/components/schemas/createAccessList_request_items_inner"
         clients:
           example:
           - directive: allow
             address: 192.168.0.0/24
           items:
-            $ref: '#/components/schemas/createAccessList_request_clients_inner'
+            $ref: "#/components/schemas/createAccessList_request_clients_inner"
       required:
       - name
     health_200_response_version:
@@ -3506,7 +3506,7 @@ components:
           minimum: 1
           type: integer
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -3559,7 +3559,7 @@ components:
             forward_host: example.com
             forward_port: 80
           items:
-            $ref: '#/components/schemas/getProxyHosts_200_response_inner_locations_inner'
+            $ref: "#/components/schemas/getProxyHosts_200_response_inner_locations_inner"
           minItems: 0
     requestToken_request:
       additionalProperties: {}
@@ -3647,7 +3647,7 @@ components:
           maximum: 65535
           minimum: 1
         forwarding_host:
-          $ref: '#/components/schemas/getStreams_200_response_inner_forwarding_host'
+          $ref: "#/components/schemas/getStreams_200_response_inner_forwarding_host"
         forwarding_port:
           example: 80
           maximum: 65535
@@ -3663,14 +3663,14 @@ components:
           example: false
           type: boolean
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         meta:
           example: {}
           type: object
         certificate:
-          $ref: '#/components/schemas/getRedirectionHosts_200_response_inner_certificate'
+          $ref: "#/components/schemas/getRedirectionHosts_200_response_inner_certificate"
         owner:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
       required:
       - created_on
       - enabled
@@ -3708,7 +3708,7 @@ components:
           example: What to show when Nginx is hit with an unknown Host
           minLength: 1
         value:
-          $ref: '#/components/schemas/getSettings_200_response_inner_value'
+          $ref: "#/components/schemas/getSettings_200_response_inner_value"
         meta:
           description: Extra metadata
           example:
@@ -3787,7 +3787,7 @@ components:
           example: {}
           type: object
         user:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
       required:
       - action
       - created_on
@@ -3940,7 +3940,7 @@ components:
           minimum: 0
           type: integer
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -3986,7 +3986,7 @@ components:
             forward_host: example.com
             forward_port: 80
           items:
-            $ref: '#/components/schemas/getProxyHosts_200_response_inner_locations_inner'
+            $ref: "#/components/schemas/getProxyHosts_200_response_inner_locations_inner"
           minItems: 0
           type: array
         hsts_enabled:
@@ -3998,11 +3998,11 @@ components:
           example: true
           type: boolean
         certificate:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate"
         owner:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
         access_list:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_access_list'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_access_list"
       required:
       - access_list_id
       - advanced_config
@@ -4054,7 +4054,7 @@ components:
           example: html
           minLength: 1
         meta:
-          $ref: '#/components/schemas/updateSetting_request_meta'
+          $ref: "#/components/schemas/updateSetting_request_meta"
     getAuditLogs_200_response_inner:
       additionalProperties: {}
       description: Audit Log object
@@ -4117,7 +4117,7 @@ components:
         meta:
           example: {}
         user:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
       required:
       - action
       - created_on
@@ -4200,7 +4200,7 @@ components:
           minItems: 1
           uniqueItems: true
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -4228,9 +4228,9 @@ components:
           example: {}
           type: object
         certificate:
-          $ref: '#/components/schemas/getRedirectionHosts_200_response_inner_certificate'
+          $ref: "#/components/schemas/getRedirectionHosts_200_response_inner_certificate"
         owner:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
       required:
       - advanced_config
       - certificate_id
@@ -4343,7 +4343,7 @@ components:
           description: Should the path be preserved
           example: true
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -4377,9 +4377,9 @@ components:
             nginx_err: null
           type: object
         certificate:
-          $ref: '#/components/schemas/getRedirectionHosts_200_response_inner_certificate'
+          $ref: "#/components/schemas/getRedirectionHosts_200_response_inner_certificate"
         owner:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
       required:
       - advanced_config
       - block_exploits
@@ -4543,7 +4543,7 @@ components:
         address: 192.168.0.0/24
       properties:
         address:
-          $ref: '#/components/schemas/createAccessList_request_clients_inner_address'
+          $ref: "#/components/schemas/createAccessList_request_clients_inner_address"
         directive:
           enum:
           - allow
@@ -4603,7 +4603,7 @@ components:
           minimum: 1
           type: integer
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -4656,7 +4656,7 @@ components:
             forward_host: example.com
             forward_port: 80
           items:
-            $ref: '#/components/schemas/getProxyHosts_200_response_inner_locations_inner'
+            $ref: "#/components/schemas/getProxyHosts_200_response_inner_locations_inner"
           minItems: 0
       required:
       - domain_names
@@ -4678,7 +4678,7 @@ components:
           minItems: 1
           uniqueItems: true
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -4762,7 +4762,7 @@ components:
           description: Should the path be preserved
           example: true
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -4818,13 +4818,13 @@ components:
           - username: admin
             password: pass
           items:
-            $ref: '#/components/schemas/updateAccessList_request_items_inner'
+            $ref: "#/components/schemas/updateAccessList_request_items_inner"
         clients:
           example:
           - directive: allow
             address: 192.168.0.0/24
           items:
-            $ref: '#/components/schemas/createAccessList_request_clients_inner'
+            $ref: "#/components/schemas/createAccessList_request_clients_inner"
     getProxyHosts_200_response_inner_certificate_id:
       anyOf:
       - example: 5
@@ -4914,7 +4914,7 @@ components:
           description: Should the path be preserved
           example: true
         certificate_id:
-          $ref: '#/components/schemas/getProxyHosts_200_response_inner_certificate_id'
+          $ref: "#/components/schemas/getProxyHosts_200_response_inner_certificate_id"
         ssl_forced:
           description: Is SSL Forced
           example: true
@@ -4956,7 +4956,7 @@ components:
           message: Bad Request
       properties:
         error:
-          $ref: '#/components/schemas/createCertificate_400_response_error'
+          $ref: "#/components/schemas/createCertificate_400_response_error"
     getCertificates_200_response_inner:
       additionalProperties: {}
       description: Certificate object
@@ -5034,9 +5034,9 @@ components:
           example: 2025-10-28T04:17:54.000Z
           readOnly: true
         owner:
-          $ref: '#/components/schemas/getAuditLogs_200_response_inner_user'
+          $ref: "#/components/schemas/getAuditLogs_200_response_inner_user"
         meta:
-          $ref: '#/components/schemas/getCertificates_200_response_inner_meta'
+          $ref: "#/components/schemas/getCertificates_200_response_inner_meta"
       required:
       - created_on
       - domain_names
@@ -5065,7 +5065,7 @@ components:
           description: Whether the initial setup has been completed
           example: true
         version:
-          $ref: '#/components/schemas/health_200_response_version'
+          $ref: "#/components/schemas/health_200_response_version"
       required:
       - status
       - version
